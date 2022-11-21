@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato</title>
+</head>
+
+<body>
+  <fieldset>
+    <legend>Entre em contato</legend>
+    <br>
+    <label for="ass">Assunto:</label>
+    <select name="ass" id="ass" required>
+      <option value="sup">Suporte</option>
+      <option value="sug">Sugestão</option>
+      <option value="rec">Reclamação</option>
+    </select>
+    <br>
+    <br>
+    <label for="name">Nome Completo:</label>
+    <br>
+    <input type="text" name="name" id="name" required maxlength="300" placeholder="Juquinha da Fonseca">
+    <br>
+    <br>
+    <label for="email">E-mail:</label>
+    <br>
+    <input type="email" name="email" id="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+      autocomplete="email" placeholder="exemplo@exmail.com">
+    <br>
+    <br>
+    <label for="msg">Mensagem:</label>
+    <br>
+    <textarea name="msg" id="msg" cols="30" rows="10" maxlength="20000" placeholder="Digite sua mensagem..."></textarea>
+    <br>
+    <br>
+    <input type="checkbox" name="accept" id="accept">
+    <label for="accept">Aceito receber novidades por e-mail</label>
+    <br>
+    <br>
+    <button type="submit">Enviar</button>
+  </fieldset>
+</body>
+
+</html>

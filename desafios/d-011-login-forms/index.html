@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+  <title>Camp.in Login</title>
+</head>
+
+<body>
+  <main>
+    <img src="assets/logo.svg" alt="Logo da camp in">
+
+    <fieldset>
+
+
+      <div class="login">
+        <img src="assets/log-in.svg" alt="">
+        <h1> Faça seu login</h1>
+      </div>
+
+
+      <p>Entre com suas informações de cadastro.</p>
+
+      <form action="" method="post">
+
+        <label for="email">E-mail
+          <br>
+          <input type="email" name="email" id="email" placeholder=" Digite seu e-mail"
+            pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required maxlength="300">
+        </label>
+        <br>
+
+        <label for="password">Senha
+          <br>
+          <input type="password" name="password" id="password" placeholder="Digite sua senha"
+            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,30}$" required>
+        </label>
+        <br>
+
+        <div class="checkboxAndForgotPassword">
+
+          <label class="checkboxFull">
+            <input type="checkbox" name="remember" id="remember">Lembre-me
+          </label>
+
+
+          <p><a href="#" class="yellow">Esqueci minha senha</a></p>
+        </div>
+
+        <div class="submit">
+          <button type="submit">ENTRAR</button>
+        </div>
+
+      </form>
+
+      <p class="yellow">Não tem uma conta? <a href="#">Registre-se</a></p>
+
+    </fieldset>
+
+  </main>
+  <aside>
+
+
+  </aside>
+</body>
+
+</html>

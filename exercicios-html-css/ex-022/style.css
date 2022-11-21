@@ -1,0 +1,19 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  margin: 0;
+}
+
+footer {
+  margin-top: auto;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: brown;
+  flex-basis: 8rem;
+}
+
+p {
+  background-color: aliceblue;
+}

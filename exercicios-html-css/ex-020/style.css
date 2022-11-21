@@ -1,0 +1,13 @@
+main {
+  display: flex;
+  height: 100vh;
+  border: 1px solid red;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+div {
+  border: solid green 1px;
+  width:  30%;
+  height: 30%;
+}

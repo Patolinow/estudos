@@ -1,0 +1,91 @@
+/* Gerais */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+:root {
+  --bg-pagina: #eaeaea;
+  --titulo-subtitulo: #1b1b1b;
+  --footer-legenda: #8f8f8f;
+  --texto: #39393a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  background-color: var(--bg-pagina);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 30px;
+}
+
+main {
+  background-color: white;
+  max-width: 1010px;
+  border-radius: 10px;
+}
+
+section,
+header {
+  margin: 50px;
+}
+
+h1 {
+  font-size: 28px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+h1,
+h2 {
+  color: var(--titulo-subtitulo);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+section > p,
+li {
+  color: var(--texto);
+}
+
+footer p,
+figcaption {
+  font-size: 14px;
+  color: var(--footer-legenda);
+}
+
+/* Header do Main */
+
+img {
+  width: 100%;
+  height: 300px;
+  border-radius: 10px;
+
+  object-fit: cover;
+}
+
+figcaption {
+  text-align: end;
+}
+
+/* Sections */
+li {
+  margin: 30px 0 30px 15px;
+}
+
+section:nth-last-child(1) {
+  margin-bottom: 30px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  margin: 15px;
+}

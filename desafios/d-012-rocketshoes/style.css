@@ -1,0 +1,79 @@
+/* Gerais */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+:root {
+  --button: #ff0000;
+  --main-bg: #c4c4c4;
+  --bg: #e5e5e5;
+  --text: #000;
+  --text-description: #9c9696;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  border: none;
+  outline: none;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+/* header */
+header {
+  background-color: transparent;
+  display: flex;
+  justify-content: space-around;
+}
+
+header a {
+  display: inline-block;
+  padding: 10px 0;
+  margin: 15.5px 0;
+  color: var(--text);
+}
+
+/* Main */
+
+main {
+  display: flex;
+}
+
+section:nth-child(1) {
+  flex: 1;
+}
+
+section:nth-child(2) {
+  flex: 1.5;
+  background-color: var(--main-bg);
+}
+
+/* Footer */
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+footer > a {
+  color: var(--text);
+  
+}
+
+#more {
+  background-color: var(--text);
+  padding: 69px 100px;
+  
+  
+  
+}
+
+#more a {
+  color: white;
+  display: flex;
+  text-align: center;
+}

@@ -1,0 +1,36 @@
+.page {
+  border: 2px solid;
+  min-height: 100vh;
+  display: flex;
+}
+
+aside {
+  background: lightgreen;
+  flex-grow: 1;
+}
+
+main {
+  background: lightblue;
+  flex-grow: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+main section:nth-child(1) {
+  background: lightgoldenrodyellow;
+  flex-grow: 2;
+  flex-shrink: 0;
+  order: 1;
+}
+
+main section:nth-child(2){
+  background: lightsalmon;
+  flex-grow: 0;
+  flex-basis: 800px;
+  order: 12;
+}
+
+main section:nth-child(3) {
+  background: lightpink;
+  flex-grow: 1;
+}

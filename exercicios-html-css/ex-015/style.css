@@ -1,0 +1,24 @@
+main > article > p {
+  color: red;
+}
+
+h1 ~ p {
+  color: yellow;
+}
+
+ul li:nth-child(even) { 
+  font-weight: bold;
+  color: salmon;
+}
+
+li::before {
+  content: ">>> ";
+}
+/* content é necessário, msm q vazio */
+li::after {
+  content: " +++";
+}
+
+p::first-line {
+  font-weight: bold;
+}

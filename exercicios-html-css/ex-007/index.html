@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mais inputs</title>
+</head>
+
+<body>
+  <fieldset>
+    <legend>Vamo toma um café?</legend>
+    <label for="yep">sim</label>
+    <input type="radio" name="coffee" id="yep" value="yes">
+    <label for="nop">não</label>
+    <input type="radio" name="coffee" id="nop" value="no" checked>
+    <label for="pq">porque?</label>
+    <textarea name="pq" id="pq" maxlength="300" wrap="off" placeholder="Justifique aqui"></textarea>
+    <br>
+    <label for="select">Em caso negativo, selecione uma das opções abaixo para tomar comigo</label>
+    <select name="bebida" id="select">
+      <optgroup label="Sem Alcool">
+        <option value="">Nenhuma</option>
+        <option value="laranja">Suco de Laranja</option>
+        <option value="agua">Água</option>
+        <option value="cervejaS">Breja 0</option>
+      </optgroup>
+      <optgroup label="Com Alcool">
+        <option value="cerveja">Cerveja</option>
+        <option value="caipirinha">Caipirinha</option>
+        <option value="vinho">Vinho</option>
+      </optgroup>
+    </select>
+  </fieldset>
+</body>
+
+</html>

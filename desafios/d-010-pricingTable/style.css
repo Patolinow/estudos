@@ -1,0 +1,183 @@
+/* Geral   */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
+
+:root {
+  --yellow: #ffcc29;
+  --blue: #1d539e;
+  --gray: #828799;
+  --bg: #f9fbfc;
+  --black: #1e2338;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  list-style-image: url(assets/check.svg);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+h2,
+strong {
+  color: var(--black);
+}
+
+/* Parte de cima */
+body > header p {
+  font-size: 18px;
+  margin: 0 10px;
+}
+
+body > header {
+  background: var(--blue);
+  color: var(--bg);
+  flex: 1 0;
+  text-align: center;
+}
+
+h1 {
+  font-size: 48px;
+  margin: 100px 0 20px;
+}
+
+/* Parte de baixo (planos) */
+main {
+  background: var(--bg);
+  flex: 1;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+
+
+article {
+  background-color: var(--bg);
+  border-radius: 10px;
+  box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.08);
+  top: -150px;
+  max-width: 365px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+}
+
+article p,
+li {
+  color: var(--gray);
+}
+
+li {
+  margin: 20px 22px;
+  font-size: 14px;
+}
+
+.big {
+  font-size: 38px;
+}
+
+hr {
+  border-top: rgba(0, 0, 0, 0.2);
+}
+
+h2, article p, hr, button, ul {
+  margin: 0 30px;
+}
+
+h2 {
+  font-weight: 600;
+  margin-top: 20px;
+  margin: 25px 30px;
+}
+
+p {
+  font-size: 15px;
+}
+
+hr{
+  margin: 20px 30px;
+}
+
+article a {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  color: var(--blue);
+  background-color: var(--bg);
+  border: var(--blue) solid 1px;
+
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 20px;
+  min-width: 200px;
+  text-align: center;
+  margin-bottom: 30px;
+
+  font-weight: 600;
+}
+
+button:hover {
+  transition: 300ms;
+  background-color: var(--blue);
+  color: var(--bg);
+  cursor: pointer;
+}
+
+article div > p:nth-of-type(1) {
+  margin-bottom: 10px;
+}
+
+/* Específico para plano básico */
+.basico {
+  top: -160px;
+}
+
+article header {
+  background: var(--yellow);
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h2 {
+  color: var(--blue);
+}
+
+article header p {
+  color: var(--bg);
+  background-color: var(--blue);
+  
+  padding: 6px 18px;
+  border-radius: 20px;
+}
+
+.basico li {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.basico button {
+  color: var(--bg);
+  background-color: var(--blue);
+}
+
+.basico button:hover {
+  transition: 300ms;
+  color: var(--blue);
+  background-color: var(--yellow);
+  border-color: var(--yellow);
+}
+

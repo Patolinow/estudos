@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <form action="">
+    <label for="email">Email: </label>
+    <input name="email" type="email" autocomplete="email" required placeholder="Digite seu email">
+    <input type="password" name="senha" id="senha" size="15" placeholder="Digite sua senha" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$])[a-zA-Z0-9@#$]{8,16}$" required>
+    <label for="termos">Aceitar termos de uso</label>
+    <input type="checkbox" name="subscribe" id="subscribe" value="subs" checked>
+    <button type="submit">Enviar</button>
+    <input type="hidden" name="cu">
+  </form>
+  <form action="" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" id="file" accept="image/*" multiple>
+  </form>
+</body>
+
+</html>

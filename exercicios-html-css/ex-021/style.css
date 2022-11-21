@@ -1,0 +1,22 @@
+body {
+  height: 95vh;
+}
+
+.container {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: blue;
+}
+
+.button {
+  display: flex;
+  background-color: red;
+  gap: 0.4rem;
+  padding: 3px 10px;
+  border-radius: 5px;
+  line-height: 0;
+}
+
+.button img {
+  height: 1.5rem;
+}

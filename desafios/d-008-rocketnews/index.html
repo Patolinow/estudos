@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="assets/icon.png" type="image/x-icon">
+  <title>Rocket News</title>
+</head>
+
+<body>
+  <section>
+    <header>
+      <img src="assets/logo.svg" alt="Logo">
+    </header>
+    <main>
+      <article>
+        <h1>atualize ideias e informações em 5 minutos.</h1>
+        <p><strong>tudo que você precisa saber para começar seu dia bem e informado</strong></p>
+        <p>noticias sobre o universo Rocketseat, e tudo o que precisa para começar o dia melhor.
+          <br>
+          perfeito para se preparar para codar ☕
+        </p>
+      </article>
+      <form action="">
+        <label for="email">Insira seu e-mail:</label>
+        <div class="emailAndButton">
+          <input type="email" name="email" id="email" placeholder="oi@rocketseat.com"
+            pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required autocomplete="email"
+            maxlength="300">
+          <button onclick="alerta()" type="submit"><img src="assets/send.svg" alt="Enviar"></button>
+        </div>
+      </form>
+
+      <a class="ler-primeiro" href="#">Deixe-me ler primeiro
+        <img src="assets/arrow-right.svg" alt="Saiba Mais">
+      </a>
+    </main>
+    <footer>
+
+      <p>Feito pelo <a href="https://github.com/Patolinow">Patolinow</a></p>
+
+    </footer>
+  </section>
+  <section class="bg-img">
+
+  </section>
+</body>
+
+</html>
+
+<script>
+  function alerta() {
+    window.alert("Inscrição confirmada!")
+  }
+</script>
