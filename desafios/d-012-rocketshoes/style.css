@@ -61,19 +61,22 @@ footer {
 
 footer > a {
   color: var(--text);
-  
+  font-weight: bold;
+  font-size: 18px;
 }
 
 #more {
   background-color: var(--text);
-  padding: 69px 100px;
-  
-  
-  
+  padding: 69px 0;
+  flex-basis: 25vw;
 }
 
 #more a {
   color: white;
   display: flex;
-  text-align: center;
+  justify-content: center;
+}
+
+#more img {
+  padding-left: 14px;
 }
