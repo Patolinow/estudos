@@ -8,6 +8,8 @@
 */
 let bookCounter = 0
 let itemCounter = 0
+let booksEachCategory = []
+let authors = []
 
 const booksByCategory = [
   {
@@ -49,16 +51,40 @@ const booksByCategory = [
 function categoryCounter() {
 
   booksByCategory.forEach((item) => {
-    itemCounter++
+    bookCounter = 0
 
     item.books.forEach((book) => {
       bookCounter++
     })
 
-    
+    booksEachCategory.push(bookCounter)
+    itemCounter++
   })
-  return `A categoria ${booksByCategory[0].category} possui ${bookCounter/itemCounter} livros. \nA categoria ${booksByCategory[1].category} possui ${bookCounter/itemCounter} livros. \nNo total temos ${itemCounter} categorias`
-  
+
+  return `Há ${itemCounter} categorias, elas possuem respectivamente ${booksEachCategory} livros cada.`
+
+}
+
+itemCounter = 0
+
+function authorCounter() {
+  booksByCategory.forEach(item => {
+
+    item.books.forEach(book => {
+      authors.push(book.author)
+    });
+  })
+
+  authors.sort((a, b) => a > b ? 1 : -1)
+  for (let i = 0; i < authors.length; i++) {
+    if (authors[i] == authors[i + 1]) {
+      authors.splice(i + 1, 1)
+    }
+  }
+
+  return `No total há ${authors.length} Autores diferentes, contando todas as categorias`
 }
 
 console.log(categoryCounter())
+
+console.log(authorCounter())
