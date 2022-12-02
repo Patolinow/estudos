@@ -1,27 +1,17 @@
 function findWaldo(crowd) {
-  let y = 0, x = 0, yx = [];
-
-  // while (y < crowd.length) {
-  //   if (crowd[y].includes("W")) {
-  //     yx = y
-  //   }
-  //   y++
-  // }
-
-  if (crowd[y].includes("W")) {
-    while (crowd[y][x] !== "W") {
-      x++
+  let count = new Map();
+  for (let y = 0; y < crowd.length; y++) {
+    for (let x = 0; x < crowd[y].length; x++) {
+      count.set(crowd[y][x], (count.get(crowd[y][x]) || 0) + 1)
     }
   }
-  else {
-    while (crowd[y][x] !== "B") {
-      x++
+  for (let y = 0; y < crowd.length; y++) {
+    for (let x = 0; x < crowd[y].length; x++) {
+      if (count.get(crowd[y][x]) == 1) {
+        return [y, x];
+      }
     }
   }
-
-  yx.push(y, x)
-
-  return yx
 }
 
 console.log(findWaldo(
