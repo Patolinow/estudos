@@ -12,6 +12,8 @@ function maxIntChain(n) {
       d--
       c++
     }
+
+    theBiggestOne = c * d
   }
 
   else {
@@ -21,7 +23,7 @@ function maxIntChain(n) {
     }
   }
 
-  return theBiggestOne = c * d
+  return theBiggestOne
 }
 
 console.log(maxIntChain(17))
