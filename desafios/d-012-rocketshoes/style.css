@@ -20,6 +20,10 @@
 
 body {
   font-family: "Roboto", sans-serif;
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 /* header */
@@ -27,19 +31,26 @@ header {
   background-color: transparent;
   display: flex;
   justify-content: space-around;
-  background-color: var(--main-bg);
+  position: fixed;
+  width: 100%;
 }
 
 header a {
   display: inline-block;
   padding: 10px 0;
-  margin: 5.5px 0;
+  margin: 10px 0;
   color: var(--text);
+}
+
+header a:hover {
+  color: rgb(63, 63, 63);
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.137);
+  transition: 300ms;
 }
 
 header input {
   height: 40px;
-  margin-top: 20px;
+  margin-top: 15px;
   background: white url(assets/icon-search.svg) no-repeat scroll 5px;
   padding-left: 35px;
   font-size: 18px;
@@ -48,6 +59,11 @@ header input {
 /* Main */
 main {
   display: flex;
+  height: 100%;
+}
+
+section {
+  padding-top: 60px;
 }
 
 section:nth-child(1) {
@@ -84,19 +100,25 @@ article h2 {
 }
 
 button {
-  background-color: var(--button);
+  font-family: "Roboto";
+  background-color: #df2020;
   color: white;
   font-size: 1.5em;
+  font-weight: bold;
   padding: 33px 75px;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #df2020;
+  background-color: var(--button);
   transition: 300ms;
 }
 
 /* Section 2 */
+#tenis2 {
+  border-bottom: 5px solid var(--button);
+}
+
 #gallery {
   display: flex;
   justify-content: space-around;
@@ -116,6 +138,10 @@ footer > a {
   color: var(--text);
   font-weight: bold;
   font-size: 18px;
+}
+
+footer > a:hover {
+  text-decoration: underline;
 }
 
 #more {
