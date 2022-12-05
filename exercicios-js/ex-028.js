@@ -8,8 +8,6 @@
 */
 let bookCounter = 0
 let itemCounter = 0
-let booksEachCategory = []
-let authors = []
 
 const booksByCategory = [
   {
@@ -48,7 +46,10 @@ const booksByCategory = [
   },
 ];
 
+// Conta o número de categorias e o número de livro de cada
+
 function categoryCounter() {
+  let booksEachCategory = []
 
   booksByCategory.forEach((item) => {
     bookCounter = 0
@@ -61,30 +62,48 @@ function categoryCounter() {
     itemCounter++
   })
 
-  return `Há ${itemCounter} categorias, elas possuem respectivamente ${booksEachCategory} livros cada.`
+  return `Há ${itemCounter} categorias, elas possuem respectivamente ${booksEachCategory.join(", ")} livros cada.`
 
 }
 
 itemCounter = 0
 
+//  Conta o número de autores
+
 function authorCounter() {
+  let authors = []
+
   booksByCategory.forEach(item => {
 
     item.books.forEach(book => {
-      authors.push(book.author)
+      if (authors.indexOf(book.author) === -1){
+        authors.push(book.author)
+      }
     });
   })
 
-  authors.sort((a, b) => a > b ? 1 : -1)
-  for (let i = 0; i < authors.length; i++) {
-    if (authors[i] == authors[i + 1]) {
-      authors.splice(i + 1, 1)
-    }
-  }
-
   return `No total há ${authors.length} Autores diferentes, contando todas as categorias`
+}
+
+// Mostra os livros de um autor
+
+function booksFinder(name) {
+  let booksFound = []
+
+  booksByCategory.forEach(item => {
+    item.books.forEach(book => {
+      if (book.author == name) {
+
+        booksFound.push(book.title)
+      }
+    })
+  })
+
+  return `Foram encontrados ${booksFound.length} livros desse autor: ${booksFound.join(", ")}`
 }
 
 console.log(categoryCounter())
 
 console.log(authorCounter())
+
+console.log(booksFinder("Augusto Cury"))
