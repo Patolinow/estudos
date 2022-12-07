@@ -1,0 +1,106 @@
+/* Gerais */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap");
+
+:root {
+  --black: #4d4c59;
+  --purple: #6c63ff;
+  --light-gray: #c8c8c8;
+  --text-color: #9c9ab6;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: none;
+}
+
+html {
+  height: 100vh;
+}
+
+body {
+  background: url(images/top-image.svg) top, url(images/bottom-image.svg) bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+
+  height: 100%;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 5%;
+}
+
+.typesOfTimes {
+  display: flex;
+  margin: 20px 0 10px;
+}
+
+/* Section */
+
+section {
+  text-align: center;
+  width: 32%;
+}
+
+h1 {
+  font-size: 3em;
+  color: var(--purple);
+}
+
+.typesOfTimes p {
+  color: var(--light-gray);
+  margin-left: 120px;
+}
+
+.typesOfTimes p:nth-child(1) {
+  margin-left: 20px;
+}
+
+#times {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+
+h2 {
+  font-size: 80px;
+  font-weight: normal;
+  color: var(--black);
+  width: 80px;
+}
+
+section > p {
+  color: var(--text-color);
+  margin: 30px 0;
+}
+
+button {
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  background-color: var(--purple);
+  color: white;
+  font-size: 20px;
+  font-weight: 300;
+  padding: 15px 30px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #7871ff;
+  transition: 300ms;
+}
+
+/* Image */
+
+img {
+  width: 40%;
+}
