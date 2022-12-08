@@ -75,7 +75,7 @@ h2 {
   font-size: 80px;
   font-weight: normal;
   color: var(--black);
-  width: 80px;
+  position: relative;
 }
 
 section > p {
