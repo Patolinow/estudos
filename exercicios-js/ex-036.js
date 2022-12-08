@@ -21,9 +21,11 @@ function maxIntChain(n) {
       d--
       c++
     }
+
+    theBiggestOne = c * d
   }
 
   return theBiggestOne
 }
 
-console.log(maxIntChain(17))
+console.log(maxIntChain(18))
