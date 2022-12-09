@@ -40,6 +40,7 @@ main {
 
 .typesOfTimes {
   display: flex;
+  justify-content: space-around;
   margin: 20px 0 10px;
 }
 
@@ -57,22 +58,16 @@ h1 {
 
 .typesOfTimes p {
   color: var(--light-gray);
-  margin-left: 120px;
-}
-
-.typesOfTimes p:nth-child(1) {
-  margin-left: 20px;
 }
 
 #times {
   display: flex;
-  justify-content: center;
-  gap: 20px;
+  padding-left: 3%;
 }
 
 
 h2 {
-  font-size: 80px;
+  font-size: 5em;
   font-weight: normal;
   color: var(--black);
   position: relative;
