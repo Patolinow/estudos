@@ -27,14 +27,37 @@
       </div>
       <div id="times">
         <h2>00 : 00 : 00 : 00</h2>
+
       </div>
 
       <p>Inscreva-se para saber mais sobre o lançamento</p>
 
-      <button>Inscreva-se</button>
+      <button id="enterModal">Inscreva-se</button>
 
     </section>
+    
     <img src="images/rocket.svg" alt="Foguete se preparando para decolar" />
+
+    <aside id="wrapper">
+      <div id="modal">
+        <fieldset>
+          <legend>Seja notificado no lançamento!</legend>
+
+          <form action="#" method="post">
+
+            <input type="text" name="name" id="name" placeholder="Digite seu nome" required maxlength="300">
+
+            <input type="tel" name="tel" id="tel" placeholder="Digite seu número" maxlength="100">
+
+            <input type="email" name="email" id="email" placeholder="Digite seu email" maxlength="300" required pattern="/^[a-zA-Z0-9.!#$%&*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]">
+
+            <button type="submit" id="submit">Inscreva-se</button>
+
+          </form>
+          
+        </fieldset>
+      </div>
+    </aside>
 
   </main>
 </body>
