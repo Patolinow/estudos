@@ -1,5 +1,5 @@
 // Declarando tempo do prazo final
-const endDate = new Date("dec 20, 2022 20:44:00").getTime()
+const endDate = new Date("dec 20, 2022 23:44:00").getTime()
 
 // Cronômetro que coloca o tempo no HTML
 function countdown() {
@@ -19,10 +19,10 @@ function countdown() {
     seconds = 0
   }
 
-  document.getElementById('times').innerHTML = `<h2>${(days).toLocaleString('pt-br', { minimumIntegerDigits: 2 })}
-: ${(hours).toLocaleString('pt-br', { minimumIntegerDigits: 2 })}
-: ${(minutes).toLocaleString('pt-br', { minimumIntegerDigits: 2 })}
-: ${(seconds).toLocaleString('pt-br', { minimumIntegerDigits: 2 })}</h2>`
+  document.getElementById('days').innerHTML = `${(days).toLocaleString('pt-br', { minimumIntegerDigits: 2 })}`
+  document.querySelector('#hours').innerHTML = `${(hours).toLocaleString('pt-br', {minimumIntegerDigits: 2})}`
+  document.getElementById('minutes').innerHTML = `${(minutes).toLocaleString('pt-br', {minimumIntegerDigits: 2})}`
+  document.querySelector('#seconds').innerHTML = `${(seconds).toLocaleString('pt-br', {minimumIntegerDigits: 2})}`
 }
 
 const every = setInterval(countdown, 1000)

@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/media-queries.css">
   <link rel="shortcut icon" href="images/Thesquid.ink-Free-Flat-Sample-Space-rocket.ico" type="image/x-icon">
   <title>Em breve...</title>
 </head>
@@ -16,50 +17,73 @@
       <h1>READY TO LAUNCH IN...</h1>
 
       <div class="typesOfTimes">
-        <p>Dias</p>
+        <div class="times">
+          <p>Dias</p>
+          <h2 id="days">00</h2>
+        </div>
 
-        <p>Horas</p>
 
-        <p>Minutos</p>
 
-        <p>Segundos</p>
+        <div class="colon">
+          <h2>:</h2>
+          <div class="times">
+            <p>Horas</p>
+            <h2 id="hours">00</h2>
+          </div>
+        </div>
+
+        <div class="colon">
+          <h2>:</h2>
+          <div class="times">
+            <p>Minutos</p>
+            <h2 id="minutes">00</h2>
+          </div>
+        </div>
+
+        <div class="colon">
+          <h2>:</h2>
+          <div class="times">
+            <p>Segundos</p>
+            <h2 id="seconds">00</h2>
+          </div>
+        </div>
 
       </div>
-      <div id="times">
-        <h2>00 : 00 : 00 : 00</h2>
 
-      </div>
 
       <p>Inscreva-se para saber mais sobre o lançamento</p>
 
       <button id="enterModal">Inscreva-se</button>
 
     </section>
-    
-    <img src="images/rocket.svg" alt="Foguete se preparando para decolar" />
 
+    <img src="images/rocket.svg" alt="Foguete se preparando para decolar" />
+    
     <aside id="wrapper">
       <div id="modal">
         <fieldset>
           <legend>Seja notificado no lançamento!</legend>
-
+  
           <form action="#" method="post">
-
+  
             <input type="text" name="name" id="name" placeholder="Digite seu nome" required maxlength="300">
-
+  
             <input type="tel" name="tel" id="tel" placeholder="Digite seu número" maxlength="100">
-
-            <input type="email" name="email" id="email" placeholder="Digite seu email" maxlength="300" required pattern="/^[a-zA-Z0-9.!#$%&*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]">
-
+  
+            <input type="email" name="email" id="email" placeholder="Digite seu email" maxlength="300" required
+              pattern="/^[a-zA-Z0-9.!#$%&*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]">
+  
             <button type="submit" id="submit">Inscreva-se</button>
-
+  
           </form>
-          
+  
         </fieldset>
       </div>
     </aside>
 
   </main>
+
+  
 </body>
 <script src="script.js"></script>
 
