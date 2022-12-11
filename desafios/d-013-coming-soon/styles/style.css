@@ -61,7 +61,7 @@ main {
 }
 
 /* Section */
-section {
+section, h1 {
   text-align: center;
   
 }
