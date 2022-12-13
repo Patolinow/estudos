@@ -123,10 +123,10 @@ nav > footer {
 }
 
 /* menu function */
-/* .hidden {
+.hide {
   display: none;
 }
 
 nav > footer {
   justify-content: center;
-} */
+}
