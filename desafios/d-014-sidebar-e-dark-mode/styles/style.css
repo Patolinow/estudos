@@ -6,6 +6,7 @@
   --light-green: #8ed7c6;
   --light-grey: #dce4e3;
   --dark-green: #084236;
+  --dark-mode: #111;
 }
 
 * {
@@ -31,7 +32,10 @@ body {
 /* main */
 h1 {
   font-weight: 500;
-  padding: 5px 32px;
+}
+
+main {
+  padding: 0 20px;
 }
 
 /* Menu */
@@ -59,6 +63,10 @@ nav {
   cursor: pointer;
 }
 
+.option img, label {
+  height: 26px;
+}
+
 .option:nth-child(2) {
   background-color: var(--light-green);
   border-radius: 15px;
@@ -82,10 +90,6 @@ input:focus-within {
 
 a {
   color: var(--dark-green);
-}
-
-label {
-  height: 24px;
 }
 
 /* Footer */
@@ -117,16 +121,23 @@ nav > footer {
   font-size: 14px;
 }
 
-#logoff {
-  margin-top: 50%;
+#logout {
+  margin-top: 45%;
   width: 25px;
 }
+
 
 /* menu function */
 .hide {
   display: none;
 }
 
-nav > footer {
+.centered {
   justify-content: center;
+}
+
+
+
+.hidden:focus-visible {
+  transition: 300ms all ease-in-out;
 }

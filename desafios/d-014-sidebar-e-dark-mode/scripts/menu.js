@@ -1,7 +1,11 @@
 const menu = document.getElementById("menu")
-const toHide = document.querySelector(".hidden")
-const option = document.querySelector(".option")
+const toHide = document.querySelectorAll(".hidden")
+const logout = document.querySelector("footer")
 
 menu.onclick = function OpenAndClose() {
-toHide.classList.toggle("hide")
+toHide.forEach(element => {
+  element.classList.toggle("hide")
+})
+
+logout.classList.toggle("centered")
 }
