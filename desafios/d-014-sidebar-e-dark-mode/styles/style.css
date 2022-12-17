@@ -6,7 +6,14 @@
   --light-green: #8ed7c6;
   --light-grey: #dce4e3;
   --dark-green: #084236;
-  --dark-mode: #111;
+  --dark-mode: rgb(36, 44, 42);
+}
+
+:root {
+  --green: #13865c;
+  --light-green: #1f4d3c;
+  --light-grey: #04201b;
+  --dark-green: #90ffd1;
 }
 
 * {
@@ -96,7 +103,7 @@ a {
 nav > footer {
   background-color: var(--light-green);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   height: 7%;
 
   padding: 10px;
@@ -132,12 +139,36 @@ nav > footer {
   display: none;
 }
 
-.centered {
-  justify-content: center;
+.spaced {
+  justify-content: space-between;
 }
-
-
 
 .hidden:focus-visible {
   transition: 300ms all ease-in-out;
+}
+
+/* Dark mode button */
+#darkAndWhiteMode {
+  background:url(../images/moon.svg) no-repeat 4px 6px, url(../images/sun.svg) no-repeat 47px 6.5px, var(--dark-mode);
+  background-size: 30px;
+  width: 80px;
+  border-radius: 40px;
+  padding: 3px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.192);
+
+}
+
+#darkAndWhiteMode button {
+  background-color: #546160;
+  border-radius: 50%;
+  padding: 18px;
+  transition: ease-in-out 300ms;
+}
+
+.active {
+  margin-left: 52%;
+}
+
+img {
+  mask-image: var(--green);
 }

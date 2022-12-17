@@ -12,7 +12,7 @@
   <nav>
     <header>
       <div class="option">
-        <img src="images/logo.svg" alt="Logo" class="hidden">
+        <img src="images/logo.svg" alt="Logo" class="hidden hide">
 
         <img src="images/menu.svg" alt="Menu" id="menu">
 
@@ -20,46 +20,46 @@
       <div class="option">
         <label for="search"><img src="images/search.svg" alt="Pesquisar"></label>
 
-        <input type="search" name="search" id="search" class="hidden" placeholder="Buscar" autocomplete="off"/>
+        <input type="search" name="search" id="search" class="hidden hide" placeholder="Buscar" autocomplete="off"/>
       
       </div>
       
       <a href="#" class="option">
         <img src="images/grid.svg" alt="Dashboard"/>
 
-        <p class="hidden">Dashboard</p>
+        <p class="hidden hide">Dashboard</p>
 
       </a>
       <a href="#" class="option">
         <img src="images/pet.svg" alt="Pets"/>
 
-        <p class="hidden">Pets</p>
+        <p class="hidden hide">Pets</p>
 
       </a>
       <a href="#" class="option">
         <img src="images/user.svg" alt="Cliente"/>
 
-        <p class="hidden">Clientes</p>
+        <p class="hidden hide">Clientes</p>
 
       </a>
       <a href="#" class="option">
         <img src="images/vet.svg" alt="Vets"/>
 
-        <p class="hidden">Vets</p>
+        <p class="hidden hide">Vets</p>
 
       </a>
       <a href="#" class="option">
         <img src="images/settings.svg" alt="Configurações"/>
 
-        <p class="hidden">Ajustes</p>
+        <p class="hidden hide">Ajustes</p>
 
       </a>
     </header>
 
     <footer>
       <a href="#" id="profile" class="hidden">
-        <img src="images/photo.jpg" alt="Usuário" class="hidden"/>
-        <div id="infos" class="hidden">
+        <img src="images/photo.jpg" alt="Usuário" class="hidden hide"/>
+        <div id="infos" class="hidden hide">
           <p>Eleonar Pena</p>
           <p>Veterinária</p>
         </div>
@@ -72,7 +72,12 @@
   <main>
     <h1>Dashboard</h1>
 
+    <div id="darkAndWhiteMode">
+      <button id="dWModeButton"> </button>
+    </div>
+
   </main>
 </body>
 <script src="scripts/menu.js"></script>
+<script src="scripts/dark-and-light-mode.js"></script>
 </html>

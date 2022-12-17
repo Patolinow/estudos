@@ -7,5 +7,5 @@ toHide.forEach(element => {
   element.classList.toggle("hide")
 })
 
-logout.classList.toggle("centered")
+logout.classList.toggle("spaced")
 }
