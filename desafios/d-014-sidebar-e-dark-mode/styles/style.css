@@ -2,18 +2,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap");
 
 :root {
-  --green: #18c29c;
-  --light-green: #8ed7c6;
-  --light-grey: #dce4e3;
-  --dark-green: #084236;
   --dark-mode: rgb(36, 44, 42);
-}
-
-:root {
-  --green: #13865c;
-  --light-green: #1f4d3c;
-  --light-grey: #04201b;
-  --dark-green: #90ffd1;
+  color-scheme: light dark;
 }
 
 * {
@@ -70,7 +60,8 @@ nav {
   cursor: pointer;
 }
 
-.option img, label {
+.option img,
+label {
   height: 26px;
 }
 
@@ -133,7 +124,6 @@ nav > footer {
   width: 25px;
 }
 
-
 /* menu function */
 .hide {
   display: none;
@@ -147,22 +137,57 @@ nav > footer {
   transition: 300ms all ease-in-out;
 }
 
-/* Dark mode button */
+/* Dark mode */
+body {
+  --green: #18c29c;
+  --light-green: #8ed7c6;
+  --light-grey: #dce4e3;
+  --dark-green: #084236;
+  transition: ease-in-out 500ms;
+}
+
+body.dark-theme {
+  --green: #13865c;
+  --light-green: #1f4d3c;
+  --light-grey: #04201b;
+  --dark-green: #90ffd1;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    --green: #13865c;
+    --light-green: #1f4d3c;
+    --light-grey: #04201b;
+    --dark-green: #90ffd1;
+  }
+
+  body.light-theme {
+    --green: #18c29c;
+    --light-green: #8ed7c6;
+    --light-grey: #dce4e3;
+    --dark-green: #084236;
+  }
+}
+
 #darkAndWhiteMode {
-  background:url(../images/moon.svg) no-repeat 4px 6px, url(../images/sun.svg) no-repeat 47px 6.5px, var(--dark-mode);
+  background: url(../images/moon.svg) no-repeat 4px 6px, url(../images/sun.svg) no-repeat 47px 6.5px, var(--dark-mode);
   background-size: 30px;
   width: 80px;
   border-radius: 40px;
   padding: 3px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.192);
 
+  position: absolute;
+  left: 95vw;
+  top: 15px;
+  margin-right: 100px;
 }
 
 #darkAndWhiteMode button {
   background-color: #546160;
   border-radius: 50%;
   padding: 18px;
-  transition: ease-in-out 300ms;
+  transition: ease-in-out 500ms;
 }
 
 .active {
@@ -170,5 +195,6 @@ nav > footer {
 }
 
 img {
-  mask-image: var(--green);
+  filter: invert(83%) sepia(46%) saturate(333%) hue-rotate(92deg) brightness(102%) contrast(102%);
+  transition: ease-in-out 300ms;
 }
