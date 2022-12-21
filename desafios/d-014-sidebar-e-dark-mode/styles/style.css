@@ -36,6 +36,8 @@ main {
 }
 
 /* Dark mode */
+
+
 body {
   --primary: #18c29c;
   --secondary: #8ed7c6;
