@@ -1,13 +1,21 @@
 const menu = document.getElementById("menu")
-const toHide = document.querySelectorAll(".hidden")
+const mutable = document.querySelectorAll(".mutable")
 const logout = document.querySelector("footer")
 const nav = document.querySelector("nav")
+const toHide = document.querySelectorAll(".toHide")
 
 menu.onclick = function OpenAndClose() {
-toHide.forEach(element => {
-  element.classList.toggle("hide")
+mutable.forEach(element => {
+  element.classList.toggle("invisible")
 })
+
+toHide.forEach(element => {
+  element.classList.toggle("hided")
+});
 
 nav.classList.toggle("expanded")
 logout.classList.toggle("spaced")
+
 }
+
+setTimeout(OpenAndClose,100)

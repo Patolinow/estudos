@@ -1,6 +1,6 @@
 /* Menu */
 nav {
-  background-color: var(--green);
+  background-color: var(--primary);
   height: 100%;
   
   overflow-x: hidden;
@@ -9,8 +9,6 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  transition: 500ms;
 }
 
 .option {
@@ -20,8 +18,8 @@ nav {
   gap: 8px;
 }
 
-.option, footer{
- transition: 500ms;
+.option, footer, nav, .hided, .invisible{
+ transition: ease-in-out 300ms;
 }
 
 .option:nth-child(1) {
@@ -38,19 +36,19 @@ label {
 }
 
 .option:nth-child(2) {
-  background-color: var(--light-green);
+  background-color: var(--secondary);
   border-radius: 15px;
 }
 
 .option input {
-  background-color: var(--light-green);
+  background-color: var(--secondary);
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-size: 1em;
 }
 
 .option input::placeholder,
 input {
-  color: var(--dark-green);
+  color: var(--text-color);
 }
 
 input:focus-within {
@@ -59,11 +57,11 @@ input:focus-within {
 }
 
 a {
-  color: var(--dark-green);
+  color: var(--text-color);
 }
 
 /* Menu functions */
-.hide {
+.invisible {
   opacity: 0;
 }
 
@@ -71,13 +69,21 @@ a {
   justify-content: space-between;
 }
 
+.hided {
+  display: none;
+}
+
 .expanded {
   width: 276px;
 }
 
+.moved {
+  transition-delay: 300ms;
+  display: none;
+}
 /* Footer */
 nav > footer {
-  background-color: var(--light-green);
+  background-color: var(--secondary);
   display: flex;
   justify-content: center;
   height: 7%;

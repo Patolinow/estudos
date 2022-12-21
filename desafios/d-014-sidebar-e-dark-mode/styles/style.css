@@ -19,9 +19,9 @@ html {
 }
 
 body {
-  background-color: var(--light-grey);
+  background-color: var(--bg-main);
   font-family: "Poppins", Arial, Helvetica, sans-serif;
-  color: var(--dark-green);
+  color: var(--text-color);
   display: flex;
   height: 100%;
 }
@@ -37,36 +37,36 @@ main {
 
 /* Dark mode */
 body {
-  --green: #18c29c;
-  --light-green: #8ed7c6;
-  --light-grey: #dce4e3;
-  --dark-green: #084236;
+  --primary: #18c29c;
+  --secondary: #8ed7c6;
+  --bg-main: #dce4e3;
+  --text-color: #084236;
   --svg-color: invert(19%) sepia(11%) saturate(4306%) hue-rotate(123deg) brightness(90%) contrast(94%);
   transition: ease-in-out 500ms;
 }
 
 body.dark-theme {
-  --green: #13865c;
-  --light-green: #1f4d3c;
-  --light-grey: #04201b;
-  --dark-green: #a5fab3;
+  --primary: #13865c;
+  --secondary: #1f4d3c;
+  --bg-main: #04201b;
+  --text-color: #a5fab3;
   --svg-color: invert(99%) sepia(56%) saturate(1195%) hue-rotate(55deg) brightness(103%) contrast(96%);
 }
 
 @media (prefers-color-scheme: dark) {
   body {
-    --green: #13865c;
-    --light-green: #1f4d3c;
-    --light-grey: #04201b;
-    --dark-green: #a5fab3;
+    --primary: #13865c;
+    --secondary: #1f4d3c;
+    --bg-main: #04201b;
+    --text-color: #a5fab3;
     --svg-color: invert(99%) sepia(56%) saturate(1195%) hue-rotate(55deg) brightness(103%) contrast(96%);
   }
 
   body.light-theme {
-    --green: #18c29c;
-    --light-green: #8ed7c6;
-    --light-grey: #dce4e3;
-    --dark-green: #084236;
+    --primary: #18c29c;
+    --secondary: #8ed7c6;
+    --bg-main: #dce4e3;
+    --text-color: #084236;
     --svg-color: invert(19%) sepia(11%) saturate(4306%) hue-rotate(123deg) brightness(90%) contrast(94%);
   }
 }
