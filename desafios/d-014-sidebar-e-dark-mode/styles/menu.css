@@ -1,4 +1,4 @@
-/* Menu */
+/* Menu Header*/
 nav {
   background-color: var(--primary);
   height: 100%;
@@ -19,9 +19,23 @@ nav header > * {
   border-radius: 15px;
 }
 
-.option:hover {
-  background-color: rgba(0, 0, 0, 0.322);
-  transition: 250ms;
+.menu-button {
+  height: 46px;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+nav header > div:first-child {
+  padding: 0;
+}
+
+nav header > div:first-child a {
+  margin: 6.5px;
+}
+
+.option:hover, .menu-button:hover{
+  background-color: rgba(0, 0, 0, 0.199);
+  transition: ease-in-out 300ms;
 }
 
 option {
@@ -29,7 +43,7 @@ option {
 }
 
 nav header > *, footer, nav, .hided, .invisible, input{
- transition: ease-in-out 500ms;
+ transition: ease-in-out 300ms;
 }
 
 nav header > *:nth-child(1) {
@@ -88,7 +102,7 @@ a {
   width: 276px;
 }
 
-/* Footer */
+/*Menu Footer */
 nav > footer {
   background-color: var(--secondary);
   display: flex;
@@ -121,5 +135,3 @@ nav > footer {
   margin-top: 45%;
   width: 25px;
 }
-
-
