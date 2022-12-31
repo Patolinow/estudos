@@ -1,5 +1,5 @@
 // Declarando tempo do prazo final
-const endDate = new Date("dec 20, 2022 23:44:00").getTime()
+const endDate = new Date("2023-02-01T16:00:00").getTime()
 
 // Cronômetro que coloca o tempo no HTML
 function countdown() {
