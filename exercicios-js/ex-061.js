@@ -54,7 +54,7 @@ var expected = lines;
 
 // Teste de funcionalidade
 function test(x, y) {
- (x == y ? console.log(`Christmas is cancelled! expected: \n \n${x}\n\n to deeply equal to: \n\n${y}\n`) : console.log("Congratulations! Chirstmas was saved! now we can sing \n\n" + x.join("\n")))
+ (x.join("") != y.join("") ? console.log(`Christmas is cancelled! expected: \n \n${x.join("\n")}\n\n to deeply equal to: \n\n${y.join("\n")}\n`) : console.log("Congratulations! Chirstmas was saved! now we can sing \n\n" + x.join("\n")))
 }
 
 test(actual, expected)
