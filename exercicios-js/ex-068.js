@@ -1,11 +1,9 @@
-const reverse = function (array) {
-  if (array.length == 1) {
-    return array
+const reverse = function ([head,...tail]) {
+  if (!tail.length) {
+    return [head]
   }
 
-  let [head, ...tail] = array
-
-  return reverse(tail).concat(head)
+  return [...reverse(tail),head]
 }
 
 console.log(reverse(["a", 1, null, 14, "two"]))
