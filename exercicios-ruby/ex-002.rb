@@ -53,7 +53,6 @@ until opcao == SAIR do
     end
   end
   
-  puts receitas
   menu()
   opcao = gets.to_i
   
