@@ -1,6 +1,6 @@
 # Estudos
 
-Minha pasta de estudos de html, css, js, nodeJS e tudo que a RocketSeat tem a oferecer em seu programa "discover"
+Minha pasta de estudos gerais, atualmente estudei html, css, js, nodejs e ruby nela.
 
 ## Alguns dos meus projetos recentes
 
