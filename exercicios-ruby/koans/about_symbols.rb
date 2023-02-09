@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/neo')
+require File.expand_path(File.dirname(__FILE__) + "/neo")
 
 class AboutSymbols < Neo::Koan
   def test_symbols_are_symbols
@@ -19,7 +19,7 @@ class AboutSymbols < Neo::Koan
     symbol1 = :a_symbol
     symbol2 = :a_symbol
 
-    assert_equal true, symbol1           == symbol2
+    assert_equal true, symbol1 == symbol2
     assert_equal true, symbol1.object_id == symbol2.object_id
   end
 
@@ -35,6 +35,7 @@ class AboutSymbols < Neo::Koan
 
   in_ruby_version("mri") do
     RubyConstant = "What is the sound of one hand clapping?"
+
     def test_constants_become_symbols
       all_symbols_as_strings = Symbol.all_symbols.map { |x| x.to_s }
 
@@ -82,16 +83,13 @@ class AboutSymbols < Neo::Koan
   # It's important to realize that symbols are not "immutable
   # strings", though they are immutable. None of the
   # interesting string operations are available on symbols.
-  
 
   def test_symbols_cannot_be_concatenated
     # Exceptions will be pondered further down the path
-    
-    assert_raise(Exception) do
-      
-    :cats + :dogs
 
-  end
+    assert_raise(Exception) do
+      :cats + :dogs
+    end
   end
 
   def test_symbols_can_be_dynamically_created
