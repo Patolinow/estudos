@@ -15,21 +15,21 @@
 #
 
 def triangle(a, b, c)
-  begin
+  a, b, c = [a,b,c].sort
 
-  rescue => TriangleError
+  if a | b | c == 0 || a + b <= c
+    raise TriangleError, "There's something wrong with the triangle"
+  end
+
+  if a == b && b == c
+    :equilateral
+
+  elsif a == b || b == c || a == c
+    :isosceles
 
   else
-    if a == b && b == c
-      :equilateral
-
-    elsif a == b || b == c || a == c
-      :isosceles
-
-    else
-      :scalene
-
-    end
+    :scalene
+    
   end
 end
 
