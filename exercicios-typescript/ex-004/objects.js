@@ -1,3 +1,4 @@
+"use strict";
 var dog = {
     name: "Elton",
     surname: "Jorge",

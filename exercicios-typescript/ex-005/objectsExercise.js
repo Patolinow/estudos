@@ -1,3 +1,4 @@
+"use strict";
 var dune = {
     title: "Dune",
     originalTitle: "Dune Part One",

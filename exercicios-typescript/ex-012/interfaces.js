@@ -1,3 +1,5 @@
+"use strict";
+exports.__esModule = true;
 var point = { x: 12, y: 4 };
 var thomas = {
     first: "Thomas",

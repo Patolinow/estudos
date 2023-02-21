@@ -1,3 +1,5 @@
+"use strict";
+exports.__esModule = true;
 var age = 21;
 age = 25;
 age = "1";

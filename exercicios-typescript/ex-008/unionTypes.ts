@@ -54,3 +54,5 @@ type DayOfWeek =
   | "Sunday";
 
 let today: DayOfWeek = "Monday";
+
+export {}

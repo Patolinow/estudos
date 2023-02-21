@@ -107,3 +107,4 @@ interface Chicken {
   eggs: number 
 }
 
+export {}

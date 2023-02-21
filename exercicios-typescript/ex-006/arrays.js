@@ -1,3 +1,4 @@
+"use strict";
 var activeIds = [1, 2, 5];
 var activeUsers = ["robert", "alex"];
 activeIds.push(2);

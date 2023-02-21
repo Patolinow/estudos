@@ -1,3 +1,4 @@
+"use strict";
 var stats = 2 /* OrderStatus.DELIVERD */;
 function isDelivered(stats) {
     return stats === 2 /* OrderStatus.DELIVERD */;

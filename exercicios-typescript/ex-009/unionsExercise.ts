@@ -75,7 +75,7 @@ console.log(colors);
 
 type Names = string | string[];
 
-const greet = (names: Names) => {
+const greet = (names: Names):void => {
   if (typeof names === "string") {
     return console.log(`Hello, ${names}!`)
   }
@@ -93,3 +93,5 @@ const greet = (names: Names) => {
 
 greet("Fabio")
 greet(["João","Lucas","Gustavo"])
+
+export {}

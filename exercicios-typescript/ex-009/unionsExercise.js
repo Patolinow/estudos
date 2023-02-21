@@ -1,3 +1,5 @@
+"use strict";
+exports.__esModule = true;
 // **********************************************
 // ******************* PART 1 *******************
 // **********************************************
@@ -23,8 +25,8 @@ var greet = function (names) {
     if (typeof names === "string") {
         return console.log("Hello, ".concat(names, "!"));
     }
-    var headName = names[0], tailNames = names.slice(1);
-    console.log("Hello, ".concat(headName, "!"));
+    var headN = names[0], tailNames = names.slice(1);
+    console.log("Hello, ".concat(headN, "!"));
     if (!tailNames.length) {
         return;
     }
