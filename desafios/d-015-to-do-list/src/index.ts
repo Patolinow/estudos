@@ -4,7 +4,7 @@ interface Todo {
 }
 
 const btn = document.querySelector("button")!;
-const todoInput = document.getElementById("todo-input")! as HTMLInputElement;
+const todoInput = document.querySelector<HTMLInputElement>("#todo-input")!;
 const todoForm = document.querySelector("form")!;
 const todoList = document.querySelector("ul")!;
 let todoStorage: Todo[] = readTodos();
