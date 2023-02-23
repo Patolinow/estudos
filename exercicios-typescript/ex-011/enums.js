@@ -1,5 +1,5 @@
 "use strict";
-var stats = 2 /* OrderStatus.DELIVERD */;
+let stats = 2 /* OrderStatus.DELIVERD */;
 function isDelivered(stats) {
     return stats === 2 /* OrderStatus.DELIVERD */;
 }
@@ -12,11 +12,11 @@ var ArrowKeys;
     ArrowKeys["RIGHT"] = "d";
 })(ArrowKeys || (ArrowKeys = {}));
 ArrowKeys.LEFT;
-var order = {
+const order = {
     orderNumber: 234323432,
-    status: 0 /* OrderStatus.PENDING */
+    status: 0 /* OrderStatus.PENDING */,
 };
-var order2 = {
+const order2 = {
     orderNumber: 123123534,
-    status: 2 /* OrderStatus.DELIVERD */
+    status: 2 /* OrderStatus.DELIVERD */,
 };

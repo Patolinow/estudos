@@ -1,13 +1,13 @@
 "use strict";
-exports.__esModule = true;
-var age = 21;
+Object.defineProperty(exports, "__esModule", { value: true });
+let age = 21;
 age = 25;
 age = "1";
 age = false;
-var coordinates = { x: 1, y: 35 };
+let coordinates = { x: 1, y: 35 };
 coordinates = { lat: 234.232, long: 2342.344 };
-var printAge = function (age) {
-    console.log("You are ".concat(age, " years old"));
+const printAge = (age) => {
+    console.log(`You are ${age} years old`);
 };
 function calculateTax(price, tax) {
     if (typeof price === "string") {
@@ -20,13 +20,13 @@ printAge(24);
 printAge("23");
 console.log(calculateTax(12, 0.2));
 console.log(calculateTax("$35.25", 0.5));
-var stuffs = [2, "23", 24];
-var otherStuffs = [2, 24];
-var cords = [];
+const stuffs = [2, "23", 24];
+const otherStuffs = [2, 24];
+const cords = [];
 cords.push({ lat: 25, long: 64 });
 cords.push({ x: 5, y: 23 });
-var zero = 0;
+let zero = 0;
 zero = 0;
-var mood = "sad";
+let mood = "sad";
 mood = "happy";
-var today = "Monday";
+let today = "Monday";

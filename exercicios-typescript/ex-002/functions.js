@@ -2,12 +2,11 @@
 function square(num) {
     return num * num;
 }
-function greet(person) {
-    if (person === void 0) { person = "strange"; }
-    return console.log("Hi there, ".concat(person));
+function greet(person = "strange") {
+    return console.log(`Hi there, ${person}`);
 }
-var doSomething = function (person, age, isFunny) {
-    return console.log("Hi ".concat(person, "! even though you're ").concat(age, ", you're really ").concat(isFunny ? "funny" : "unfunny", "!"));
+const doSomething = (person, age, isFunny) => {
+    return console.log(`Hi ${person}! even though you're ${age}, you're really ${isFunny ? "funny" : "unfunny"}!`);
 };
 function rando(num) {
     if (Math.random() < 0.5) {
@@ -15,11 +14,11 @@ function rando(num) {
     }
     return num;
 }
-var add = function (x, y) {
+const add = (x, y) => {
     return x + y;
 };
-var colors = ["red", "orange", "yellow"];
-colors.map(function (color) {
+const colors = ["red", "orange", "yellow"];
+colors.map((color) => {
     return color.toLocaleUpperCase;
 });
 function printTwice(msg) {

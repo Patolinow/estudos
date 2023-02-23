@@ -1,44 +1,44 @@
 "use strict";
-exports.__esModule = true;
-var point = { x: 12, y: 4 };
-var thomas = {
+Object.defineProperty(exports, "__esModule", { value: true });
+const point = { x: 12, y: 4 };
+const thomas = {
     first: "Thomas",
     last: "Thurbano",
     nickname: "totu",
     id: 123123,
-    sayHi: function () {
+    sayHi() {
         return "asd";
-    }
+    },
 };
 thomas.first = "Ana";
-var shoes = {
+const shoes = {
     name: "Blue Balanceaga Shoes",
     price: 100,
-    applyDiscount: function (amount) {
-        var newPrice = this.price * (1 - amount);
+    applyDiscount(amount) {
+        const newPrice = this.price * (1 - amount);
         this.price = newPrice;
         return this.price;
-    }
+    },
 };
 console.log(shoes.applyDiscount(0.25));
-var marcel = {
+const marcel = {
     name: "Marcel",
     age: 12,
     breed: "husky",
-    bark: function () {
+    bark() {
         return true;
-    }
+    },
 };
-var chewy = {
+const chewy = {
     name: "Chewy",
     age: 5,
     breed: "Shepherd",
-    bark: function () {
+    bark() {
         return false;
     },
-    job: "guide dog"
+    job: "guide dog",
 };
-var pierre = {
+const pierre = {
     first: "Pierre",
     last: "Vasconcelo",
     id: 123123,
