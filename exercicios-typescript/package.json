@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "serve": "webpack serve"
+    "build": "webpack --config webpack.prod.js",
+    "serve": "webpack serve --config webpack.dev.js"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +14,7 @@
     "@types/lodash": "^4.14.191",
     "@types/node": "^18.14.1",
     "@types/webpack": "^5.28.0",
+    "clean-webpack-plugin": "^4.0.0",
     "ts-loader": "^9.4.2",
     "typescript": "^4.9.5",
     "webpack": "^5.75.0",
