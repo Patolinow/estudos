@@ -1,5 +1,7 @@
 import axios from "axios";
-import _ from "lodash"
+import _ from "lodash";
+import farmSound from "../ex-016/narrowing"
+import { stevie } from "../ex-016/narrowing";
 
 interface User {
   id: number;
@@ -25,12 +27,15 @@ interface User {
   };
 }
 
-axios.get<User>("https://jsonplaceholder.typicode.com/users/1")
+axios
+  .get<User>("https://jsonplaceholder.typicode.com/users/1")
   .then((res) => {
     const data = res.data;
-    console.log(data.name)
-    console.log(data.address.city)
+    console.log(data.name);
+    console.log(data.address.city);
   })
   .catch((e) => {
     console.error(e);
   });
+
+console.log(farmSound(stevie));

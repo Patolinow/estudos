@@ -1,4 +1,6 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.stevie = void 0;
 function triplify(value) {
     if (typeof value === "string") {
         return value.repeat(3);
@@ -69,10 +71,11 @@ function getFarmAnimalSound(animal) {
             const sNGH = animal;
     }
 }
-const stevie = {
+exports.default = getFarmAnimalSound;
+exports.stevie = {
     name: "Stevie Chicks",
     weight: 5,
     age: 24,
     __type: "Rooster",
 };
-console.log(getFarmAnimalSound(stevie));
+console.log(getFarmAnimalSound(exports.stevie));

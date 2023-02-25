@@ -95,9 +95,9 @@ interface Pig {
   __type: "Pig";
 }
 
-type FarmAnimal = Pig | Rooster | Cow;
+export type FarmAnimal = Pig | Rooster | Cow;
 
-function getFarmAnimalSound(animal: FarmAnimal) {
+export default function getFarmAnimalSound(animal: FarmAnimal) {
   switch (animal.__type) {
     case "Pig":
       return "Oink!";
@@ -110,7 +110,7 @@ function getFarmAnimalSound(animal: FarmAnimal) {
   }
 }
 
-const stevie: Rooster = {
+export const stevie: Rooster = {
   name: "Stevie Chicks",
   weight: 5,
   age: 24,
