@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "test": "mocha",
     "build": "webpack --config webpack.prod.js",
     "serve": "webpack serve --config webpack.dev.js"
   },
