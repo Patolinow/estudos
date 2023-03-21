@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './ExpenseItems.css'
 import Date from './Date'
 import Card from '../UI/Card'
