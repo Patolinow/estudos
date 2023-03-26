@@ -1,0 +1,11 @@
+.item {
+  font-size: 18px;
+
+  border: 1px solid #5c5c5c;
+  border-radius: 4px;
+  padding: 5px 8px;
+}
+
+.item:not(:nth-last-child(1)){
+  margin-bottom: 8px;
+}
