@@ -12,10 +12,8 @@ const UserList = ({users}: UserListProps):JSX.Element => {
   return (
     <Card>
       <ul className={styles["items-list"]}>
-        {users.map((user)=>
-        <UserItem user={user}/>
-        )
-        }
+        { users.length ? users.map((user)=> <UserItem user={user}/>) : <h2>There are no users yet</h2>}
+
       </ul>
     </Card>
   )
