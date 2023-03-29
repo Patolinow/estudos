@@ -5,17 +5,15 @@ import UserList from "./components/UserList/UserList";
 import UserInput from "./components/UserInputs/UserInput";
 
 function App() {
-  const dummyUsers: User[] = [
-    { id: 1, username: "Max", age: 31 },
-    { id: 2, username: "Diego", age: 19 },
-    { id: 3, username: "Dominicoicoloko 'Donssssssss'", age: 1 },
-  ];
+  const [users, setUsers] = useState(Array<User>);
 
-  const [users, setUsers] = useState(dummyUsers);
+  const listChangeHandle = (newUser:User) => {
+    setUsers((prevUsers) => [...prevUsers,newUser])
+  }
 
   return (
     <div className="App">
-      <UserInput />
+      <UserInput onListChange={listChangeHandle} />
       <UserList users={users} />
     </div>
   );
