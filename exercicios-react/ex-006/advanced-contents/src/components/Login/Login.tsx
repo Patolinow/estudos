@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Card from "../UI/Card/Card";
 import classes from "./Login.module.css";
@@ -15,20 +15,32 @@ const Login = (props:LoginProps):JSX.Element => {
   const [passwordIsValid, setPasswordIsValid] = useState(Boolean);
   const [formIsValid, setFormIsValid] = useState(false);
 
+  useEffect(() => {
+
+    const identifier = setTimeout(() => {
+      console.log("validating...")
+      setFormIsValid(
+        enteredEmail.includes("@") && enteredPassword.trim().length > 6
+      );
+    }, 500)
+
+    
+
+    return () => {
+      console.log("cleaned")
+      clearTimeout(identifier)
+    }
+    
+  
+  }, [enteredEmail, enteredPassword])
+  
+
   const emailChangeHandler:React.ChangeEventHandler<HTMLInputElement> = (event) => {
     setEnteredEmail(event.target.value);
-
-    setFormIsValid(
-      event.target.value.includes("@") && enteredPassword.trim().length > 6
-    );
   };
 
   const passwordChangeHandler:React.ChangeEventHandler<HTMLInputElement> = (event) => {
     setEnteredPassword(event.target.value);
-
-    setFormIsValid(
-      event.target.value.trim().length > 6 && enteredEmail.includes("@")
-    );
   };
 
   const validateEmailHandler = () => {
