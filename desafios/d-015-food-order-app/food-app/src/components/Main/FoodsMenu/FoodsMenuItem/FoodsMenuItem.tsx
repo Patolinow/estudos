@@ -8,7 +8,7 @@ interface FoodsMenuItemProps {
 
 const FoodsMenuItem = ({meal}: FoodsMenuItemProps): JSX.Element => {
   return (
-    <li className={styles.meal} key={meal.id}>
+    <li className={styles.meal}>
       <div>
         <h3>{meal.name}</h3>
         <p className={styles.description}>{meal.description}</p>

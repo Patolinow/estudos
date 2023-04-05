@@ -10,7 +10,7 @@ interface FoodsMenuListProps {
 const FoodsMenuList = ({meals}:FoodsMenuListProps):JSX.Element => {
 return (<Card className={styles.meals}>
   <ul>
-    {meals.map((meal) => <FoodsMenuItem meal={meal}/>)}
+    {meals.map((meal) => <FoodsMenuItem meal={meal} key={meal.id}/>)}
   </ul>
 </Card>)
 }
