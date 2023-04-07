@@ -6,7 +6,13 @@ interface FoodsMenuItemProps {
   meal: Meal;
 }
 
-const FoodsMenuItem = ({meal}: FoodsMenuItemProps): JSX.Element => {
+const FoodsMenuItem = ({ meal }: FoodsMenuItemProps): JSX.Element => {
+  const mealInfos = {
+    id: meal.id,
+    name: meal.name,
+    price: meal.price,
+  };
+
   return (
     <li className={styles.meal}>
       <div>
@@ -14,7 +20,9 @@ const FoodsMenuItem = ({meal}: FoodsMenuItemProps): JSX.Element => {
         <p className={styles.description}>{meal.description}</p>
         <p className={styles.price}>${meal.price}</p>
       </div>
-      <FoodsMenuInput />
+      <FoodsMenuInput
+        mealInfos={mealInfos}
+      />
     </li>
   );
 };
