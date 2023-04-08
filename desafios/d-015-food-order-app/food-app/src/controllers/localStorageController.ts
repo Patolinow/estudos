@@ -13,4 +13,12 @@ export default class LocalStorageController {
     const stringifiedData = JSON.stringify(data)
     localStorage.setItem(identifier, stringifiedData)
   }
+
+  public static has(identifier: string): boolean {
+    const stringifiedValue = localStorage.getItem(identifier)
+    if (stringifiedValue) {
+      return true
+    }
+    return false
+  }
 }
