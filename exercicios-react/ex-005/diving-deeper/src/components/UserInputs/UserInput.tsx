@@ -28,11 +28,6 @@ const UserInput = ({ onListChange }: UserInputProps): JSX.Element => {
     const age = Number(ageRef.current!.value);
     const id = Math.random();
 
-    if (age <= 0){
-      setTitle("Invalid Age")
-      setErrorMessage("Age must be 1 or higher")
-    }
-
     if (!username && !age) {
       setTitle("Empty Inputs")
       setErrorMessage(`Fields "username" and "age" can't be empty.`)
@@ -42,6 +37,12 @@ const UserInput = ({ onListChange }: UserInputProps): JSX.Element => {
     if (!username || !age) {
       setTitle("Empty Input")
       setErrorMessage(`Field ${!username ? '"username"' : '"age"'} can't be empty.`)
+      return;
+    }
+
+    if (age <= 0){
+      setTitle("Invalid Age")
+      setErrorMessage("Age must be 1 or higher")
       return;
     }
 
@@ -64,7 +65,7 @@ const UserInput = ({ onListChange }: UserInputProps): JSX.Element => {
           <div>
             <label htmlFor="username">Username</label>
             <br />
-            <input type="text" id="username" ref={usernameRef} />
+            <input type="text" id="username" ref={usernameRef} autoComplete="off"/>
           </div>
 
           <div>
