@@ -1,8 +1,9 @@
-import { useState } from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 import Meal from "./interfaces/Meal";
+import { useState, useEffect } from "react";
+import LocalStorageController from "./controllers/localStorageController";
 
 function App() {
   const DUMMY_MEALS: Meal[] = [
@@ -39,7 +40,20 @@ function App() {
   ];
   const [meals, setMeals] = useState(DUMMY_MEALS);
 
-  return (
+  useEffect(() => {
+    const mealsKey = "mealsList"
+    const localStorageHasValue = LocalStorageController.has(mealsKey)
+    console.log("im alive")
+
+    if (!localStorageHasValue) {
+      LocalStorageController.set("mealsList", []);
+    } 
+
+    console.log(LocalStorageController.get(mealsKey))
+
+  }, []);
+
+  return (  
     <div className="App">
       <Header />
       <Main meals={meals} />
