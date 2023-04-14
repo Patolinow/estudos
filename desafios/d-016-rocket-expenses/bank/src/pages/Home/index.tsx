@@ -1,7 +1,7 @@
 import reactLogo from "../../assets/react.svg";
 import { Card } from "../../components/Card";
 import iconSearch from "../../assets/icons/iconSearch.svg";
-import { TableInput } from "../../components/TableInput";
+import Table from "../../components/Table";
 import ITableInputProps from "../../components/interfaces/ITableInputProps"
 
 export const Home = () => {
@@ -54,17 +54,7 @@ export const Home = () => {
             Buscar
           </button>
         </div>
-        <div className="max-w-5xl w-full mx-auto mt-8">
-          {data.map((info, index) => (
-            <TableInput
-              type={info.type}
-              title={info.title}
-              value={info.value}
-              date={info.date}
-              subject={info.subject}
-            />
-          ))}
-        </div>
+        <Table data={data}/>
       </main>
     </div>
   );
