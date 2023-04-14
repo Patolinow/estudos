@@ -1,6 +1,7 @@
 
 hidden = [".config", "package-lock.json"]
-run = "npm run dev"
+run = "cd desafios/d-016-rocket-expenses/bank && npm run dev" 
+entrypoint = "desafios/d-016-rocket-expenses/bank"
 
 [[hints]]
 regex = "Error \\[ERR_REQUIRE_ESM\\]"

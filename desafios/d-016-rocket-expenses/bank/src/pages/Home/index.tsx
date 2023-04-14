@@ -2,14 +2,7 @@ import reactLogo from "../../assets/react.svg";
 import { Card } from "../../components/Card";
 import iconSearch from "../../assets/icons/iconSearch.svg";
 import { TableInput } from "../../components/TableInput";
-
-interface ITableInputProps {
-  type: "income" | "outcome";
-  title: string;
-  subject: string;
-  date: string;
-  value: number;
-}
+import ITableInputProps from "../../components/interfaces/ITableInputProps"
 
 export const Home = () => {
   const data: ITableInputProps[] = [
@@ -35,7 +28,7 @@ export const Home = () => {
         <div className="flex justify-between max-w-5xl w-full mx-auto pt-10 h-fit">
           <div className="flex flex-1 items-center gap-4">
             <img src={reactLogo} alt="logo" />
-            <h3 className=" text-3xl">DT Money</h3>
+            <h3 className=" text-3xl">DT</h3>
           </div>
           <button className="bg-light-green p-4 rounded-md font-bold hover:bg-dark-green">
             Nova transação
