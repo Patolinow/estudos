@@ -1,12 +1,5 @@
 import { formattedCurrency } from "../../utils/formatCurrency";
-
-interface ITableInputProps {
-  type: "income" | "outcome";
-  title: string;
-  subject: string;
-  date: string;
-  value: number;
-}
+import ITableInputProps from "../../components/interfaces/ITableInputProps"
 
 export const TableInput = ({ type, title, subject, date, value }: ITableInputProps) => {
   const formattedValue = formattedCurrency(value);
