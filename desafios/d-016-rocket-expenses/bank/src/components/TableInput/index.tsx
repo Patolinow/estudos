@@ -1,7 +1,7 @@
 import { formattedCurrency } from "../../utils/formatCurrency";
 import ITableInputProps from "../../components/interfaces/ITableInputProps"
 
-export const TableInput = ({ type, title, subject, date, value }: ITableInputProps) => {
+const TableInput = ({ type, title, subject, date, value }: ITableInputProps) => {
   const formattedValue = formattedCurrency(value);
   const formattedDate = new Date(date).toLocaleDateString('pt-BR');
 
@@ -17,3 +17,5 @@ export const TableInput = ({ type, title, subject, date, value }: ITableInputPro
     </div>
   );
 };
+
+export default TableInput
