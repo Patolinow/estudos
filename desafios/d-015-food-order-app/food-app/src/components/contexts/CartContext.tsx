@@ -17,49 +17,46 @@ const CartContext = React.createContext<NewGlobalMeal>({
 });
 
 export const CartContextProvider = (props: PropsWithChildren) => {
-  const localStorageMeals: NewMeal[] = LocalStorageController.get("mealsList");
+  const mealsKey = "mealsList";
+  const localStorageMeals: NewMeal[] = LocalStorageController.get(mealsKey);
   const [meals, setMeals] = useState(localStorageMeals);
   const [totalAmount, setTotalAmount] = useState(0);
-  const mealsKey = "mealsList";
 
   useEffect(() => {
-    for (const meal of meals) {
-      setTotalAmount((prevAmount) => {
-        return (prevAmount += meal.amount);
-      });
-    }
-  }, []);
+    const calculatedTotalAmount = meals.reduce(
+      (total, meal) => total + meal.amount,
+      0
+    );
+    setTotalAmount(calculatedTotalAmount);
+  }, [meals]);
 
   const newMealHandler = (newMeal: NewMeal) => {
-    
-    const parsedLocalStorageMeals: NewMeal[] = LocalStorageController.get(mealsKey);
-    let mealExist = false;
-    for (const localStorageMeal of parsedLocalStorageMeals) {
-      if (localStorageMeal.id === newMeal.id) {
-        localStorageMeal.amount += newMeal.amount;
-        mealExist = true;
-      }
+    const existingMealIndex = meals.findIndex(meal => meal.id === newMeal.id);
+
+    if (existingMealIndex !== -1) {
+      const updatedMeals = [...meals];
+      updatedMeals[existingMealIndex].amount += newMeal.amount;
+      setMeals(updatedMeals);
+    } else {
+      const newMeals = [...meals, newMeal];
+      setMeals(newMeals);
     }
 
-    if (!mealExist) {
-      parsedLocalStorageMeals.push(newMeal);
-    }
-
-    LocalStorageController.set(mealsKey, parsedLocalStorageMeals);
-    LocalStorageController.set(mealsKey, [])
-
-    setMeals((prevMeals) => {
-      return [...prevMeals, newMeal];
-    });
+    LocalStorageController.set(mealsKey, meals);
   };
 
   const resetHandler = () => {
-    
-  }
+    LocalStorageController.set(mealsKey, []);
+  };
 
   return (
     <CartContext.Provider
-      value={{ onNewMeal: newMealHandler, meals: meals, totalAmount: totalAmount, onReset: resetHandler}}
+      value={{
+        onNewMeal: newMealHandler,
+        meals: meals,
+        totalAmount: totalAmount,
+        onReset: resetHandler
+      }}
     >
       {props.children}
     </CartContext.Provider>
