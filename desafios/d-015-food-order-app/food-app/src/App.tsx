@@ -43,13 +43,10 @@ function App() {
   useEffect(() => {
     const mealsKey = "mealsList"
     const localStorageHasValue = LocalStorageController.has(mealsKey)
-    console.log("im alive")
 
     if (!localStorageHasValue) {
       LocalStorageController.set("mealsList", []);
     } 
-
-    console.log(LocalStorageController.get(mealsKey))
 
   }, []);
 

@@ -16,7 +16,6 @@ const FoodsMenuInput = ({ mealInfos }: InputProps): JSX.Element => {
     e.preventDefault();
 
     const HandledAmount = Number(amountRef.current!.value);
-    console.log(HandledAmount)
 
     const newMeal: NewMeal = {
       id: mealInfos.id,
@@ -26,7 +25,6 @@ const FoodsMenuInput = ({ mealInfos }: InputProps): JSX.Element => {
     };
 
     cartContext.onNewMeal(newMeal)
-    console.log(localStorage.getItem("mealsList"))
   };
 
   return (
