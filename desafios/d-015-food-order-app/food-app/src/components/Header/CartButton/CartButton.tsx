@@ -7,8 +7,7 @@ import { useState, useContext } from "react";
 
 const CartButton = (): JSX.Element => {
   const [cartState, setCartState] = useState(false)
-  const cartContext = useContext(CartContext)
-
+  const { totalAmount } = useContext(CartContext)
 
   const openCartHandler = ():void => {
     setCartState(true)
@@ -18,14 +17,15 @@ const CartButton = (): JSX.Element => {
     setCartState(false)
   }
 
-  return (<>
-    {cartState && <CartModal onClose={closeCartHandler}/>}
+  return (
+    <>
+      {cartState && <CartModal onClose={closeCartHandler}/>}
 
-    <Button className={`${styles["cart-button"]} ${styles.bump}`} onClick={openCartHandler}>
-      <img src={CartIcon} className={styles["cart-icon"]} /> 
-      <p>Your Cart</p> 
-      <div className={styles.badge}>{cartContext.totalAmount}</div>
-    </Button>
+      <Button className={`${styles["cart-button"]} ${styles.bump}`} onClick={openCartHandler}>
+        <img src={CartIcon} className={styles["cart-icon"]} /> 
+        <p>Your Cart</p> 
+        <div className={styles.badge}>{totalAmount}</div>
+      </Button>
     </>
   );
 };
