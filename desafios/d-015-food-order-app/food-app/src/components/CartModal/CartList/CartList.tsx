@@ -1,13 +1,16 @@
 import styles from "./CartList.module.css";
 import Button from "../../UI/Button/Button";
 import CartItem from "../CartItem/CartItem";
-import { useEffect } from "react";
+import CartContext from "../../contexts/CartContext";
+import { useContext, useEffect } from "react";
 
 interface CartListProps {
   onClose():void
 }
 // Corrigir total quando tem scrollbar
 const CartList = ({onClose}:CartListProps): JSX.Element => {
+  const meals = useContext(CartContext).meals
+
 
   const closeHandler = () => {
     onClose()
@@ -21,7 +24,9 @@ const CartList = ({onClose}:CartListProps): JSX.Element => {
   return (
     <div className={styles["cart-items"]}>
       <ul>
-        <CartItem />
+        {meals.map((meal) =>
+        <CartItem meal={meal} key={meal.id}/>
+        )}
       </ul>
 
       <div className={styles.total}>
