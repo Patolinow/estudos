@@ -15,13 +15,17 @@ const FoodsMenuInput = ({ mealInfos }: InputProps): JSX.Element => {
   const submitHandler: React.FormEventHandler = (e) => {
     e.preventDefault();
 
-    const HandledAmount = Number(amountRef.current!.value);
+    const handledAmount = Number(amountRef.current!.value);
+    
+    if (handledAmount <= 0 || handledAmount > 99) {
+      return;
+    }
 
     const newMeal: NewMeal = {
       id: mealInfos.id,
       name: mealInfos.name,
       price: mealInfos.price,
-      amount: HandledAmount,
+      amount: handledAmount,
     };
 
     cartContext.onNewMeal(newMeal)
