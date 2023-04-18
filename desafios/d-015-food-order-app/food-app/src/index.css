@@ -28,3 +28,20 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
+
+::-webkit-scrollbar {
+  width: 12px;
+  position: fixed;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+
+}
+
+::-webkit-scrollbar-thumb {
+  
+  width: 6px;
+  background: #2c0d00;
+  border-radius: 32px;
+}
