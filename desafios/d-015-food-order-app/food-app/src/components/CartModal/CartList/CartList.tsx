@@ -9,8 +9,12 @@ interface CartListProps {
 }
 // Corrigir total quando tem scrollbar
 const CartList = ({ onClose }: CartListProps): JSX.Element => {
+  const cartContext = useContext(CartContext);
+  const meals = cartContext.meals;
   const finalValue = cartContext.finalValue.toLocaleString("en-US", {maximumFractionDigits: 2, minimumFractionDigits: 2});
   const decreaseHandler = cartContext.onDecrease;
+  const increaseHandler = cartContext.onIncrease;
+  const resetHandler = cartContext.onReset;
 
   const closeHandler = () => {
     onClose();
@@ -25,7 +29,12 @@ const CartList = ({ onClose }: CartListProps): JSX.Element => {
     <div className={styles["cart-items"]}>
       <ul>
         {meals.map((meal) => (
-          <CartItem meal={meal} key={meal.id} />
+          <CartItem
+            key={meal.id}
+            meal={meal}
+            onDecrease={decreaseHandler}
+            onIncrease={increaseHandler}
+          />
         ))}
       </ul>
 
@@ -35,6 +44,10 @@ const CartList = ({ onClose }: CartListProps): JSX.Element => {
       </div>
 
       <div className={styles.actions}>
+        <Button className={styles.close} onClick={resetHandler}>
+          Clear
+        </Button>
+
         <Button className={styles.close} onClick={closeHandler}>
           Close
         </Button>
