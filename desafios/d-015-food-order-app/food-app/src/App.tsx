@@ -40,16 +40,6 @@ function App() {
   ];
   const [meals, setMeals] = useState(DUMMY_MEALS);
 
-  useEffect(() => {
-    const mealsKey = "mealsList"
-    const localStorageHasValue = LocalStorageController.has(mealsKey)
-
-    if (!localStorageHasValue) {
-      LocalStorageController.set("mealsList", []);
-    } 
-
-  }, []);
-
   return (  
     <div className="App">
       <Header />
