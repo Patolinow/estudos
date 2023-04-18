@@ -31,13 +31,13 @@ const CartContextProvider = (props: PropsWithChildren) => {
       updatedMeals[existingMealIndex].amount += newMeal.amount;
       
       setMeals( () => {
-        LocalStorageController.set(mealsKey, meals);
+        LocalStorageController.set(mealsKey, updatedMeals);
         return updatedMeals
       });
     } else {
       const newMeals = [...meals, newMeal];
       setMeals(() => {
-        LocalStorageController.set(mealsKey, meals);
+        LocalStorageController.set(mealsKey, newMeals);
         return newMeals
       });
     }
@@ -60,11 +60,14 @@ const CartContextProvider = (props: PropsWithChildren) => {
       updatedMeals[actualMealIndex].amount -= 1;
 
       setMeals(() => {
-        return updatedMeals.filter((meal) => meal.amount > 0)
+        const filteredMeals = updatedMeals.filter((meal) => meal.amount > 0)
+
+        LocalStorageController.set(mealsKey, filteredMeals);
+        return filteredMeals
       });
     }
 
-    LocalStorageController.set(mealsKey, meals);
+    
   };
 
   const increaseHandler = (meal: NewMeal) => {
@@ -75,11 +78,10 @@ const CartContextProvider = (props: PropsWithChildren) => {
       const updatedMeals = [...meals];
       updatedMeals[actualMealIndex].amount += 1;
       setMeals(() => {
+        LocalStorageController.set(mealsKey, updatedMeals);
         return updatedMeals
       });
     }
-
-    LocalStorageController.set(mealsKey, meals);
   };
 
   return (
