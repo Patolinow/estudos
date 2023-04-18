@@ -9,13 +9,8 @@ interface CartListProps {
 }
 // Corrigir total quando tem scrollbar
 const CartList = ({ onClose }: CartListProps): JSX.Element => {
-  const meals = useContext(CartContext).meals;
-  const [finalValue, setFinalValue] = useState(0);
-
-  useEffect(() => {
-    const calculateFinalValue = meals.reduce((total, meal) => total + meal.amount * meal.price, 0);
-    setFinalValue(calculateFinalValue);
-  }, [meals]);
+  const finalValue = cartContext.finalValue.toLocaleString("en-US", {maximumFractionDigits: 2, minimumFractionDigits: 2});
+  const decreaseHandler = cartContext.onDecrease;
 
   const closeHandler = () => {
     onClose();
