@@ -1,5 +1,6 @@
 .cart-items {
-  max-height: 20rem;
+  max-height: 30rem;
+  padding: 0 1rem;
   overflow: auto;
 }
 
