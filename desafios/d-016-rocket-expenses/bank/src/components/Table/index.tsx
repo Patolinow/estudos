@@ -4,10 +4,11 @@ import ITableInputProps from "../../interfaces/ITableInputProps"
 interface TableProps {
   data: ITableInputProps[]
 }
+
 function Table({data}: TableProps){
-  return (<div className="max-w-5xl w-full mx-auto mt-8">
+  return (<table className="w-full mt-8">
           {data.map((info, index) => (
-            <TableInput
+            <TableInput key={index}
               type={info.type}
               title={info.title}
               value={info.value}
@@ -15,7 +16,7 @@ function Table({data}: TableProps){
               subject={info.subject}
             />
           ))}
-        </div>)
+        </table>)
 }
 
 export default Table
