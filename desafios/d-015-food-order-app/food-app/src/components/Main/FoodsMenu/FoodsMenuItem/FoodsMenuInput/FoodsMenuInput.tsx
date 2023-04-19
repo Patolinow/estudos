@@ -34,14 +34,14 @@ const FoodsMenuInput = ({ mealInfos }: InputProps): JSX.Element => {
   return (
     <form className={styles.form} onSubmit={submitHandler}>
       <div className={styles.input}>
-        <label htmlFor="numInput">Amout</label>
+        <label htmlFor={mealInfos.id}>Amout</label>
         <input
           ref={amountRef}
           type="number"
-          name="numInput"
+          name={mealInfos.name}
           min={1}
           max={99}
-          id="numInput"
+          id={mealInfos.id}
           defaultValue={1}
         />
       </div>
