@@ -1,5 +1,5 @@
 import TableInput from "../TableInput"
-import ITableInputProps from "../interfaces/ITableInputProps"   
+import ITableInputProps from "../../interfaces/ITableInputProps"
 
 interface TableProps {
   data: ITableInputProps[]
