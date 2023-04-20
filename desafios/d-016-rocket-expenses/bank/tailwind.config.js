@@ -6,11 +6,15 @@ export default {
       'black': '#121214',
       'dark-gray': '#202024',
       'medium-gray': '#323238',
+      'gray': '#7C7C8A',
       'light-gray': '#C4C4CC',
       'white': '#fff',
       'dark-green': '#015F43',
       'light-green': '#00875F',
       'red': '#F75A68'
+    },
+    fontFamily: {
+      'sans': ['Roboto','Helvetica', 'Arial', 'sans-serif'],
     },
     extend: {},
   },
