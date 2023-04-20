@@ -2,7 +2,7 @@ import ITableInputProps from "../../interfaces/ITableInputProps";
 import { Header } from "../../components/Header";
 import { Main } from "../../components/Main";
 
-export const Home = ():JSX.Element => {
+export const Home = (): JSX.Element => {
   const data: ITableInputProps[] = [
     {
       type: "income",
@@ -22,9 +22,8 @@ export const Home = ():JSX.Element => {
 
   return (
     <div className="h-screen bg-dark-gray text-white">
-      
-      <Header/>
-      <Main data={data}/>
+      <Header />
+      <Main data={data} />
     </div>
   );
 };
