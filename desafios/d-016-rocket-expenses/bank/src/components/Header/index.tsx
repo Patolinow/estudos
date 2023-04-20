@@ -3,11 +3,15 @@ import reactLogo from "../../assets/react.svg";
 import Modal from "../Modal";
 
 export const Header = (): JSX.Element => {
-  const [isVisible, setIsVisible] = useState(true)
+  const [isVisible, setIsVisible] = useState(false)
+
+  const openCloseHandler = () => {
+    isVisible ? setIsVisible(false) : setIsVisible(true)
+  }
 
   return (
     <>
-    {isVisible && <Modal/>}
+    {isVisible && <Modal openCloseHandler={openCloseHandler}/>}
     <header className="flex justify-between bg-black h-[212px]">
       <div className="flex justify-between w-11/12 max-w-5xl mx-auto pt-10 h-fit">
 
@@ -17,7 +21,7 @@ export const Header = (): JSX.Element => {
           <h3 className=" text-3xl">DT</h3>
         </div>
 
-        <button className="bg-light-green p-4 rounded-md font-bold hover:bg-dark-green">
+        <button className="bg-light-green p-4 rounded-md font-bold hover:bg-dark-green duration-200" onClick={openCloseHandler}>
           Nova transação
         </button>
         
