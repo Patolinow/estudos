@@ -1,7 +1,13 @@
+import { useState } from "react";
 import reactLogo from "../../assets/react.svg";
+import Modal from "../Modal";
 
 export const Header = (): JSX.Element => {
+  const [isVisible, setIsVisible] = useState(true)
+
   return (
+    <>
+    {isVisible && <Modal/>}
     <header className="flex justify-between bg-black h-[212px]">
       <div className="flex justify-between w-11/12 max-w-5xl mx-auto pt-10 h-fit">
 
@@ -17,5 +23,6 @@ export const Header = (): JSX.Element => {
         
       </div>
     </header>
+    </>
   );
 };
