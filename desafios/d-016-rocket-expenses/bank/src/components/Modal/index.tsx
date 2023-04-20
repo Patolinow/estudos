@@ -2,17 +2,22 @@ import ReactDOM from "react-dom";
 import { ModalWrapper } from "../ModalWrapper";
 import { ModalForm } from "../ModalForm";
 
-const ModalPortal = (): JSX.Element => {
-  
-  return (
-    <ModalWrapper>
-      <ModalForm/>
-    </ModalWrapper>
-  );
+interface ModalProps {
+  openCloseHandler(): void;
+}
+
+const ModalPortal = ({ openCloseHandler }: ModalProps): JSX.Element => {
+  return <ModalForm openCloseHandler={openCloseHandler} />;
 };
 
-const Modal = (): JSX.Element => {
-  return <>{ReactDOM.createPortal(<ModalPortal />, document.getElementById("modal-root")!)}</>;
+const Modal = ({ openCloseHandler }: ModalProps): JSX.Element => {
+  const modalRoot = document.getElementById("modal-root")!;
+  return (
+    <>
+      {ReactDOM.createPortal(<ModalWrapper onClick={openCloseHandler} />, modalRoot)}
+      {ReactDOM.createPortal(<ModalPortal openCloseHandler={openCloseHandler} />, modalRoot)}
+    </>
+  );
 };
 
 export default Modal;
