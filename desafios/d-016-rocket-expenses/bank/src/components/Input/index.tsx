@@ -1,4 +1,6 @@
-export const Input = (props: JSX.IntrinsicElements["input"]): JSX.Element => {
+import { forwardRef } from "react";
+
+export const Input = forwardRef((props: JSX.IntrinsicElements["input"], ref: React.LegacyRef<HTMLInputElement>): JSX.Element => {
   const fillout: string[] = ["text", "number"];
   const classes = fillout.includes(props.type!)
     ? "text-white bg-black p-4 rounded-md placeholder:text-gray focus-within:border-0 focus-within:duration-700"
@@ -13,7 +15,9 @@ export const Input = (props: JSX.IntrinsicElements["input"]): JSX.Element => {
       hidden={props.hidden}
       defaultChecked={props.defaultChecked}
       className={`${classes} ${props.className}`}
-      ref={props.ref}
+      value={props.value}
+      autoComplete={props.autoComplete}
+      ref={ref}
     />
   );
-};
+});
