@@ -10,7 +10,7 @@ interface TableContext {
   newTableInputHandler: (newTableInput: ITableInputProps) => void;
 }
 
-export const tableContext = createContext<TableContext>({
+export const TableContext = createContext<TableContext>({
   tableInputList: [],
   totalIncome: 0,
   totalOutcome: 0,
