@@ -2,8 +2,8 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 import Meal from "./interfaces/Meal";
-import { useState, useEffect } from "react";
-import LocalStorageController from "./controllers/localStorageController";
+import { useState } from "react";
+import CartContextProvider from "./components/contexts/CartProvider";
 
 function App() {
   const DUMMY_MEALS: Meal[] = [
@@ -41,10 +41,12 @@ function App() {
   const [meals, setMeals] = useState(DUMMY_MEALS);
 
   return (  
+    <CartContextProvider>
     <div className="App">
       <Header />
       <Main meals={meals} />
     </div>
+    </CartContextProvider>
   );
 }
 
