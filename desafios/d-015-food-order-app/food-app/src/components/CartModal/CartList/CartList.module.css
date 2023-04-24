@@ -21,7 +21,7 @@
   background-color: transparent;
   padding: 0.5rem 2rem;
   border-radius: 25px;
-  margin-left: 1rem;
+  margin-left: 0.5rem;
 }
 
 .actions button:hover,
@@ -31,7 +31,7 @@
   color: white;
 }
 
-.actions .close {
+.actions .close, .actions .reset {
   color: #8a2b06;
   font-weight: normal;
 }
@@ -39,4 +39,19 @@
 .actions .order {
   background-color: #8a2b06;
   color: white;
+}
+
+@media screen and (max-width: 768px) {
+  .actions {
+    text-align: center;
+  }
+
+  .actions .close {
+    display: none;
+  }
+
+  .total {
+    flex-direction: column;
+    font-size: 1rem;
+  }
 }

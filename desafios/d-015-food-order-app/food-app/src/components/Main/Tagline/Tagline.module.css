@@ -1,6 +1,7 @@
 .summary {
   text-align: justify;
-  width: 37rem;
+  width: 90%;
+  max-width: 37rem;
   margin: 10rem auto 5rem;
   background-color: white;
   border-radius: 14px;
@@ -10,6 +11,7 @@
 
 .summary h2 {
   color: #a53a10;
+  text-align: center;
   font-size: 2rem;
   margin-top: 0;
   margin-bottom: 1rem;

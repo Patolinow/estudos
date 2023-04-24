@@ -44,7 +44,7 @@ const CartList = ({ onClose }: CartListProps): JSX.Element => {
       </div>
 
       <div className={styles.actions}>
-        <Button className={styles.close} onClick={resetHandler}>
+        <Button className={styles.reset} onClick={resetHandler}>
           Clear
         </Button>
 
