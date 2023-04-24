@@ -15,7 +15,7 @@ const CartButton = (): JSX.Element => {
     setButtonAnimation(true)
     const timer = setTimeout(() => {
       setButtonAnimation(false)
-    }, 300)
+    }, 500)
 
     return () => {
       clearTimeout(timer)
