@@ -1,6 +1,6 @@
 import ITableInputProps from "../interfaces/ITableInputProps";
 
-const set = (localStorageKey: string, newTableInputs: ITableInputProps) => {
+const set = (localStorageKey: string, newTableInputs: ITableInputProps[]) => {
   const stringifiedTableInputs = JSON.stringify(newTableInputs);
   localStorage.setItem(localStorageKey, stringifiedTableInputs);
 };
