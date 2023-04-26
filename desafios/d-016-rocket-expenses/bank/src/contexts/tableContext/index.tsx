@@ -1,10 +1,10 @@
 import { createContext } from "react";
 import ITableInputProps from "../../interfaces/ITableInputProps";
+import TableInputValues from "../../interfaces/TableInputValues";
 
 interface TableContext {
   tableInputList: ITableInputProps[];
-  totalIncome: number;
-  totalOutcome: number;
+  totalValues: TableInputValues;
   totalItems: number;
   searchHandler: (searchTerm: string) => void;
   newTableInputHandler: (newTableInput: ITableInputProps) => void;
@@ -12,8 +12,7 @@ interface TableContext {
 
 export const TableContext = createContext<TableContext>({
   tableInputList: [],
-  totalIncome: 0,
-  totalOutcome: 0,
+  totalValues: { incomes: 0, outcomes: 0, balance: 0, totalItems: 0 },
   totalItems: 0,
   searchHandler: (searchTerm: string) => {},
   newTableInputHandler: (newTableInput: ITableInputProps) => {},
