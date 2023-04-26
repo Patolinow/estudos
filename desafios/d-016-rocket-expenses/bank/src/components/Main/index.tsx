@@ -15,11 +15,12 @@ export const Main = ({ data }: MainProps) => {
       <div className="flex justify-between mt-16 gap-8">
         <input
           type="text"
-          className="flex-1 p-4 bg-black rounded-md "
+          className="flex-1 p-4 bg-black rounded-md focus-within:border-none focus-within:outline-none placeholder:text-gray"
           placeholder="Busque uma transação"
         />
-        <button className="px-8 py-4 text-light-green rounded-md border-light-green border-2 border-solid text-base font-bold flex items-center hover:bg-black gap-4">
-          <img src={iconSearch} alt="" />
+
+        <button className="px-8 py-4 text-light-green rounded-md border-light-green border-2 border-solid text-base font-bold flex items-center hover:bg-dark-green/10 duration-150 gap-4">
+          <img src={iconSearch} />
           Buscar
         </button>
       </div>
