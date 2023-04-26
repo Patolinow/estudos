@@ -1,17 +1,15 @@
+import { useContext } from "react";
 import { Card } from "../Card";
+import { TableContext } from "../../contexts/TableContext";
 
 export const TotalOutcomesAndIncomes = () => {
-  const total = {
-    incomes: 450000 + 50000,
-    outcomes: 5000 + 7000,
-    balance: 450000 + 50000 - (5000 + 7000),
-  };
+  const totalValues = useContext(TableContext).totalValues
   return (
     <div className="flex justify-center -mt-16">
       <div className="grid grid-cols-3 gap-8 max-w-5xl w-full">
-        <Card type="income" value={total.incomes} />
-        <Card type="outcome" value={total.outcomes} />
-        <Card type="total" value={total.balance} />
+        <Card type="income" value={totalValues.incomes} />
+        <Card type="outcome" value={totalValues.outcomes} />
+        <Card type="total" value={totalValues.balance} />
       </div>
     </div>
   );

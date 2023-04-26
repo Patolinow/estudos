@@ -1,10 +1,11 @@
-import React, { useRef, useImperativeHandle, forwardRef } from "react";
+import React, { useRef, useImperativeHandle, forwardRef, useContext } from "react";
 import iconClose from "../../assets/icons/iconClose.svg";
 import iconIncome from "../../assets/icons/iconIncome.svg";
 import iconOutcome from "../../assets/icons/iconOutcome.svg";
 import { Input } from "../Input";
 import { RadioLabel } from "../RadioLabel";
 import ITableInputProps from "../../interfaces/ITableInputProps";
+import { TableContext } from "../../contexts/TableContext";
 
 interface ModalFormProps {
   openCloseHandler(): void;
@@ -12,6 +13,7 @@ interface ModalFormProps {
 
 export const ModalForm = ({ openCloseHandler }: ModalFormProps): JSX.Element => {
   
+  const newInputHandler = useContext(TableContext).newTableInputHandler
   const allRefs = {
     title: useRef() as React.MutableRefObject<HTMLInputElement>,
     value: useRef() as React.MutableRefObject<HTMLInputElement>,
@@ -27,11 +29,12 @@ export const ModalForm = ({ openCloseHandler }: ModalFormProps): JSX.Element => 
       title: allRefs.title.current.value,
       subject: allRefs.subject.current.value,
       value: Number(allRefs.value.current.value) * 100,
-      type: allRefs.income.current.checked ? "income" : "outcome",
+      type: allRefs.income.current.checked ? "income" : "outcome",  
       date: new Date().toLocaleDateString(),
     };
 
-    console.log(refs);
+    newInputHandler(refs)
+    openCloseHandler()
   };
 
   return (

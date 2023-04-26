@@ -1,11 +1,10 @@
 import TableInput from "../TableInput";
-import ITableInputProps from "../../interfaces/ITableInputProps";
+import { TableContext } from "../../contexts/TableContext";
+import { useContext } from "react";
 
-interface TableProps {
-  data: ITableInputProps[];
-}
+function Table() {
+  const data = useContext(TableContext).tableInputList
 
-function Table({ data }: TableProps) {
   return (
     <table className="w-full mt-8">
       <tbody>
