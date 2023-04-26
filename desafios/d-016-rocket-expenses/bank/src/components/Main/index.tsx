@@ -1,13 +1,8 @@
-import ITableInputProps from "../../interfaces/ITableInputProps";
 import Table from "../Table";
 import iconSearch from "../../assets/icons/iconSearch.svg";
 import { TotalOutcomesAndIncomes } from "../TotalOutcomesAndIncomes";
 
-interface MainProps {
-  data: ITableInputProps[];
-}
-
-export const Main = ({ data }: MainProps) => {
+export const Main = () => {
   return (
     <main className="w-11/12 max-w-5xl mx-auto">
       <TotalOutcomesAndIncomes/>
@@ -25,7 +20,7 @@ export const Main = ({ data }: MainProps) => {
         </button>
       </div>
 
-      <Table data={data} />
+      <Table />
     </main>
   );
 };
