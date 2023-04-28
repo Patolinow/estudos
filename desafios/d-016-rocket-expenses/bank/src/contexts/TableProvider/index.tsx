@@ -36,16 +36,17 @@ export const TableContextProvider = (props: PropsWithChildren): JSX.Element => {
     localStorageManager.set(tableKey, []);
   }
 
-  const [tableInputs, setTableInputs] = useState(localStorageManager.get(tableKey));
+  const [storageTableInputs, setStorageTableInputs] = useState(localStorageManager.get(tableKey));
   const tableInputValuesInitialState: TableInputValues = {
     totalItems: 0,
     incomes: 0,
     outcomes: 0,
     balance: 0,
   };
+  const [displayTableInputs, setDisplayTableInputs] = useState(storageTableInputs);
 
   const initialStateFunc = (initialValues: TableInputValues) => {
-    const currentTableInputs = tableInputs;
+    const currentTableInputs = storageTableInputs;
 
     const incomes = currentTableInputs.filter((tableInputValue) => {
       return tableInputValue.type == "income";
@@ -62,7 +63,7 @@ export const TableContextProvider = (props: PropsWithChildren): JSX.Element => {
     }, 0);
 
     initialValues.balance = initialValues.incomes - initialValues.outcomes;
-    initialValues.totalItems = tableInputs.length;
+    initialValues.totalItems = storageTableInputs.length;
 
     return initialValues;
   };
@@ -73,23 +74,33 @@ export const TableContextProvider = (props: PropsWithChildren): JSX.Element => {
     initialStateFunc
   );
 
-  console.log(tableInputValues);
-
   const newTableInputHandler = (newTableInput: ITableInputProps) => {
-    const currentTableInputs = [...tableInputs];
-    setTableInputs((prevTableInputs) => [...prevTableInputs, newTableInput]);
+    const currentTableInputs = [...storageTableInputs];
+
+    setStorageTableInputs((prevStorageTableInputs) => [...prevStorageTableInputs, newTableInput]);
+    setDisplayTableInputs((prevDisplayTableInputs) => [...prevDisplayTableInputs, newTableInput])
     localStorageManager.set(tableKey, [...currentTableInputs, newTableInput]);
     tableInputValuesDispatch({ type: newTableInput.type, newTableInput: newTableInput });
   };
 
-  const searchHandler = (searchTerm: string) => {};
+  const searchHandler = (searchTerm: string) => {
+    const currentTableInputs = [...storageTableInputs];
+
+    setDisplayTableInputs(() => {
+      const currentFilteredTableInputs = currentTableInputs.filter((currentTableInput) => {
+        return currentTableInput.title.toLowerCase().indexOf(searchTerm) !== -1
+      });
+
+      return currentFilteredTableInputs;
+    });
+  };
 
   return (
     <TableContext.Provider
       value={{
         newTableInputHandler,
         searchHandler,
-        tableInputList: tableInputs,
+        tableInputList: displayTableInputs,
         totalValues: tableInputValues,
         totalItems: tableInputValues.totalItems,
       }}
