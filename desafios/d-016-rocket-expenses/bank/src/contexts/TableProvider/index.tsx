@@ -78,7 +78,8 @@ export const TableContextProvider = (props: PropsWithChildren): JSX.Element => {
     const currentTableInputs = [...storageTableInputs];
 
     setStorageTableInputs((prevStorageTableInputs) => [...prevStorageTableInputs, newTableInput]);
-    setDisplayTableInputs((prevDisplayTableInputs) => [...prevDisplayTableInputs, newTableInput])
+    setDisplayTableInputs((prevDisplayTableInputs) => [...prevDisplayTableInputs, newTableInput]);
+
     localStorageManager.set(tableKey, [...currentTableInputs, newTableInput]);
     tableInputValuesDispatch({ type: newTableInput.type, newTableInput: newTableInput });
   };
@@ -88,11 +89,22 @@ export const TableContextProvider = (props: PropsWithChildren): JSX.Element => {
 
     setDisplayTableInputs(() => {
       const currentFilteredTableInputs = currentTableInputs.filter((currentTableInput) => {
-        return currentTableInput.title.toLowerCase().indexOf(searchTerm) !== -1
+        return currentTableInput.title.toLowerCase().indexOf(searchTerm) !== -1;
       });
 
       return currentFilteredTableInputs;
     });
+  };
+
+  const deleteHandler = (id: number) => {
+    const currentTableInputs = [...storageTableInputs];
+    const filteredCurrentTableInputs = currentTableInputs.filter((currentTableInput) => {
+      return currentTableInput.id !== id;
+    });
+
+    setStorageTableInputs(() => filteredCurrentTableInputs);
+    setDisplayTableInputs(() => filteredCurrentTableInputs);
+    localStorageManager.set(tableKey, filteredCurrentTableInputs)
   };
 
   return (
@@ -103,6 +115,7 @@ export const TableContextProvider = (props: PropsWithChildren): JSX.Element => {
         tableInputList: displayTableInputs,
         totalValues: tableInputValues,
         totalItems: tableInputValues.totalItems,
+        deleteHandler,
       }}
     >
       {props.children}

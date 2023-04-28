@@ -8,6 +8,7 @@ interface TableContext {
   totalItems: number;
   searchHandler: (searchTerm: string) => void;
   newTableInputHandler: (newTableInput: ITableInputProps) => void;
+  deleteHandler: (id:number) => void;
 }
 
 export const TableContext = createContext<TableContext>({
@@ -16,4 +17,5 @@ export const TableContext = createContext<TableContext>({
   totalItems: 0,
   searchHandler: (searchTerm: string) => {},
   newTableInputHandler: (newTableInput: ITableInputProps) => {},
+  deleteHandler: (id: number) => {}
 });
