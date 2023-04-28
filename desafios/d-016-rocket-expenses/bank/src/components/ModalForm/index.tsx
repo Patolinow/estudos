@@ -26,6 +26,7 @@ export const ModalForm = ({ openCloseHandler }: ModalFormProps): JSX.Element => 
     e.preventDefault();
 
     const refs: ITableInputProps = {
+      id: Math.random(),
       title: allRefs.title.current.value,
       subject: allRefs.subject.current.value,
       value: Number(allRefs.value.current.value) * 100,

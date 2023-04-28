@@ -11,6 +11,7 @@ function Table() {
         {data.map((info, index) => (
           <TableInput
             key={index}
+            id={info.id}
             type={info.type}
             title={info.title}
             value={info.value}
