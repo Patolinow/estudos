@@ -5,7 +5,7 @@ const TableInput = ({ type, title, subject, date, value }: ITableInputProps) => 
   const formattedValue = formattedCurrency(value);
 
   return (
-    <tr className="grid grid-cols-5 gap-8 w-full px-8 py-5 bg-medium-gray rounded-md mb-2 text-light-gray text-justify">
+    <tr className="grid grid-cols-5 gap-8 w-full px-8 py-4 bg-dark-medium-gray rounded-md mb-2 text-light-gray text-justify">
       <td className="col-span-2">{title}</td>
       <td className={type === "outcome" ? "text-red" : "text-light-green"}>
         {type === "outcome" && "- "}
