@@ -11,10 +11,14 @@ interface ModalFormProps {
   openCloseHandler(): void;
 }
 
+interface RefsOptions extends ITableInputProps {
+  [key: string]: number | string
+}
+
 export const ModalForm = ({ openCloseHandler }: ModalFormProps): JSX.Element => {
   
   const newInputHandler = useContext(TableContext).newTableInputHandler
-  const allRefs = {
+  const allRefs= {
     title: useRef() as React.MutableRefObject<HTMLInputElement>,
     value: useRef() as React.MutableRefObject<HTMLInputElement>,
     subject: useRef() as React.MutableRefObject<HTMLInputElement>,
@@ -25,7 +29,7 @@ export const ModalForm = ({ openCloseHandler }: ModalFormProps): JSX.Element => 
   const submitHandler: React.FormEventHandler = (e) => {
     e.preventDefault();
 
-    const refs: ITableInputProps = {
+    const refs: RefsOptions = {
       id: Math.random(),
       title: allRefs.title.current.value,
       subject: allRefs.subject.current.value,
@@ -33,6 +37,20 @@ export const ModalForm = ({ openCloseHandler }: ModalFormProps): JSX.Element => 
       type: allRefs.income.current.checked ? "income" : "outcome",  
       date: new Date().toLocaleDateString(),
     };
+
+    for (const refKey in refs) {
+      const actualValue = refs[refKey]
+      const isString = typeof(actualValue) === "string"
+      const isNumber = typeof(actualValue) === "number"
+
+      if (isString && actualValue.trim() === "") {
+        return;
+      }
+
+      if (isNumber && actualValue <= 0) {
+        return;
+      }
+    }
 
     newInputHandler(refs)
     openCloseHandler()
