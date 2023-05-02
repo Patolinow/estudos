@@ -6,7 +6,7 @@ function Table() {
   const data = useContext(TableContext).tableInputList
 
   return (
-    <table className="w-full mt-8">
+    <table className="mt-8 max-md:mt-2 w-11/12 max-w-5xl mx-auto">
       <tbody>
         {data.map((info, index) => (
           <TableInput

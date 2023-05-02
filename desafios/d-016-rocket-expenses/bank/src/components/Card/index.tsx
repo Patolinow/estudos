@@ -29,9 +29,9 @@ export const Card = ({ type, value, className }: ICardProps) => {
 
   return (
     <div className={`${className} p-6 rounded-lg ${type === "total" ? "bg-dark-green" : "bg-medium-gray"} w-full max-md:w-64`}>
-      <div className="flex justify-between items-center mb-3">
+      <div className="flex justify-between items-start mb-3">
         <h3 className="text-light-gray">{cardType[type].label}</h3>
-        <img src={cardType[type].icon} alt="" />
+        <img src={cardType[type].icon} />
       </div>
       <h2 className="text-white font-bold text-2xl">{formattedValue}</h2>
     </div>
