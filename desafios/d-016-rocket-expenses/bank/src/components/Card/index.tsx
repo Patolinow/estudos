@@ -6,9 +6,10 @@ import { formattedCurrency } from "../../utils/formatCurrency";
 interface ICardProps {
   type: "income" | "outcome" | "total";
   value: number;
+  className?: string;
 }
 
-export const Card = ({ type, value }: ICardProps) => {
+export const Card = ({ type, value, className }: ICardProps) => {
   const cardType = {
     income: {
       label: "Receita",
@@ -27,7 +28,7 @@ export const Card = ({ type, value }: ICardProps) => {
   const formattedValue = formattedCurrency(value);
 
   return (
-    <div className={`p-6 rounded-lg ${type === "total" ? "bg-dark-green" : "bg-medium-gray"}`}>
+    <div className={`${className} p-6 rounded-lg ${type === "total" ? "bg-dark-green" : "bg-medium-gray"} w-full max-md:w-64`}>
       <div className="flex justify-between items-center mb-3">
         <h3 className="text-light-gray">{cardType[type].label}</h3>
         <img src={cardType[type].icon} alt="" />
