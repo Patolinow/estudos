@@ -1,8 +1,7 @@
 import { forwardRef } from "react";
 
 export const Input = forwardRef((props: JSX.IntrinsicElements["input"], ref: React.LegacyRef<HTMLInputElement>): JSX.Element => {
-  const fillout: string[] = ["text", "number"];
-  const classes = fillout.includes(props.type!)
+  const classes = props.type === "text" || props.type === "number"
     ? "text-white bg-black p-4 rounded-md placeholder:text-gray focus-within:border-0 focus-within:duration-700"
     : "";
 
