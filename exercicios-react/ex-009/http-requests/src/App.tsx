@@ -1,35 +1,41 @@
 import MoviesList from "./components/MoviesList";
 import MovieProps from "./interfaces/MovieProps";
+import AddMovies from "./components/AddMovies";
 import Loading from "./components/Loading";
 import { useState, useEffect, useCallback } from "react";
 import axios, { AxiosError } from "axios";
 import "./App.css";
 
-interface MovieRequestResultProps {
-  title: string;
-  episode_id: number;
-  opening_crawl: string;
-  release_date: string;
+interface RequestedMoviesObject {
+  [key: string]: MovieProps
+}
+interface RequestedMovieProps {
+  data: RequestedMoviesObject[]
 }
 
-interface RequestedMovieProps {
-  data: {
-    results: MovieRequestResultProps[];
-  };
-}
+
 
 function App() {
-  const [movies, setMovies] = useState<MovieProps[]>();
+  const apiUrl = "https://max-http-requests-default-rtdb.firebaseio.com/movies.json";
+  const [movies, setMovies] = useState<MovieProps[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>();
+
+  async function addMovieHandler(movie: MovieProps) {
+    
+    setMovies((prevMovies) => [movie,...prevMovies])
+
+    await axios.post(apiUrl, movie)
+  }
 
   const fetchMoviesHandler = useCallback(async () => {
     setIsLoading(true);
     setErrorMessage(null)
-    const apiUrl = "https://swapi.dev/api/films";
 
     try {
       const requestedMovies: RequestedMovieProps = await axios.get(apiUrl);
+      const requestedMoviesDataObject = requestedMovies.data;
+
       const requestedMoviesData = requestedMovies.data.results;
       const convertedMovies: MovieProps[] = requestedMoviesData.map((movieData) => {
         return {
@@ -40,7 +46,14 @@ function App() {
         };
       });
 
-      setMovies(() => convertedMovies);
+      for (const movie of Object.values(requestedMoviesDataObject)) {
+        requestedMoviesData.push(movie)
+      }
+      
+      console.log(requestedMoviesData)
+      
+
+      setMovies(() => requestedMoviesData);
     }
     
     catch (err: unknown) {
@@ -85,6 +98,10 @@ function App() {
 
   return (
     <>
+    <section>
+      <AddMovies onAddMovie={addMovieHandler}/>
+    </section>
+
       <section>
         <button onClick={fetchMoviesHandler}>Fetch Movies</button>
       </section>
