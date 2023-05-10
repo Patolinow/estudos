@@ -7,13 +7,8 @@ import axios, { AxiosError } from "axios";
 import "./App.css";
 
 interface RequestedMoviesObject {
-  [key: string]: MovieProps
+  data: MovieProps;
 }
-interface RequestedMovieProps {
-  data: RequestedMoviesObject[]
-}
-
-
 
 function App() {
   const apiUrl = "https://max-http-requests-default-rtdb.firebaseio.com/movies.json";
@@ -22,41 +17,29 @@ function App() {
   const [errorMessage, setErrorMessage] = useState<string | null>();
 
   async function addMovieHandler(movie: MovieProps) {
-    
-    setMovies((prevMovies) => [movie,...prevMovies])
+    setMovies((prevMovies) => [movie, ...prevMovies]);
 
-    await axios.post(apiUrl, movie)
+    await axios.post(apiUrl, movie);
   }
 
   const fetchMoviesHandler = useCallback(async () => {
     setIsLoading(true);
-    setErrorMessage(null)
+    setErrorMessage(null);
 
     try {
-      const requestedMovies: RequestedMovieProps = await axios.get(apiUrl);
-      const requestedMoviesDataObject = requestedMovies.data;
+      const requestedMovies = await axios.get(apiUrl);
+      const requestedMoviesDataObject: RequestedMoviesObject = requestedMovies.data;
 
-      const requestedMoviesData = requestedMovies.data.results;
-      const convertedMovies: MovieProps[] = requestedMoviesData.map((movieData) => {
-        return {
-          title: movieData.title,
-          id: movieData.episode_id,
-          openingText: movieData.opening_crawl,
-          releaseDate: movieData.release_date,
-        };
-      });
+      let requestedMoviesData: MovieProps[] = [];
 
       for (const movie of Object.values(requestedMoviesDataObject)) {
-        requestedMoviesData.push(movie)
+        requestedMoviesData.push(movie);
       }
-      
-      console.log(requestedMoviesData)
-      
+
+      console.log(requestedMoviesData);
 
       setMovies(() => requestedMoviesData);
-    }
-    
-    catch (err: unknown) {
+    } catch (err: unknown) {
       setIsLoading(false);
 
       const error = err as AxiosError;
@@ -98,9 +81,9 @@ function App() {
 
   return (
     <>
-    <section>
-      <AddMovies onAddMovie={addMovieHandler}/>
-    </section>
+      <section>
+        <AddMovies onAddMovie={addMovieHandler} />
+      </section>
 
       <section>
         <button onClick={fetchMoviesHandler}>Fetch Movies</button>
