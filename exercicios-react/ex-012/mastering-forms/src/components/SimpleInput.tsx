@@ -1,54 +1,71 @@
 import { useState } from "react";
+import useInputValidator from "../hooks/use-inputValidator";
 
 interface SimpleInputProps {}
 
 const SimpleInput = (props: SimpleInputProps) => {
   const [name, setName] = useState("");
-  const [nameIsTouched, setNameIsTouched] = useState(false);
-  
-  
+  const nameCondition = name.trim() !== "" && name.length <= 50;
+  const nameValidator = useInputValidator({
+    input: name,
+    setInput: setName,
+    inputName: "Name",
+    errorCondition: nameCondition,
+  });
 
-  const nameIsValid = name.trim() !== "";
-  const formValidationCondition = nameIsValid && nameIsValid
-  const classVerifier = !nameIsValid && nameIsTouched ? "invalid" : "";
-  const errorContent =
-    !nameIsValid && nameIsTouched ? <p className="error-text">Name must be filled</p> : undefined;
+  const [email, setEmail] = useState("");
+  const emailRegex =
+    /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+  const emailCondition = email.match(emailRegex) ? true : false && email.length <= 100;
+  const emailValidator = useInputValidator({
+    input: email,
+    setInput: setEmail,
+    inputName: "Email",
+    errorCondition: emailCondition,
+  });
 
+  const formValidationCondition = nameCondition && emailCondition;
 
   const submitHandler: React.FormEventHandler = (event) => {
     event.preventDefault();
 
     if (!formValidationCondition) {
-      console.log("invalid form")
+      console.log("invalid form");
       return;
     }
 
-    setNameIsTouched(false);
+    nameValidator.setInputIsTouched(false);
+    emailValidator.setInputIsTouched(false);
+    setEmail("");
     setName("");
-  };
-
-  const inputChangeHandler: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-    const currentName = event.target.value;
-    setName(() => currentName);
-  };
-
-  const inputBlurHandler: React.FocusEventHandler<HTMLInputElement> = () => {
-    setNameIsTouched(true);
   };
 
   return (
     <form onSubmit={submitHandler}>
-      <div className={`form-control ${classVerifier}`}>
+      <div className={`form-control ${nameValidator.inputVerifier}`}>
         <label htmlFor="name">Your Name</label>
         <input
           type="text"
           id="name"
-          onChange={inputChangeHandler}
-          onBlur={inputBlurHandler}
+          onChange={nameValidator.inputChangeHandler}
+          onBlur={nameValidator.inputBlurHandler}
           value={name}
         />
-        {errorContent}
+        {nameValidator.errorContent}
       </div>
+
+      <div className={`form-control ${emailValidator.inputVerifier}`}>
+        <label htmlFor="email">Your email</label>
+        <input
+          type="email"
+          id="email"
+          onChange={emailValidator.inputChangeHandler}
+          onBlur={emailValidator.inputBlurHandler}
+          value={email}
+        />
+        {emailValidator.errorContent}
+      </div>
+
       <div className="form-actions">
         <button disabled={!formValidationCondition}>Submit</button>
       </div>
