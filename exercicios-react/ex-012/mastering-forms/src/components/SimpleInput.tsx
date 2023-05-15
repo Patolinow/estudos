@@ -7,7 +7,6 @@ const SimpleInput = (props: SimpleInputProps) => {
   const [name, setName] = useState("");
   const nameCondition = name.trim() !== "" && name.length <= 50;
   const nameValidator = useInputValidator({
-    input: name,
     setInput: setName,
     inputName: "Name",
     errorCondition: nameCondition,
@@ -18,7 +17,6 @@ const SimpleInput = (props: SimpleInputProps) => {
     /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
   const emailCondition = email.match(emailRegex) ? true : false && email.length <= 100;
   const emailValidator = useInputValidator({
-    input: email,
     setInput: setEmail,
     inputName: "Email",
     errorCondition: emailCondition,
@@ -34,19 +32,17 @@ const SimpleInput = (props: SimpleInputProps) => {
       return;
     }
 
-    nameValidator.setInputIsTouched(false);
-    emailValidator.setInputIsTouched(false);
-    setEmail("");
-    setName("");
+    nameValidator.inputResetHandler();
+    emailValidator.inputResetHandler()
   };
 
   return (
     <form onSubmit={submitHandler}>
       <div className={`form-control ${nameValidator.inputVerifier}`}>
-        <label htmlFor="name">Your Name</label>
+        <label htmlFor="nameSimple">Your Name</label>
         <input
           type="text"
-          id="name"
+          id="nameSimple"
           onChange={nameValidator.inputChangeHandler}
           onBlur={nameValidator.inputBlurHandler}
           value={name}
@@ -55,10 +51,10 @@ const SimpleInput = (props: SimpleInputProps) => {
       </div>
 
       <div className={`form-control ${emailValidator.inputVerifier}`}>
-        <label htmlFor="email">Your email</label>
+        <label htmlFor="emailSimple">Your email</label>
         <input
           type="email"
-          id="email"
+          id="emailSimple"
           onChange={emailValidator.inputChangeHandler}
           onBlur={emailValidator.inputBlurHandler}
           value={email}

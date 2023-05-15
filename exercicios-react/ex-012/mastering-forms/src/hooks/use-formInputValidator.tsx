@@ -1,19 +1,22 @@
 import { useState } from "react";
-
-interface InputValidatorProps {
-  setInput: React.Dispatch<React.SetStateAction<string>>;
+interface FormInputValidatorProps {
   inputName: string;
   errorCondition: boolean;
+  setInput: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const useInputValidator = ({ inputName, errorCondition, setInput }: InputValidatorProps) => {
+const useFormInputValidator = ({
+  inputName,
+  errorCondition,
+  setInput,
+}: FormInputValidatorProps) => {
   const [inputIsTouched, setInputIsTouched] = useState(false);
 
   const inputIsValid = errorCondition;
-  const inputVerifier = !inputIsValid && inputIsTouched ? "invalid" : "";
-  const errorContent =
+  const inputClass = !inputIsValid && inputIsTouched ? "invalid" : "";
+  const inputErrorMessage =
     !inputIsValid && inputIsTouched ? (
-      <p className="error-text">{inputName} must be filled correctly</p>
+      <p className="error-text">{inputName} wasn't filled correctly</p>
     ) : undefined;
 
   const inputChangeHandler: React.ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -26,11 +29,11 @@ const useInputValidator = ({ inputName, errorCondition, setInput }: InputValidat
   };
 
   const inputResetHandler = () => {
-    setInput("")
-    setInputIsTouched(false)
-  }
+    setInput("");
+    setInputIsTouched(false);
+  };
 
-  return { inputBlurHandler, inputChangeHandler, inputVerifier, errorContent, inputResetHandler};
+  return { inputBlurHandler, inputChangeHandler, inputResetHandler, inputClass, inputErrorMessage };
 };
 
-export default useInputValidator;
+export default useFormInputValidator;
