@@ -5,7 +5,7 @@ import useLocalStorage from "../../hooks/use-localStorage";
 
 const CartContextProvider = (props: PropsWithChildren) => {
   const mealsKey = "mealsList";
-  const reactLocalStorage = useLocalStorage()
+  const reactLocalStorage = useLocalStorage();
   const hasMeal = reactLocalStorage.has(mealsKey);
   if (!hasMeal) {
     reactLocalStorage.set(mealsKey, []);
@@ -24,43 +24,40 @@ const CartContextProvider = (props: PropsWithChildren) => {
   }, [meals]);
 
   const newMealHandler = (newMeal: NewMeal) => {
-    const existingMealIndex = meals.findIndex((meal) => meal.id === newMeal.id);
+    setMeals((prevMeals) => {
+      const existingMeal = prevMeals.find((meal) => meal.id === newMeal.id);
 
-    if (existingMealIndex !== -1) {
-      const updatedMeals = [...meals];
-      updatedMeals[existingMealIndex].amount += newMeal.amount;
-
-      setMeals(() => {
-        reactLocalStorage.set(mealsKey, updatedMeals);
-        return updatedMeals;
-      });
-    } else {
-      const newMeals = [...meals, newMeal];
-      setMeals(() => {
+      if (existingMeal) {
+        existingMeal.amount += newMeal.amount;
+        reactLocalStorage.set(mealsKey, prevMeals);
+        return [...prevMeals];
+      }
+      else {
+        const newMeals = [...prevMeals, newMeal];
         reactLocalStorage.set(mealsKey, newMeals);
         return newMeals;
-      });
-    }
+      }
+    });
   };
 
   const resetHandler = () => {
     setMeals([]);
-    reactLocalStorage.set(mealsKey, meals);
+    reactLocalStorage.set(mealsKey, []);
   };
 
   const decreaseHandler = (meal: NewMeal) => {
-    const actualMealIndex = localStorageMeals.findIndex(
+    const actualMeal = localStorageMeals.findIndex(
       (localStorageMeal) => localStorageMeal.id === meal.id
     );
 
-    if (actualMealIndex !== -1) {
+    if (actualMeal !== -1) {
       const updatedMeals = [...meals];
-      updatedMeals[actualMealIndex].amount -= 1;
+      updatedMeals[actualMeal].amount -= 1;
 
       setMeals(() => {
         const filteredMeals = updatedMeals.filter((meal) => meal.amount > 0);
-
         reactLocalStorage.set(mealsKey, filteredMeals);
+
         return filteredMeals;
       });
     }
@@ -73,6 +70,7 @@ const CartContextProvider = (props: PropsWithChildren) => {
     if (actualMealIndex !== -1) {
       const updatedMeals = [...meals];
       updatedMeals[actualMealIndex].amount += 1;
+
       setMeals(() => {
         reactLocalStorage.set(mealsKey, updatedMeals);
         return updatedMeals;
@@ -83,9 +81,9 @@ const CartContextProvider = (props: PropsWithChildren) => {
   return (
     <CartContext.Provider
       value={{
-        finalValue: finalValue,
-        meals: meals,
-        totalAmount: totalAmount,
+        finalValue,
+        meals,
+        totalAmount,
         onNewMeal: newMealHandler,
         onReset: resetHandler,
         onDecrease: decreaseHandler,
