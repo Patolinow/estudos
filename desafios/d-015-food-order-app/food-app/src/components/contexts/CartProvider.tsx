@@ -1,16 +1,16 @@
 import { PropsWithChildren, useEffect, useState } from "react";
 import CartContext from "./CartContext";
-import LocalStorageController from "../../controllers/localStorageController";
 import NewMeal from "../../interfaces/NewMeal";
-
+import useLocalStorage from "../../hooks/use-localStorage";
 
 const CartContextProvider = (props: PropsWithChildren) => {
   const mealsKey = "mealsList";
-  const hasMeal = LocalStorageController.has(mealsKey)
+  const reactLocalStorage = useLocalStorage()
+  const hasMeal = reactLocalStorage.has(mealsKey);
   if (!hasMeal) {
-    LocalStorageController.set(mealsKey, [])
+    reactLocalStorage.set(mealsKey, []);
   }
-  const localStorageMeals: NewMeal[] = LocalStorageController.get(mealsKey);
+  const localStorageMeals: NewMeal[] = reactLocalStorage.get(mealsKey);
   const [meals, setMeals] = useState(localStorageMeals);
   const [totalAmount, setTotalAmount] = useState(0);
   const [finalValue, setFinalValue] = useState(0);
@@ -29,25 +29,23 @@ const CartContextProvider = (props: PropsWithChildren) => {
     if (existingMealIndex !== -1) {
       const updatedMeals = [...meals];
       updatedMeals[existingMealIndex].amount += newMeal.amount;
-      
-      setMeals( () => {
-        LocalStorageController.set(mealsKey, updatedMeals);
-        return updatedMeals
+
+      setMeals(() => {
+        reactLocalStorage.set(mealsKey, updatedMeals);
+        return updatedMeals;
       });
     } else {
       const newMeals = [...meals, newMeal];
       setMeals(() => {
-        LocalStorageController.set(mealsKey, newMeals);
-        return newMeals
+        reactLocalStorage.set(mealsKey, newMeals);
+        return newMeals;
       });
     }
-
-    
   };
 
   const resetHandler = () => {
     setMeals([]);
-    LocalStorageController.set(mealsKey, meals);
+    reactLocalStorage.set(mealsKey, meals);
   };
 
   const decreaseHandler = (meal: NewMeal) => {
@@ -60,14 +58,12 @@ const CartContextProvider = (props: PropsWithChildren) => {
       updatedMeals[actualMealIndex].amount -= 1;
 
       setMeals(() => {
-        const filteredMeals = updatedMeals.filter((meal) => meal.amount > 0)
+        const filteredMeals = updatedMeals.filter((meal) => meal.amount > 0);
 
-        LocalStorageController.set(mealsKey, filteredMeals);
-        return filteredMeals
+        reactLocalStorage.set(mealsKey, filteredMeals);
+        return filteredMeals;
       });
     }
-
-    
   };
 
   const increaseHandler = (meal: NewMeal) => {
@@ -78,8 +74,8 @@ const CartContextProvider = (props: PropsWithChildren) => {
       const updatedMeals = [...meals];
       updatedMeals[actualMealIndex].amount += 1;
       setMeals(() => {
-        LocalStorageController.set(mealsKey, updatedMeals);
-        return updatedMeals
+        reactLocalStorage.set(mealsKey, updatedMeals);
+        return updatedMeals;
       });
     }
   };
@@ -101,4 +97,4 @@ const CartContextProvider = (props: PropsWithChildren) => {
   );
 };
 
-export default CartContextProvider
+export default CartContextProvider;
