@@ -17,3 +17,13 @@
     transform: translateY(0);
   }
 }
+
+.notMeals {
+  display: block;
+  margin: 10vh auto;
+  text-align: center;
+}
+
+img.notMeals {
+  height: 200px;
+}
