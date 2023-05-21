@@ -1,0 +1,84 @@
+.form {
+  padding: 1rem;
+}
+
+.form-group {
+
+  display: flex;
+  flex-direction: column;
+  height: 5.5rem;
+}
+
+ .form-group  label {
+  color: #5f1c01;
+  font-size: 1.2rem;
+  font-weight: 500;
+
+  margin-bottom: 0.25rem;
+}
+
+ .form-group input {
+  color: #5f1c01;
+  border: 2px solid #a53a10;
+  background-color: #ffe0d4;
+
+  padding: 0.4rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+.form-group input:focus-within {
+  border-color: #a53a10;
+  outline: 1px solid #2c0d00;
+}
+.form-group input:-webkit-autofill,
+.form-group input:-webkit-autofill:is(:hover, :focus, :active) {
+  -webkit-box-shadow: 0 0 0 30px #fcc6b0 inset;
+  -webkit-text-fill-color: #5f1c01;
+}
+
+.invalid input {
+  background-color: rgb(250, 208, 208);
+}
+
+.invalid p {
+  color: rgb(199, 0, 0);
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.actions button {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0.5rem 2rem;
+  border-radius: 24px;
+}
+
+.actions button:focus-within {
+  outline: 2px solid #2c0d00;
+}
+
+.actions button:disabled,
+.actiosn button:disabled:is(:hover, :active) {
+  background-color: hsl(17, 22%, 35%);
+  border-color: hsl(17, 22%, 35%);
+  cursor: not-allowed;
+  color: rgb(219, 219, 219);
+}
+
+.actions button.return {
+  font-weight: 400;
+  color: #5f1c01;
+  border: 1px solid #5f1c01;
+  background-color: transparent;
+  flex-shrink: 2;
+}
+
+.actions button.return:hover {
+  color: white;
+  background-color: #5f1c01;
+}
