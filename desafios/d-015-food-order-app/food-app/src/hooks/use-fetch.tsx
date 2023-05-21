@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios, {AxiosResponse} from "axios";
 
 interface RequestedData {
   [key: string]: {
@@ -19,11 +19,13 @@ export default function useFetch({ url, requestMethod, requestMessage }: useFetc
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [requestedData, setRequestedData] = useState<RequestedData | null>(null);
+  const [isSucessRequest, setIsSucessRequest] = useState(false)
 
   useEffect(() => {
     (async function () {
       try {
         let dataRequest: RequestedData;
+        let axiosResponse: AxiosResponse<any, any>;
         setIsLoading(true);
 
         switch (requestMethod) {
@@ -38,6 +40,10 @@ export default function useFetch({ url, requestMethod, requestMessage }: useFetc
           default:
             throw new Error(`${requestMethod} isn't a supported request type`);
         }
+        if (axiosResponse.status < 400) {
+          setIsSucessRequest(true)
+        }
+
         setRequestedData(dataRequest);
       } 
       
@@ -51,6 +57,7 @@ export default function useFetch({ url, requestMethod, requestMessage }: useFetc
       
       finally {
         setIsLoading(false);
+          
       }
     })();
   }, [url]);
