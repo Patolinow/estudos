@@ -11,8 +11,8 @@ interface RequestedData {
 
 interface useFetchProps {
   url: string;
-  requestMethod: "GET" | "POST_FORM";
-  requestMessage?: string;
+  requestMethod: "GET" | "POST";
+  requestMessage?: unknown;
 }
 
 export default function useFetch({ url, requestMethod, requestMessage }: useFetchProps) {
@@ -30,13 +30,15 @@ export default function useFetch({ url, requestMethod, requestMessage }: useFetc
 
         switch (requestMethod) {
           case "GET":
-            dataRequest = await (await axios.get(url)).data;
-
+            axiosResponse = await axios.get(url)
+            dataRequest = await axiosResponse.data;
             break;
 
-          case "POST_FORM":
-            dataRequest = await (await axios.postForm(url, requestMessage)).data;
+          case "POST":
+            axiosResponse = await axios.post(url, JSON.stringify(requestMessage))
+            dataRequest = await axiosResponse.data;
             break;
+
           default:
             throw new Error(`${requestMethod} isn't a supported request type`);
         }
@@ -62,5 +64,5 @@ export default function useFetch({ url, requestMethod, requestMessage }: useFetc
     })();
   }, [url]);
 
-  return { isLoading, errorMessage, requestedData };
+  return { isLoading, errorMessage, requestedData, isSucessRequest };
 }
