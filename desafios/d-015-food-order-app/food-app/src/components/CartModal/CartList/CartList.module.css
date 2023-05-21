@@ -1,6 +1,6 @@
 .cart-items {
   max-height: 30rem;
-  padding: 0 1rem;
+  padding: 0 1rem 7.25rem;
   overflow: auto;
 }
 
@@ -10,11 +10,12 @@
   align-items: center;
   font-weight: bold;
   font-size: 1.2rem;
-  margin: 1rem 0;
+  margin:0 1rem 0.5rem 0;
 }
 
 .actions {
   text-align: right;
+  margin-right: 1rem;
 }
 
 .actions button {
@@ -39,6 +40,17 @@
 .actions .order {
   background-color: #8a2b06;
   color: white;
+}
+
+.total-and-actions {
+  background-color: white;
+  border-radius: 24px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 96%;
+  padding: 0 0 1rem 1rem;
+  padding-right: 0;
 }
 
 @media screen and (max-width: 768px) {
