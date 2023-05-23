@@ -2,12 +2,13 @@ import styles from "./CartForm.module.css";
 import Button from "../../UI/Button/Button";
 import { useState } from "react";
 import useInputChecker from "../../../hooks/use-inputChecker";
-
+import FormDataProps from "../../../interfaces/FormData";
 interface CartFormProps {
   onProceedReturn: () => void;
+  onOrder: (formData: FormDataProps) => void;
 }
 
-const CartForm = ({onProceedReturn}:CartFormProps) => {
+const CartForm = ({ onProceedReturn, onOrder }: CartFormProps) => {
   const [name, setName] = useState("");
   const nameCodition = name.length > 2 && name.length <= 50;
   const nameChecked = useInputChecker({
@@ -28,18 +29,18 @@ const CartForm = ({onProceedReturn}:CartFormProps) => {
     styles,
   });
 
-  const [phone, setPhone] = useState("");
-  const phoneRegex = /^[1-9]{2} (?:[2-8]|9[1-9])[0-9]{3} [0-9]{4}$/;
-  const phoneCondition = phone.match(phoneRegex) ? true : false;
-  const phoneChecked = useInputChecker({
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const phoneNumberRegex = /^[1-9]{2} (?:[2-8]|9[1-9])[0-9]{3} [0-9]{4}$/;
+  const phoneNumberCondition = phoneNumber.match(phoneNumberRegex) ? true : false;
+  const phoneNumberChecked = useInputChecker({
     inputName: "Phone",
-    inputCondition: phoneCondition,
-    setInput: setPhone,
+    inputCondition: phoneNumberCondition,
+    setInput: setPhoneNumber,
     styles,
   });
 
   const [address, setAddress] = useState("");
-  const addressCondition = address.length > 5  && address.length <= 100;
+  const addressCondition = address.length > 5 && address.length <= 100;
   const addressChecked = useInputChecker({
     inputName: "Address",
     inputCondition: addressCondition,
@@ -47,13 +48,22 @@ const CartForm = ({onProceedReturn}:CartFormProps) => {
     styles,
   });
 
-  const isValidSubmit = nameCodition && emailCondition && phoneCondition && addressCondition;
+  const isValidSubmit = nameCodition && emailCondition && phoneNumberCondition && addressCondition;
   const submitHandler: React.FormEventHandler = (event) => {
     event.preventDefault();
 
     if (!isValidSubmit) {
       return;
     }
+
+    const formData: FormDataProps = {
+      name,
+      email,
+      phoneNumber,
+      address,
+    };
+
+    onOrder(formData)
   };
 
   return (
@@ -75,7 +85,7 @@ const CartForm = ({onProceedReturn}:CartFormProps) => {
       <div className={`${styles["form-group"]} ${emailChecked.hasInvalidClass}`}>
         <label htmlFor="email">Email</label>
         <input
-        placeholder="example@gmail.com"
+          placeholder="example@gmail.com"
           type="email"
           name="email"
           id="email"
@@ -86,24 +96,24 @@ const CartForm = ({onProceedReturn}:CartFormProps) => {
         {emailChecked.inputError}
       </div>
 
-      <div className={`${styles["form-group"]} ${phoneChecked.hasInvalidClass}`}>
+      <div className={`${styles["form-group"]} ${phoneNumberChecked.hasInvalidClass}`}>
         <label htmlFor="phone">Phone number</label>
         <input
           placeholder="71 98765 4321"
           type="tel"
           name="phone"
           id="phone"
-          onChange={phoneChecked.changeHandler}
-          onBlur={phoneChecked.blurHandler}
-          value={phone}
+          onChange={phoneNumberChecked.changeHandler}
+          onBlur={phoneNumberChecked.blurHandler}
+          value={phoneNumber}
         />
-        {phoneChecked.inputError}
+        {phoneNumberChecked.inputError}
       </div>
 
       <div className={`${styles["form-group"]} ${addressChecked.hasInvalidClass}`}>
         <label htmlFor="address">Full address</label>
         <input
-        placeholder="1600 Pennsylvania Ave NW, Washington"
+          placeholder="1600 Pennsylvania Ave NW, Washington"
           type="text"
           name="address"
           id="address"
@@ -115,8 +125,12 @@ const CartForm = ({onProceedReturn}:CartFormProps) => {
       </div>
 
       <div className={styles.actions}>
-        <Button className={styles.return} onClick={onProceedReturn}>Return</Button>
-        <Button disabled={!isValidSubmit} type="submit">Order</Button>
+        <Button className={styles.return} onClick={onProceedReturn}>
+          Return
+        </Button>
+        <Button disabled={!isValidSubmit} type="submit">
+          Order
+        </Button>
       </div>
     </form>
   );
