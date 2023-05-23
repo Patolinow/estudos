@@ -1,6 +1,6 @@
 import styles from "./CartModal.module.css";
 import CartList from "./CartList/CartList";
-import CartForm from "./CartForm/CartForm";
+import ManageCartForm from "./ManageCartForm/ManageCartForm";
 import ReactDOM from "react-dom";
 import { useState } from "react";
 
@@ -22,7 +22,7 @@ const PortalCartModal = ({onClose}:CartModalProps): JSX.Element => {
 
   return (
       <div className={styles.modal}>
-        {showCartList ? <CartList onClose={onClose} onProceedReturn={proceedReturnHandler}/> : <CartForm onProceedReturn={proceedReturnHandler}/>}
+        {showCartList ? <CartList onClose={onClose} onProceedReturn={proceedReturnHandler}/> : <ManageCartForm onClose={onClose} onProceedReturn={proceedReturnHandler}/>}
       </div>
   );
 };
