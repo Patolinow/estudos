@@ -2,7 +2,7 @@ import styles from "./CartList.module.css";
 import Button from "../../UI/Button/Button";
 import CartItem from "../CartItem/CartItem";
 import CartContext from "../../contexts/CartContext";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 
 interface CartListProps {
   onClose(): void;
@@ -16,18 +16,22 @@ const CartList = ({ onClose, onProceedReturn }: CartListProps): JSX.Element => {
   const increaseHandler = cartContext.onIncrease;
   const resetHandler = cartContext.onReset;
 
+  const dontHasMeals = <h1 className={styles["no-meals"]}>There are no meals yet</h1>
+  const hasMeals =  <ul>
+  {cartContext.meals.map((meal) => (
+    <CartItem
+      key={meal.id}
+      meal={meal}
+      onDecrease={decreaseHandler}
+      onIncrease={increaseHandler}
+    />
+  ))}
+</ul>
+
   return (
     <div className={styles["cart-items"]}>
-      <ul>
-        {cartContext.meals.map((meal) => (
-          <CartItem
-            key={meal.id}
-            meal={meal}
-            onDecrease={decreaseHandler}
-            onIncrease={increaseHandler}
-          />
-        ))}
-      </ul>
+     
+     {cartContext.meals.length ? hasMeals : dontHasMeals}
 
       <div className={styles["total-and-actions"]}>
         <div className={styles.total}>
