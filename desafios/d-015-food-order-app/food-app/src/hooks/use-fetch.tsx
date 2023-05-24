@@ -1,68 +1,71 @@
-import { useEffect, useState } from "react";
-import axios, {AxiosResponse} from "axios";
+import { useCallback, useState } from "react";
+import axios, { AxiosResponse } from "axios";
+import RequestedData from "../interfaces/RequestedData";
 
-interface RequestedData {
-  [key: string]: {
-    description: string;
-    name: string;
-    price: number;
-  };
-}
-
-interface useFetchProps {
+interface UseFetchProps {
   url: string;
   requestMethod: "GET" | "POST";
   requestMessage?: unknown;
 }
 
-export default function useFetch({ url, requestMethod, requestMessage }: useFetchProps) {
-  const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [requestedData, setRequestedData] = useState<RequestedData | null>(null);
-  const [isSucessRequest, setIsSucessRequest] = useState(false)
+interface FetchState {
+  isLoading: boolean;
+  errorMessage: string | null;
+  requestedData: RequestedData | null;
+  isSuccessRequest: boolean;
+}
 
-  useEffect(() => {
-    (async function () {
-      try {
-        let dataRequest: RequestedData;
-        let axiosResponse: AxiosResponse<any, any>;
-        setIsLoading(true);
+export default function useFetch() {
+  const [response, setResponse] = useState<FetchState>({
+    isLoading: false,
+    errorMessage: null,
+    requestedData: null,
+    isSuccessRequest: false,
+  });
 
-        switch (requestMethod) {
-          case "GET":
-            axiosResponse = await axios.get(url)
-            dataRequest = await axiosResponse.data;
-            break;
+  const sendRequest = useCallback(async ({ url, requestMethod, requestMessage }: UseFetchProps) => {
+    setResponse((prevState) => ({
+      ...prevState,
+      isLoading: true,
+    }));
 
-          case "POST":
-            axiosResponse = await axios.post(url, JSON.stringify(requestMessage))
-            dataRequest = await axiosResponse.data;
-            break;
+    try {
+      let axiosResponse: AxiosResponse<any, any>;
 
-          default:
-            throw new Error(`${requestMethod} isn't a supported request type`);
-        }
-        if (axiosResponse.status < 400) {
-          setIsSucessRequest(true)
-        }
+      switch (requestMethod) {
+        case "GET":
+          axiosResponse = await axios.get(url);
+          break;
 
-        setRequestedData(dataRequest);
-      } 
-      
-      catch (error) {
-        if (axios.isAxiosError(error)) {
-          setErrorMessage(error.message);
-        } else {
-          throw new Error("not axios error (fix later with error boundary)");
-        }
-      } 
-      
-      finally {
-        setIsLoading(false);
-          
+        case "POST":
+          axiosResponse = await axios.post(url, JSON.stringify(requestMessage));
+          break;
+
+        default:
+          throw new Error(`${requestMethod} isn't a supported request type`);
       }
-    })();
-  }, [url]);
 
-  return { isLoading, errorMessage, requestedData, isSucessRequest };
+      setResponse({
+        isLoading: false,
+        errorMessage: null,
+        requestedData: axiosResponse.data,
+        isSuccessRequest: true,
+      });
+    }
+    
+    catch (error) {
+      if (axios.isAxiosError(error)) {
+        const err = error;
+        setResponse((prevState) => ({
+          ...prevState,
+          isLoading: false,
+          errorMessage: err.message,
+        }));
+      } else {
+        throw new Error("not axios error (fix later with error boundary)");
+      }
+    }
+  }, []);
+
+  return { ...response, sendRequest };
 }
