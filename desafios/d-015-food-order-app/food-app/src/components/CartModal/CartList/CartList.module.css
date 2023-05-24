@@ -1,7 +1,16 @@
 .cart-items {
-  max-height: 30rem;
-  padding: 0 1rem 7.25rem;
-  overflow: auto;
+  min-height: 32rem;
+}
+
+.cart-items ul {
+  overflow-y: scroll;
+  padding: 0 1rem;
+  max-height: 24rem;
+}
+
+.no-meals {
+  text-align: center;
+  margin: 1rem 0;
 }
 
 .total {
@@ -10,7 +19,7 @@
   align-items: center;
   font-weight: bold;
   font-size: 1.2rem;
-  margin:0 1rem 0.5rem 0;
+  margin:0 1rem 0.5rem 1rem;
 }
 
 .actions {
@@ -44,13 +53,12 @@
 
 .total-and-actions {
   background-color: white;
-  border-radius: 24px;
+  border-radius: 0 0 1.5rem 1.5rem;
   position: fixed;
   left: 0;
   bottom: 0;
-  width: 96%;
-  padding: 0 0 1rem 1rem;
-  padding-right: 0;
+  width: 100%;
+  padding: 0 1rem 1rem 0.5rem;
 }
 
 @media screen and (max-width: 768px) {
