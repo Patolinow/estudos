@@ -1,11 +1,7 @@
 import classes from './CartItem.module.css';
-import IItemProps from '../../interfaces/itemProps';
+import ICartItemProps from '../../interfaces/ICartItemProps';
 
-interface ICartItemProps {
-  item: IItemProps
-}
-
-const CartItem = ({item}:ICartItemProps) => {
+const CartItem = ({item}:{item:ICartItemProps}) => {
 
   return (
     <li className={classes.item}>

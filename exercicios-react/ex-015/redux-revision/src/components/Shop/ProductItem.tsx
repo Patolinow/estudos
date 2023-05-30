@@ -1,6 +1,6 @@
 import Card from '../UI/Card';
 import classes from './ProductItem.module.css';
-import IItemProps from '../../interfaces/itemProps';
+import IItemProps from '../../interfaces/IitemProps';
 
 const ProductItem = ({title, price, description}:IItemProps) => {
  
