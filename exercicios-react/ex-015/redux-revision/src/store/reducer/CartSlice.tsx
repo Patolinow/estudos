@@ -8,11 +8,8 @@ export interface ICartInitalState {
 }
 const initialState: ICartInitalState = {isOpen: false, items: [], totalQuantity: 0}
 const cartSlice = createSlice({name:"cart", initialState, reducers:{
-  open: (state) => {
-    state.isOpen = true
-  },
-  close: (state) => {
-    state.isOpen = false
+  openClose: (state) => {
+    state.isOpen = !state.isOpen
   },
   addToCart: (state, action: PayloadAction<ICartItemProps>) => {
     const itemIndex = state.items.findIndex(item => item.id === action.payload.id)
@@ -20,21 +17,37 @@ const cartSlice = createSlice({name:"cart", initialState, reducers:{
     if (itemIndex !== -1) {
       const actualItem = state.items[itemIndex]
 
-      actualItem.quantity += 1
+      actualItem.quantity += action.payload.quantity
       actualItem.total = actualItem.quantity * actualItem.price
     }
     else {
       state.items.unshift(action.payload)
     }
+
+    state.totalQuantity = state.items.reduce((total, item) => total + item.quantity,0)
   },
   changeQuantity:(state, action: PayloadAction<{id: string, type: "increase" | "decrease"}>) => {
     const itemIndex = state.items.findIndex(item => item.id === action.payload.id)
     const actualItem = state.items[itemIndex]
 
-    action.payload.type === "increase" ? actualItem.quantity += 1 : actualItem.quantity -= 1
+    switch (action.payload.type) {
+      case "increase":
+      actualItem.quantity += 1
+      break
+
+      case "decrease":
+      actualItem.quantity -= 1
+      state.items = state.items.filter(item => item.quantity > 0)
+      break
+
+      default:
+        throw new Error(`${action.payload.type} isn't a valid type`);
+        
+    }
     
     actualItem.total = actualItem.quantity * actualItem.price
+    state.totalQuantity = state.items.reduce((total, item) => total + item.quantity, 0)
   }
 }})
-
+export const cartActions = cartSlice.actions
 export default cartSlice.reducer

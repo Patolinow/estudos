@@ -1,5 +1,5 @@
-import ProductItem from './ProductItem';
-import classes from './Products.module.css';
+import ProductItem from "./ProductItem"
+import classes from "./Products.module.css"
 
 const Products = () => {
   return (
@@ -7,18 +7,20 @@ const Products = () => {
       <h2>Buy your favorite products</h2>
       <ul>
         <ProductItem
-          title='Test'
+          id={Math.random().toString()}
+          title="Test"
           price={6}
-          description='This is a first product - amazing!'
+          description="This is a first product - amazing!"
         />
         <ProductItem
-          title='Second Test'
+          id={Math.random().toString()}
+          title="Second Test"
           price={3}
-          description='This is a the second product - not as amazing as the first'
+          description="This is a the second product - not as amazing as the first"
         />
       </ul>
     </section>
-  );
-};
+  )
+}
 
-export default Products;
+export default Products

@@ -1,9 +1,14 @@
 import Card from '../UI/Card';
 import classes from './ProductItem.module.css';
 import IItemProps from '../../interfaces/IitemProps';
+import { useAppDispatch } from '../../hooks/use-redux';
+import { cartActions } from '../../store/reducer/CartSlice';
 
-const ProductItem = ({title, price, description}:IItemProps) => {
- 
+const ProductItem = ({id, title, price, description}:IItemProps) => {
+ const dispatch = useAppDispatch()
+ const clickHandler = () => {
+  dispatch(cartActions.addToCart({id, title, price, quantity: 1, total: price}))
+ }
 
   return (
     <li className={classes.item}>
@@ -14,7 +19,7 @@ const ProductItem = ({title, price, description}:IItemProps) => {
         </header>
         <p>{description}</p>
         <div className={classes.actions}>
-          <button>Add to Cart</button>
+          <button onClick={clickHandler}>Add to Cart</button>
         </div>
       </Card>
     </li>
