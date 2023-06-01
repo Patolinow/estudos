@@ -1,7 +1,7 @@
 import classes from './CartItem.module.css';
 import ICartItemProps from '../../interfaces/ICartItemProps';
 import { useAppDispatch } from '../../hooks/use-redux';
-import { cartActions } from '../../store/reducer/CartSlice';
+import { cartActions } from '../../store/reducers/CartSlice';
 
 const CartItem = ({item}:{item:ICartItemProps}) => {
   const dispatch = useAppDispatch()

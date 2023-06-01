@@ -1,8 +1,10 @@
 import classes from './CartButton.module.css';
-import { useAppDispatch } from '../../hooks/use-redux';
-import { cartActions } from '../../store/reducer/CartSlice';
+import { useAppDispatch, useAppSelector } from '../../hooks/use-redux';
+import { cartActions } from '../../store/reducers/CartSlice';
+
 
 const CartButton = () => {
+  const totalQuantity = useAppSelector(state => state.cart.totalQuantity)
   const dispatch = useAppDispatch()
   
   const clickHandler = () => {
@@ -12,7 +14,7 @@ const CartButton = () => {
   return (
     <button className={classes.button} onClick={clickHandler}>
       <span>My Cart</span>
-      <span className={classes.badge}></span>
+      <span className={classes.badge}>{totalQuantity}</span>
     </button>
   );
 };
