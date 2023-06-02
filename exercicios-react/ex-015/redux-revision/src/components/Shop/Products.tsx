@@ -7,13 +7,13 @@ const Products = () => {
       <h2>Buy your favorite products</h2>
       <ul>
         <ProductItem
-          id={Math.random().toString()}
+          id="i1"
           title="Test"
           price={6}
           description="This is a first product - amazing!"
         />
         <ProductItem
-          id={Math.random().toString()}
+          id="i2"
           title="Second Test"
           price={3}
           description="This is a the second product - not as amazing as the first"
