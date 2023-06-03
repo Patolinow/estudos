@@ -1,14 +1,16 @@
-import Card from '../UI/Card';
-import classes from './ProductItem.module.css';
-import IItemProps from '../../interfaces/IitemProps';
-import { useAppDispatch } from '../../hooks/use-redux';
-import { cartActions } from '../../store/reducers/CartSlice';
+import Card from "../UI/Card"
+import classes from "./ProductItem.module.css"
+import IItemProps from "../../interfaces/IitemProps"
+import { useAppDispatch } from "../../hooks/use-redux"
+import { cartActions } from "../../store/reducers/CartSlice"
 
-const ProductItem = ({id, title, price, description}:IItemProps) => {
- const dispatch = useAppDispatch()
- const clickHandler = () => {
-  dispatch(cartActions.addToCart({id, title, price, quantity: 1, total: price}))
- }
+const ProductItem = ({ id, title, price, description }: IItemProps) => {
+  const dispatch = useAppDispatch()
+  const clickHandler = () => {
+    dispatch(
+      cartActions.addToCart({ id, title, price, quantity: 1, total: price }),
+    )
+  }
 
   return (
     <li className={classes.item}>
@@ -23,7 +25,7 @@ const ProductItem = ({id, title, price, description}:IItemProps) => {
         </div>
       </Card>
     </li>
-  );
-};
+  )
+}
 
-export default ProductItem;
+export default ProductItem

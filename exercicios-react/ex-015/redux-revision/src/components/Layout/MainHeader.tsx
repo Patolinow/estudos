@@ -1,5 +1,5 @@
-import CartButton from '../Cart/CartButton';
-import classes from './MainHeader.module.css';
+import CartButton from "../Cart/CartButton"
+import classes from "./MainHeader.module.css"
 
 const MainHeader = () => {
   return (
@@ -13,7 +13,7 @@ const MainHeader = () => {
         </ul>
       </nav>
     </header>
-  );
-};
+  )
+}
 
-export default MainHeader;
+export default MainHeader

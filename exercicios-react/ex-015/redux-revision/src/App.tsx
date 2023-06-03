@@ -12,7 +12,6 @@ function App() {
   const cart = useAppSelector((state) => state.cart)
   const dispatch = useAppDispatch()
 
-
   useEffect(() => {
     if (isInitial) {
       isInitial = false
@@ -22,15 +21,18 @@ function App() {
     if (cart.changed) {
       dispatch(sendCartData(cart))
     }
-  },[cart, dispatch])
-  
+  }, [cart, dispatch])
 
   return (
-        <Layout>
-          <Notification title="Something went wrong" message={cart.error.message} isOpen={cart.error.isOpen} />
-          {cart.isOpen && <Cart />}
-          <Products />
-        </Layout>
+    <Layout>
+      <Notification
+        title="Something went wrong"
+        message={cart.error.message}
+        isOpen={cart.error.isOpen}
+      />
+      {cart.isOpen && <Cart />}
+      <Products />
+    </Layout>
   )
 }
 

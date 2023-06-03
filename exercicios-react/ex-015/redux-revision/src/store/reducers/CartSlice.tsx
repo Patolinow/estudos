@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 import ICartItemProps from "../../interfaces/ICartItemProps"
-import  ICartInitalState  from "../../interfaces/ICartInitialState"
+import ICartInitalState from "../../interfaces/ICartInitialState"
 
 interface IChangeQuantityPayload {
   id: string
@@ -15,7 +15,7 @@ const initialState: ICartInitalState = {
     isOpen: false,
     message: "",
   },
-  changed: false
+  changed: false,
 }
 const cartSlice = createSlice({
   name: "cart",

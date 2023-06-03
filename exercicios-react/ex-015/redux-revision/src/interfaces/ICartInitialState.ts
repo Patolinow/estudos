@@ -8,5 +8,5 @@ export default interface ICartInitalState {
     isOpen: boolean
     message: string
   }
-  changed:boolean
+  changed: boolean
 }

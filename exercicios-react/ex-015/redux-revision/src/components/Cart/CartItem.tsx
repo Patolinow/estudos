@@ -1,16 +1,16 @@
-import classes from './CartItem.module.css';
-import ICartItemProps from '../../interfaces/ICartItemProps';
-import { useAppDispatch } from '../../hooks/use-redux';
-import { cartActions } from '../../store/reducers/CartSlice';
+import classes from "./CartItem.module.css"
+import ICartItemProps from "../../interfaces/ICartItemProps"
+import { useAppDispatch } from "../../hooks/use-redux"
+import { cartActions } from "../../store/reducers/CartSlice"
 
-const CartItem = ({item}:{item:ICartItemProps}) => {
+const CartItem = ({ item }: { item: ICartItemProps }) => {
   const dispatch = useAppDispatch()
   const increaseHandler = () => {
-    dispatch(cartActions.changeQuantity({id: item.id, type: 'increase'}))
+    dispatch(cartActions.changeQuantity({ id: item.id, type: "increase" }))
   }
 
   const decreaseHandler = () => {
-    dispatch(cartActions.changeQuantity({id: item.id, type: "decrease"}))
+    dispatch(cartActions.changeQuantity({ id: item.id, type: "decrease" }))
   }
 
   return (
@@ -18,8 +18,10 @@ const CartItem = ({item}:{item:ICartItemProps}) => {
       <header>
         <h3>{item.title}</h3>
         <div className={classes.price}>
-          ${item.total?.toFixed(2)}{' '}
-          <span className={classes.itemprice}>(${item.price.toFixed(2)}/item)</span>
+          ${item.total?.toFixed(2)}{" "}
+          <span className={classes.itemprice}>
+            (${item.price.toFixed(2)}/item)
+          </span>
         </div>
       </header>
       <div className={classes.details}>
@@ -32,7 +34,7 @@ const CartItem = ({item}:{item:ICartItemProps}) => {
         </div>
       </div>
     </li>
-  );
-};
+  )
+}
 
-export default CartItem;
+export default CartItem
