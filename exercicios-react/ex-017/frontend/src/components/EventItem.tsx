@@ -1,6 +1,7 @@
+import IEventProps from '../interfaces/IEventsProps';
 import classes from './EventItem.module.css';
 
-function EventItem({ event }) {
+function EventItem(event:IEventProps) {
   function startDeleteHandler() {
     // ...
   }
