@@ -19,7 +19,7 @@ const EventsProvider = (props: PropsWithChildren) => {
 
   useEffect(() => {
     const url = "http://localhost:8080/events";
-    sendRequest({ url, method: "GET" });
+    sendRequest( url, "GET" );
   }, [sendRequest]);
 
   return (

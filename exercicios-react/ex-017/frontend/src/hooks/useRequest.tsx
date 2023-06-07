@@ -22,7 +22,7 @@ const useRequest = () => {
     errorMessage: null,
   });
 
-  const sendRequest = useCallback(async ({ url, method, dataToSend }: IRequestProps) => {
+  const sendRequest = useCallback(async ( url:string, method: Methods, dataToSend?: unknown ) => {
     try {
       setResponse((prevResponse) => {return {...prevResponse, isLoading: true} });
       let axiosResponse: AxiosResponse<any, any>;
