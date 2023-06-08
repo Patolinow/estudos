@@ -6,7 +6,7 @@ import { Methods } from '../interfaces/Methods';
 
 interface IEventFormProps {
   event: IEventProps;
-  method: Methods; //tenho q mudar dps q eu descobrir pra q serve o method
+  method?: Methods; //tenho q mudar dps q eu descobrir pra q serve o method
 }
 
 function EventForm({ method, event }:IEventFormProps) {
@@ -14,26 +14,25 @@ function EventForm({ method, event }:IEventFormProps) {
   function cancelHandler() {
     navigate('..');
   }
-  const newEv = event // so pra parar de aparecer o erro, tenho q tirar dps
   
 
   return (
     <form className={classes.form}>
       <p>
         <label htmlFor="title">Title</label>
-        <input id="title" type="text" name="title" required />
+        <input id="title" type="text" name="title" required defaultValue={event.title}/>
       </p>
       <p>
         <label htmlFor="image">Image</label>
-        <input id="image" type="url" name="image" required />
+        <input id="image" type="url" name="image" required  defaultValue={event.image}/>
       </p>
       <p>
         <label htmlFor="date">Date</label>
-        <input id="date" type="date" name="date" required />
+        <input id="date" type="date" name="date" required defaultValue={event.date}/>
       </p>
       <p>
         <label htmlFor="description">Description</label>
-        <textarea id="description" name="description" rows={5} required />
+        <textarea id="description" name="description" rows={5} required defaultValue={event.description}/>
       </p>
       <div className={classes.actions}>
         <button type="button" onClick={cancelHandler}>
