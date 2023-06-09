@@ -22,9 +22,11 @@ const useRequest = () => {
     errorMessage: null,
   });
 
-  const sendRequest = useCallback(async ( url:string, method: Methods, dataToSend?: unknown ) => {
+  const sendRequest = useCallback(async (url: string, method: Methods, dataToSend?: unknown) => {
     try {
-      setResponse((prevResponse) => {return {...prevResponse, isLoading: true} });
+      setResponse((prevResponse) => {
+        return { ...prevResponse, isLoading: true };
+      });
       let axiosResponse: AxiosResponse<any, any>;
 
       switch (method) {
@@ -48,22 +50,18 @@ const useRequest = () => {
           throw new Error(`${method} isn't a valid method`);
       }
 
-      const axiosData: {events: IEventProps[]} = await axiosResponse.data
-      const events = axiosData.events
+      const axiosData: { events: IEventProps[] } = await axiosResponse.data;
+      const events = axiosData.events;
 
       setResponse({
         errorMessage: null,
         events,
         isLoading: false,
       });
-    }
-    
-    catch (error) {
+    } catch (error) {
       if (isAxiosError(error)) {
         setResponse({ isLoading: false, errorMessage: error.message, events: null });
-      }
-      
-      else {
+      } else {
         throw new Error(`${error}`);
       }
     }

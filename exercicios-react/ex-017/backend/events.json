@@ -1,18 +1,1 @@
-{
-  "events": [
-    {
-      "id": "e1",
-      "title": "A dummy event",
-      "date": "2023-02-22",
-      "image": "https://blog.hubspot.de/hubfs/Germany/Blog_images/Optimize_Marketing%20Events%20DACH%202021.jpg",
-      "description": "Join this amazing event and connect with fellow developers."
-    },
-    {
-      "id": "e2",
-      "title": "A new dummy event",
-      "date": "2023-06-06",
-      "image": "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      "description": "Happy birthday for you!"
-    }
-  ]
-}
+{"events":[{"title":"Vulcanos","date":"2023-05-17","description":"hot as fuck","image":"https://images.unsplash.com/photo-1618395134709-2ac91f08bdd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80","id":"f6db47a7-afb0-45e0-843f-99f6a4d9f22d"},{"title":"Mountains","date":"2023-06-01","description":"a lot of rock pilled","image":"https://images.unsplash.com/photo-1686079746732-ab2a86a36b82?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1529&q=80","id":"ba5741f3-d6d3-4d0d-8007-3c23a084a7e6"},{"title":"A desert","date":"2023-05-31","description":"Just a desert, without rivers on it.","image":"https://images.unsplash.com/photo-1682686580186-b55d2a91053c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1075&q=80","id":"f5b8b3f6-e7e7-4ee5-9659-4348e442c8bf"},{"id":"e1","title":"A dummy event","date":"2023-02-22","image":"https://blog.hubspot.de/hubfs/Germany/Blog_images/Optimize_Marketing%20Events%20DACH%202021.jpg","description":"Join this amazing event and connect with fellow developers."}]}

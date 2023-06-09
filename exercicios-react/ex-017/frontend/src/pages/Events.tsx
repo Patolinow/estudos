@@ -1,27 +1,35 @@
-import { useContext } from "react";
+import { useContext, Suspense } from "react";
 import { EventsContext } from "../contexts/EventsContext";
 import EventsList from "../components/EventsList";
-import { useLoaderData } from "react-router-dom";
+import { Await, defer, useLoaderData } from "react-router-dom";
 import IEventProps from "../interfaces/IEventsProps";
 import axios from "axios";
 
 const EventsPage = () => {
-  const dataLoaded = useLoaderData() as IEventProps[];
+  const { events } = useLoaderData() as { events: IEventProps[] };
 
-  console.log(dataLoaded);
   // const { errorMessage, events, isLoading } = useContext(EventsContext);
-  const eventsList = <EventsList events={dataLoaded} />;
   // const loading = isLoading ? <p>loading...</p> : undefined;
   // const error = errorMessage ? <p>{errorMessage}</p> : undefined;
 
-  return <div>{/*loading || error || */ eventsList}</div>;
+  return (
+    <Suspense fallback={<p>loading...</p>}>
+      <Await resolve={events}>{(loadedEvents) => <EventsList events={loadedEvents} />}</Await>
+    </Suspense>
+  );
 };
 
-export async function eventsLoader({}) {
+async function loader() {
   const url = "http://localhost:8080/events";
   const axiosResponse = await axios.get(url);
   const axiosData: { events: IEventProps[] } = await axiosResponse.data;
   return axiosData.events;
+}
+
+export function eventsLoader() {
+  return defer({
+    events: loader(),
+  });
 }
 
 export default EventsPage;

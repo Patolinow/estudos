@@ -5,7 +5,7 @@ import IEventProps from "../interfaces/IEventsProps"
 const EditEventPage = () => {
 
     const data = useRouteLoaderData('event-detail') as IEventProps
-  return (  <EventForm event={data} /> )
+  return (  <EventForm event={data} method="PATCH"/> )
 }
 
 export default EditEventPage
