@@ -16,7 +16,9 @@ const CartList = ({ onClose, onProceedReturn }: CartListProps): JSX.Element => {
   const increaseHandler = cartContext.onIncrease;
   const resetHandler = cartContext.onReset;
 
-  const dontHasMeals = <h1 className={styles["no-meals"]}>There are no meals yet</h1>
+  const dontHasMeals = <div className={styles["no-meals"]}>
+    <h1>There are no meals yet</h1>
+  </div>
   const hasMeals =  <ul>
   {cartContext.meals.map((meal) => (
     <CartItem
