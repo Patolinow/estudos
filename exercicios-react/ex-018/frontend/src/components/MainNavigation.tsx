@@ -1,9 +1,21 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useFetcher, useRouteLoaderData } from "react-router-dom";
 
 import classes from "./MainNavigation.module.css";
 import NewsletterSignup from "./NewsletterSignup";
 
 function MainNavigation() {
+  const token = useRouteLoaderData("home")
+  const fetcher = useFetcher();
+  const isLogged = !token ? (
+      <NavLink to="/auth" className={({ isActive }) => (isActive ? classes.active : "")}>
+        Login
+      </NavLink>
+  ) : (
+      <fetcher.Form className="form" method="post" action="/logout">
+        <button>Logout</button>
+      </fetcher.Form>
+  );
+
   return (
     <header className={classes.header}>
       <nav>
@@ -27,9 +39,7 @@ function MainNavigation() {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/auth" className={({ isActive }) => (isActive ? classes.active : "")}>
-              Login
-            </NavLink>
+            {isLogged}
           </li>
         </ul>
       </nav>

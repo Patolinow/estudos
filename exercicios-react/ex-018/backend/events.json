@@ -8,5 +8,21 @@
       "id": "2a42fcc4-ea21-4bdd-abf6-c40006dc66a9"
     }
   ],
-  "users": []
+  "users": [
+    {
+      "email": "sadasdas@SADADAS.com",
+      "password": "$2a$12$eRsA/3Nlsnz8f/Ot80C4V.iHhlPF1Sk6Rq/8GnBZvgIAR7iNrNuu.",
+      "id": "47afc216-2181-4c6d-9439-9a85d4faab21"
+    },
+    {
+      "email": "asdasd@dddd.com",
+      "password": "$2a$12$kxZpcYE1nLyW141RbZ8cUus/xJpigjoRRtaomgKjVysTnD5lXNYRO",
+      "id": "b8949e11-2c68-4137-9449-3809368ef87a"
+    },
+    {
+      "email": "teste@test.com",
+      "password": "$2a$12$mvlgDGgzh2YmZwnk5t6plOWt98Gb7FMFNIJTqszikCBKfRpsK.iy6",
+      "id": "6175435c-18b2-4e96-8729-726f27576850"
+    }
+  ]
 }

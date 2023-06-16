@@ -11,6 +11,7 @@ import {
 
 import classes from './EventForm.module.css';
 import { IEvent } from '../interfaces/Events';
+import { getAuthToken } from '../utils/auth';
 
 interface IEventFormProps {
   method: FormMethod;
@@ -109,10 +110,12 @@ export async function action({ request, params }:ActionFunctionArgs) {
     url = 'http://localhost:8080/events/' + eventId;
   }
 
+  const token = getAuthToken()
   const response = await fetch(url, {
     method: method,
     headers: {
       'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
     },
     body: JSON.stringify(eventData),
   });
