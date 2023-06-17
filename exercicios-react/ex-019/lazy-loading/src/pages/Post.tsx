@@ -1,7 +1,9 @@
 import { LoaderFunctionArgs, useLoaderData } from 'react-router-dom';
 
-import PostItem from '../components/PostItem';
+// import PostItem from '../components/PostItem';
 import { IPost } from '../interfaces/IPost';
+import { lazy } from 'react';
+const PostItem = lazy(() => import('../components/PostItem'))
 
 function PostPage() {
   const post = useLoaderData() as IPost
