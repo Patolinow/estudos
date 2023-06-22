@@ -1,6 +1,7 @@
 import IMeetup from '@/src/interfaces/IMeetup';
 import MeetupItem from './MeetupItem';
 import classes from './MeetupList.module.css';
+import axios from "axios"
 
 interface IMeetupListProps {
   meetups: IMeetup[]
@@ -16,6 +17,7 @@ function MeetupList(props: IMeetupListProps) {
           image={meetup.image}
           title={meetup.title}
           address={meetup.address}
+          description={meetup.description}
         />
       ))}
     </ul>

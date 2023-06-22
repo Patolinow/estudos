@@ -1,8 +1,16 @@
+"use client"
 import IMeetup from '@/src/interfaces/IMeetup';
 import Card from '../ui/Card';
 import classes from './MeetupItem.module.css';
+import { useRouter } from 'next/navigation';
+
 
 function MeetupItem(props:IMeetup) {
+  const router = useRouter()
+  function showDetailHandler() {
+    router.push('/' + props.id)
+  }
+
   return (
     <li className={classes.item}>
       <Card>
@@ -14,7 +22,7 @@ function MeetupItem(props:IMeetup) {
           <address>{props.address}</address>
         </div>
         <div className={classes.actions}>
-          <button>Show Details</button>
+          <button onClick={showDetailHandler}>Show Details</button>
         </div>
       </Card>
     </li>

@@ -1,9 +1,17 @@
-import styles from './page.module.css'
+import MeetupList from "@/src/components/meetups/MeetupList";
+import IMeetup from "@/src/interfaces/IMeetup";
+import axios from "axios";
 
-export default function Home() {
-  return (
-    <main style={styles}>
-    <h1>h1</h1>
-    </main>
-  )
+export default async function HomePage() {
+  const meetups: IMeetup[] = await getMeetups();
+  console.log(meetups)
+
+  return <MeetupList meetups={meetups} />;
+}
+
+async function getMeetups() {
+  const meetupsData = await axios.get(
+    "https://max-http-requests-default-rtdb.firebaseio.com/meetups.json");
+
+  return meetupsData.data;
 }
