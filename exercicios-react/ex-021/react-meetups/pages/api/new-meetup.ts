@@ -7,13 +7,11 @@ interface IReq {
   body: IMeetup;
 }
 
-export const revalidate = 0
-
 export default async function handler(req: IReq, res: any) {
   if (req.method === "POST") {
     const data = req.body;
 
-    const client = await MongoClient.connect("mongodb+srv://fabio:easypass@cluster0.uecpty7.mongodb.net/?retryWrites=true&w=majority")
+    const client = await MongoClient.connect(process.env.MONGO_KEYS ? process.env.MONGO_KEYS : "")
     const db = client.db()
 
     const meetupsCollection = db.collection("meetups")

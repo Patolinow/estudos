@@ -11,13 +11,9 @@ interface IGeneratedMetadataProps {
   searchParams: { [key: string]: string | string[] | undefined }
 }
 
-export const revalidate = 0
-
 export async function generateMetadata({params}:IGeneratedMetadataProps){
   
-  const client = await MongoClient.connect(
-    "mongodb+srv://fabio:easypass@cluster0.uecpty7.mongodb.net/?retryWrites=true&w=majority"
-  );
+  const client = await MongoClient.connect(process.env.MONGO_KEYS ? process.env.MONGO_KEYS : "");
   const db = client.db();
   const meetupsCollection = db.collection("meetups");
   const meetup = await meetupsCollection.findOne({_id: new ObjectId(params.meetupId)})
