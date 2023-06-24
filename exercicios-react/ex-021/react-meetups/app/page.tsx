@@ -2,7 +2,7 @@ import MeetupList from "@/src/components/meetups/MeetupList";
 import IMeetup from "@/src/interfaces/IMeetup";
 import { MongoClient } from "mongodb";
 
-// export const revalidadte = 60
+export const revalidate = 0
 
 export default async function HomePage() {
   const client = await MongoClient.connect(

@@ -7,6 +7,8 @@ interface IReq {
   body: IMeetup;
 }
 
+export const revalidate = 0
+
 export default async function handler(req: IReq, res: any) {
   if (req.method === "POST") {
     const data = req.body;

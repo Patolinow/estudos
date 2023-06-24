@@ -11,7 +11,7 @@ interface IGeneratedMetadataProps {
   searchParams: { [key: string]: string | string[] | undefined }
 }
 
-
+export const revalidate = 0
 
 export async function generateMetadata({params}:IGeneratedMetadataProps){
   
