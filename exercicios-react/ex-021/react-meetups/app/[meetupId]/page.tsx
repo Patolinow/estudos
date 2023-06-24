@@ -1,15 +1,71 @@
-import MeetupDetails from "@/src/components/meetups/MeetupDetails"
+import MeetupDetails from "@/src/components/meetups/MeetupDetails";
+import { MongoClient, ObjectId } from "mongodb";
+import { Metadata, ResolvingMetadata } from "next";
 
-export default function MeetupDetailsPage() {
-  const dummy = {
-    id: "m1",
-    title: 'A first meetup',
-    address: "somewhere else",
-    image: "https://plus.unsplash.com/premium_photo-1687148812314-dfc1c3bf1294?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1059&q=80",
-    description: "i don't know why but yes"
-  }
-  return <>
-  <MeetupDetails id={dummy.id} address={dummy.address} image={dummy.image} title={dummy.title} description={dummy.description}/>
-    
-  </>
+interface IParam {
+  meetupId: string;
+}
+
+interface IGeneratedMetadataProps {
+  params: { meetupId: string }
+  searchParams: { [key: string]: string | string[] | undefined }
+}
+
+
+
+export async function generateMetadata({params}:IGeneratedMetadataProps){
+  
+  const client = await MongoClient.connect(
+    "mongodb+srv://fabio:easypass@cluster0.uecpty7.mongodb.net/?retryWrites=true&w=majority"
+  );
+  const db = client.db();
+  const meetupsCollection = db.collection("meetups");
+  const meetup = await meetupsCollection.findOne({_id: new ObjectId(params.meetupId)})
+  client.close()
+  
+  const metadata:Metadata = {title: meetup?.title, description: meetup?.description}
+  return  metadata
+}
+
+export default async function MeetupDetailsPage({params}:{params: IParam}) {
+  // const meetupIdTransformed = (Number(params.meetupId.split("").slice(1, 2).join("")) - 1).toString()
+  // const meetup: IMeetup = await useGetMeetups("0");
+  // console.log(params)
+  
+  const client = await MongoClient.connect(
+    "mongodb+srv://fabio:easypass@cluster0.uecpty7.mongodb.net/?retryWrites=true&w=majority"
+  );
+  const db = client.db();
+  const meetupsCollection = db.collection("meetups");
+  const meetupsCollectionExtracted = await meetupsCollection.findOne({_id: new ObjectId(params.meetupId)})
+  client.close()
+
+  return (
+    <>
+      <MeetupDetails
+        id={params.meetupId}
+        address={meetupsCollectionExtracted?.address}
+        image={meetupsCollectionExtracted?.image}
+        title={meetupsCollectionExtracted?.title}
+        description={meetupsCollectionExtracted?.description}
+      />
+    </>
+  );
+}
+
+export async function generateStaticParams() {
+  const client = await MongoClient.connect(
+    "mongodb+srv://fabio:easypass@cluster0.uecpty7.mongodb.net/?retryWrites=true&w=majority"
+  );
+  const db = client.db();
+  const meetupsCollection = db.collection("meetups");
+  const meetupsCollectionExtracted = await meetupsCollection.find({}).project({_id: 1}).toArray()
+
+  // const meetups: IMeetup[] = await useGetMeetups();
+  const params: IParam[] = meetupsCollectionExtracted.map((meetup) => {
+    return { meetupId: meetup._id.toString() };
+  });
+
+  client.close()
+  return params;
 }
