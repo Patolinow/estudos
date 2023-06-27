@@ -28,9 +28,7 @@ export default async function MeetupDetailsPage({params}:{params: IParam}) {
   // const meetup: IMeetup = await useGetMeetups("0");
   // console.log(params)
   
-  const client = await MongoClient.connect(
-    "mongodb+srv://fabio:easypass@cluster0.uecpty7.mongodb.net/?retryWrites=true&w=majority"
-  );
+  const client = await MongoClient.connect(process.env.MONGO_KEYS ?? "");
   const db = client.db();
   const meetupsCollection = db.collection("meetups");
   const meetupsCollectionExtracted = await meetupsCollection.findOne({_id: new ObjectId(params.meetupId)})
@@ -50,9 +48,7 @@ export default async function MeetupDetailsPage({params}:{params: IParam}) {
 }
 
 export async function generateStaticParams() {
-  const client = await MongoClient.connect(
-    "mongodb+srv://fabio:easypass@cluster0.uecpty7.mongodb.net/?retryWrites=true&w=majority"
-  );
+  const client = await MongoClient.connect(process.env.MONGO_KEYS ?? "");
   const db = client.db();
   const meetupsCollection = db.collection("meetups");
   const meetupsCollectionExtracted = await meetupsCollection.find({}).project({_id: 1}).toArray()
