@@ -1,5 +1,4 @@
-import { describe, it, test, expect } from "vitest";
-import App from "./App";
+import { test, expect } from "vitest";
 
 test("first tests", () => {
   expect(1 + 1).toEqual(2);
