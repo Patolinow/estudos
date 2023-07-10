@@ -5,7 +5,7 @@ import RequestedData from "../interfaces/RequestedData";
 interface UseFetchProps {
   url: string;
   requestMethod: "GET" | "POST";
-  requestMessage?: unknown;
+  requestMessage?: object;
 }
 
 interface FetchState {
@@ -38,7 +38,8 @@ export default function useFetch() {
           break;
 
         case "POST":
-          axiosResponse = await axios.post(url, JSON.stringify(requestMessage));
+          axiosResponse = await axios.post(url, {googleAuth:  import.meta.env.VITE_AUTH_TOKEN,...requestMessage});
+          console.log({googleAuth: "asDuckWish" ,...requestMessage})
           break;
 
         default:
@@ -54,15 +55,16 @@ export default function useFetch() {
     }
     
     catch (error) {
+      const err = error as Error;
+
       if (axios.isAxiosError(error)) {
-        const err = error;
         setResponse((prevState) => ({
           ...prevState,
           isLoading: false,
           errorMessage: err.message,
         }));
       } else {
-        throw new Error("not axios error (fix later with error boundary)");
+        throw new Error(err.message);
       }
     }
   }, []);
