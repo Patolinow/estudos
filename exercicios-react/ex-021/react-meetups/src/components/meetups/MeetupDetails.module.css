@@ -1,8 +1,10 @@
 .detail {
   text-align: center;
+  margin: 3rem auto;
 }
 
 .detail img {
   width: 100%;
+  border-radius: 0.5rem;
 }
 

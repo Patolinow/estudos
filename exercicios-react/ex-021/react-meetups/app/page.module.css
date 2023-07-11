@@ -1,7 +1,14 @@
 .main {
-  margin: 3rem auto;
+  margin: 0 auto;
   width: 90%;
   max-width: 40rem;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 5rem);
 }
 
 .description {
