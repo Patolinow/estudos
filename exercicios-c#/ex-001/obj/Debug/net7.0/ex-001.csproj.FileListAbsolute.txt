@@ -1,0 +1,15 @@
+C:\Users\fabio\Desktop\estudos\exercicios-c#\ex-001\bin\Debug\net7.0\ex-001.exe
+C:\Users\fabio\Desktop\estudos\exercicios-c#\ex-001\bin\Debug\net7.0\ex-001.deps.json
+C:\Users\fabio\Desktop\estudos\exercicios-c#\ex-001\bin\Debug\net7.0\ex-001.runtimeconfig.json
+C:\Users\fabio\Desktop\estudos\exercicios-c#\ex-001\bin\Debug\net7.0\ex-001.dll
+C:\Users\fabio\Desktop\estudos\exercicios-c#\ex-001\bin\Debug\net7.0\ex-001.pdb
+C:\Users\fabio\Desktop\estudos\exercicios-c#\ex-001\obj\Debug\net7.0\ex-001.csproj.AssemblyReference.cache
+C:\Users\fabio\Desktop\estudos\exercicios-c#\ex-001\obj\Debug\net7.0\ex-001.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fabio\Desktop\estudos\exercicios-c#\ex-001\obj\Debug\net7.0\ex-001.AssemblyInfoInputs.cache
+C:\Users\fabio\Desktop\estudos\exercicios-c#\ex-001\obj\Debug\net7.0\ex-001.AssemblyInfo.cs
+C:\Users\fabio\Desktop\estudos\exercicios-c#\ex-001\obj\Debug\net7.0\ex-001.csproj.CoreCompileInputs.cache
+C:\Users\fabio\Desktop\estudos\exercicios-c#\ex-001\obj\Debug\net7.0\ex-001.dll
+C:\Users\fabio\Desktop\estudos\exercicios-c#\ex-001\obj\Debug\net7.0\refint\ex-001.dll
+C:\Users\fabio\Desktop\estudos\exercicios-c#\ex-001\obj\Debug\net7.0\ex-001.pdb
+C:\Users\fabio\Desktop\estudos\exercicios-c#\ex-001\obj\Debug\net7.0\ex-001.genruntimeconfig.cache
+C:\Users\fabio\Desktop\estudos\exercicios-c#\ex-001\obj\Debug\net7.0\ref\ex-001.dll
