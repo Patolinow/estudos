@@ -75,10 +75,37 @@ const routes: Routes = [
   ["MEX", "EZE"],
   ["LIM", "BKK"],
 ];
-export const adjacencyNodes: AdjacencyNodes = new Map();
+export const adjacencyNodes: AdjacencyNodes = defineNodes(airports, routes, new Map());
 const visitedList: VisitedNodes = new Set();
 
-export function breadthFirstSearch(from: string, to: string, adjacency: AdjacencyNodes): boolean {
+export function breadthFirstSearch(from: string, to: string, adjacencyList: AdjacencyNodes): boolean {
+  const queue = [from]
+  const visitedList: VisitedNodes = new Set()
+
+  while (queue.length !== 0) {
+    const actualNode = queue[0]
+    const actualAdjacencyList = adjacencyList?.get(actualNode)
+    queue.shift()
+    
+    console.log(`looking to the node ${actualNode}`)
+    
+    if (actualNode === to) {
+      console.log(`here's ${to}`)
+      return true
+    }
+
+    
+    const result = actualAdjacencyList?.forEach((actualAdjacency) => {
+      console.log(`now it's their children ${actualAdjacency}`)
+      
+
+      
+      if (!visitedList.has(actualAdjacency)) queue.push(actualAdjacency)
+      visitedList.add(actualNode)
+      
+    })
+  }
+
   return false;
 }
 
@@ -120,8 +147,6 @@ function depthFirstSearch(
   });
 }
 
-const list = defineNodes(airports, routes, adjacencyNodes);
-depthFirstSearch("PHX", visitedList, list);
 
 // wrong aproach
 // for (let i = 0; i < adjacency.length; i++) {

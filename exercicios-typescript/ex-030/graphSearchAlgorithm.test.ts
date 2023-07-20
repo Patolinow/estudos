@@ -1,7 +1,7 @@
 import { expect, test, describe } from "@jest/globals";
 import { breadthFirstSearch, adjacencyNodes } from "./graphSearchAlgorithm";
 
-describe.skip("Testing every single possible route", () => {
+describe("Testing every single possible route", () => {
   test("Route from PHX to BKK", () => {
     expect(breadthFirstSearch("PHX", "BKK", adjacencyNodes)).toBe(true);
   });
