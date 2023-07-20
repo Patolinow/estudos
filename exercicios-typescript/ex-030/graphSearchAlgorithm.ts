@@ -59,7 +59,8 @@
 
 type Airports = string[];
 type Routes = string[][];
-export type AdjacencyNodes = Map<string,string[]>
+export type AdjacencyNodes = Map<string, string[]>;
+type VisitedNodes = Set<string>;
 
 const airports: Airports = "PHX BKK OKC JFK LAX MEX EZE HEL LOS LAP LIM".split(" ");
 const routes: Routes = [
@@ -74,34 +75,53 @@ const routes: Routes = [
   ["MEX", "EZE"],
   ["LIM", "BKK"],
 ];
-export const adjacencyNodes: AdjacencyNodes = new Map()
+export const adjacencyNodes: AdjacencyNodes = new Map();
+const visitedList: VisitedNodes = new Set();
 
-
-
-export function hasRouteFrom(from: string, to: string, adjacency: AdjacencyNodes): boolean {
-
-  
+export function breadthFirstSearch(from: string, to: string, adjacency: AdjacencyNodes): boolean {
   return false;
 }
 
-// Saida => tds os nodes como adjacencyList 
-export function defineNodes(airports: Airports, routes: Routes, adjacencyList: AdjacencyNodes):AdjacencyNodes{
-    
-      for (const airport of airports) {
-        adjacencyList.set(airport, [])
-      }
+export function defineNodes(
+  airports: Airports,
+  routes: Routes,
+  adjacencyList: AdjacencyNodes
+): AdjacencyNodes {
+  for (const airport of airports) {
+    adjacencyList.set(airport, []);
+  }
 
-      routes.forEach((route) => {
-        adjacencyList.get(route[0])?.push(route[1])
-        adjacencyList.get(route[1])?.push(route[0])
-      })
-    
-  return adjacencyList
+  routes.forEach((route) => {
+    adjacencyList.get(route[0])?.push(route[1]);
+    adjacencyList.get(route[1])?.push(route[0]);
+  });
+
+  return adjacencyList;
 }
 
-const test = defineNodes(airports, routes, adjacencyNodes)
-console.log(test)
+function depthFirstSearch(
+  actualNode: string,
+  visitedNodes: VisitedNodes,
+  adjacencyList: AdjacencyNodes
+) {
+  const actualNodeAdjacencies = adjacencyList.get(actualNode);
 
+  if (actualNode === "BKK") {
+    console.log("reached bangkok");
+  }
+
+  console.log("actual airport: " + actualNode);
+
+  actualNodeAdjacencies?.forEach((adjacencyNode) => {
+    if (!visitedNodes.has(adjacencyNode)) {
+      visitedNodes.add(actualNode);
+      depthFirstSearch(adjacencyNode, visitedNodes, adjacencyList);
+    }
+  });
+}
+
+const list = defineNodes(airports, routes, adjacencyNodes);
+depthFirstSearch("PHX", visitedList, list);
 
 // wrong aproach
 // for (let i = 0; i < adjacency.length; i++) {
