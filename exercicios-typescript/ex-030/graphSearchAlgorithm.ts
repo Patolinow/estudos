@@ -75,7 +75,7 @@ export const routes: Routes = [
   ["MEX", "EZE"],
   ["LIM", "BKK"],
 ];
-export const adjacencyNodes: AdjacencyList = defineNodes(airports, routes);
+export const adjacencyList: AdjacencyList = defineNodes(airports, routes);
 
 // create a adjacency list based on the list of airports and routes
 export function defineNodes(airports: Airport[],routes: Routes): AdjacencyList {
