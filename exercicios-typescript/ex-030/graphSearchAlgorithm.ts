@@ -57,13 +57,13 @@
 //   }
 // }
 
-type Airports = string[];
+type Airport = string;
 type Routes = string[][];
-export type AdjacencyNodes = Map<string, string[]>;
+export type AdjacencyList = Map<string, string[]>;
 type VisitedNodes = Set<string>;
 
-const airports: Airports = "PHX BKK OKC JFK LAX MEX EZE HEL LOS LAP LIM".split(" ");
-const routes: Routes = [
+export const airports: Airport[] = "PHX BKK OKC JFK LAX MEX EZE HEL LOS LAP LIM".split(" ");
+export const routes: Routes = [
   ["PHX", "LAX"],
   ["PHX", "JFK"],
   ["JFK", "OKC"],
@@ -75,45 +75,12 @@ const routes: Routes = [
   ["MEX", "EZE"],
   ["LIM", "BKK"],
 ];
-export const adjacencyNodes: AdjacencyNodes = defineNodes(airports, routes, new Map());
-const visitedList: VisitedNodes = new Set();
+export const adjacencyNodes: AdjacencyList = defineNodes(airports, routes);
 
-export function breadthFirstSearch(from: string, to: string, adjacencyList: AdjacencyNodes): boolean {
-  const queue = [from]
-  const visitedList: VisitedNodes = new Set()
+// create a adjacency list based on the list of airports and routes
+export function defineNodes(airports: Airport[],routes: Routes): AdjacencyList {
+  const adjacencyList = new Map()
 
-  while (queue.length !== 0) {
-    const actualNode = queue[0]
-    const actualAdjacencyList = adjacencyList?.get(actualNode)
-    queue.shift()
-    
-    console.log(`looking to the node ${actualNode}`)
-    
-    if (actualNode === to) {
-      console.log(`here's ${to}`)
-      return true
-    }
-
-    
-    const result = actualAdjacencyList?.forEach((actualAdjacency) => {
-      console.log(`now it's their children ${actualAdjacency}`)
-      
-
-      
-      if (!visitedList.has(actualAdjacency)) queue.push(actualAdjacency)
-      visitedList.add(actualNode)
-      
-    })
-  }
-
-  return false;
-}
-
-export function defineNodes(
-  airports: Airports,
-  routes: Routes,
-  adjacencyList: AdjacencyNodes
-): AdjacencyNodes {
   for (const airport of airports) {
     adjacencyList.set(airport, []);
   }
@@ -126,34 +93,56 @@ export function defineNodes(
   return adjacencyList;
 }
 
-function depthFirstSearch(
-  actualNode: string,
-  visitedNodes: VisitedNodes,
-  adjacencyList: AdjacencyNodes
-) {
-  const actualNodeAdjacencies = adjacencyList.get(actualNode);
+// executes a BFS
+export function breadthFirstSearch(from: Airport, to: Airport, adjacencyList: AdjacencyList): boolean {
+  const queue: Airport[] = [from]
+  const visitedList: VisitedNodes = new Set()
 
-  if (actualNode === "BKK") {
-    console.log("reached bangkok");
+  while (queue.length !== 0) {
+    const actualNode: Airport = queue[0]
+    const actualAdjacencyList = adjacencyList?.get(actualNode)
+
+    queue.shift() 
+    console.log(`looking to the node ${actualNode}`)
+    
+    if (actualNode === to) {
+      console.log(`here's ${to}`)
+      return true
+    }
+
+    actualAdjacencyList?.forEach((actualAdjacency) => {
+      console.log(`now it's their children ${actualAdjacency}`)
+      
+      if (!visitedList.has(actualAdjacency)) queue.push(actualAdjacency)
+      visitedList.add(actualNode)
+    })
+  }
+
+  return false;
+}
+
+interface DFS {
+  actualNode: Airport;
+  destinyNode: Airport;
+  visitedNodes: VisitedNodes;
+  adjacencyList: AdjacencyList;
+}
+// Executes a DFS
+export function depthFirstSearch({actualNode, destinyNode, visitedNodes, adjacencyList}:DFS) {
+  const actualNodeAdjacencyItems = adjacencyList.get(actualNode);
+
+  if (actualNode === destinyNode) {
+    console.log("reached " + destinyNode);
+    return true
   }
 
   console.log("actual airport: " + actualNode);
 
-  actualNodeAdjacencies?.forEach((adjacencyNode) => {
+  actualNodeAdjacencyItems?.forEach((adjacencyNode) => {
     if (!visitedNodes.has(adjacencyNode)) {
+      const nextDFS: DFS = {actualNode:adjacencyNode,destinyNode, visitedNodes, adjacencyList}
       visitedNodes.add(actualNode);
-      depthFirstSearch(adjacencyNode, visitedNodes, adjacencyList);
+      depthFirstSearch(nextDFS);
     }
   });
 }
-
-
-// wrong aproach
-// for (let i = 0; i < adjacency.length; i++) {
-//   const possibleAdjacency = [adjacency[i].join(""), adjacency[i].reverse().join("")];
-
-//   const isRoute = possibleAdjacency.includes(from + to);
-//   if (isRoute) {
-//     return isRoute;
-//   }
-// }
