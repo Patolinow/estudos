@@ -3,7 +3,10 @@ import { expect } from "@jest/globals";
 type CatMouseReturn = "Caught!" | "Escaped!" | "boring without two animals";
 
 function catMouse(map: string, moves: number): CatMouseReturn {
-  console.log(map);
+  const mapArray = map.split("\n")
+  const mapMatrix = mapArray.map(mapRow =>  mapRow.split(""))
+
+  console.log(mapMatrix)
   return "boring without two animals";
 }
 
@@ -24,7 +27,7 @@ describe("basic test to verify main states", () => {
     expect(catMouse(map, 5)).toBe("Escaped!");
   });
 
-  test("", () => {
+  test("if don't has 2 animals", () => {
     const map = 
 `..C......
 .........
