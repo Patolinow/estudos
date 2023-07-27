@@ -40,3 +40,4 @@ doSomething("ChickenFace", 76, false);
 rando(2);
 add(1, 5);
 console.log(printTwice("Hello"));
+//# sourceMappingURL=functions.js.map

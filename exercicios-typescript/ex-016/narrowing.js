@@ -79,3 +79,4 @@ exports.stevie = {
     __type: "Rooster",
 };
 console.log(getFarmAnimalSound(exports.stevie));
+//# sourceMappingURL=narrowing.js.map

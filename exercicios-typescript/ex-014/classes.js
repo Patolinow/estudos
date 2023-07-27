@@ -93,3 +93,4 @@ const benny = new FullTimeEmployee("Benny", "Flame", 1500);
 console.log(benny.getPay());
 const don = new PartTimeEmployee("Don", "Quixote", 1.5, 50);
 console.log(don.getPay());
+//# sourceMappingURL=classes.js.map

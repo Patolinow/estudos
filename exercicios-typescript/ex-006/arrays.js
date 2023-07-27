@@ -12,3 +12,4 @@ const board = [
     ["O", "O", "O"],
 ];
 const demo = [[[1]]];
+//# sourceMappingURL=arrays.js.map

@@ -30,3 +30,4 @@ zero = 0;
 let mood = "sad";
 mood = "happy";
 let today = "Monday";
+//# sourceMappingURL=unionTypes.js.map

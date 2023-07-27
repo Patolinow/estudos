@@ -34,3 +34,4 @@ class Playlist {
 }
 const songs = new Playlist();
 const videos = new Playlist();
+//# sourceMappingURL=generics.js.map

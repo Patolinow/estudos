@@ -34,3 +34,4 @@ const greet = (names) => {
 };
 greet("Fabio");
 greet(["João", "Lucas", "Gustavo"]);
+//# sourceMappingURL=unionsExercise.js.map

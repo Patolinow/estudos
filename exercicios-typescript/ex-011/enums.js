@@ -20,3 +20,4 @@ const order2 = {
     orderNumber: 123123534,
     status: 2 /* OrderStatus.DELIVERD */,
 };
+//# sourceMappingURL=enums.js.map

@@ -33,3 +33,4 @@ const isLeapYear = (year) => {
 console.log(isLeapYear(2012));
 console.log(isLeapYear(1600));
 console.log(isLeapYear(2013));
+//# sourceMappingURL=functionsExercise.js.map

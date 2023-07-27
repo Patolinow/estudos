@@ -5,3 +5,4 @@ var Whatever;
         console.log(`${product.name} - R$${product.price}`);
     };
 })(Whatever || (Whatever = {}));
+//# sourceMappingURL=farmstand.js.map

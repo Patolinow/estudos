@@ -17,3 +17,4 @@ axios_1.default
     console.error(e);
 });
 console.log((0, narrowing_1.default)(narrowing_2.stevie));
+//# sourceMappingURL=types.js.map

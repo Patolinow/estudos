@@ -28,3 +28,4 @@ const getProfit = (movie) => {
 console.log(getProfit(dune));
 // For example...
 // getProfit(cats) => -21166652
+//# sourceMappingURL=objectsExercise.js.map

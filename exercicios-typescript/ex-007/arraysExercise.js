@@ -25,3 +25,4 @@ let myShopping = [
     { name: "sugar", price: 4, quantity: 3 },
 ];
 console.log(getTotal(myShopping));
+//# sourceMappingURL=arraysExercise.js.map

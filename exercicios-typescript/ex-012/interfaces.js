@@ -47,3 +47,4 @@ const pierre = {
     lang: "eng",
     nickname: "Pi"
 };
+//# sourceMappingURL=interfaces.js.map

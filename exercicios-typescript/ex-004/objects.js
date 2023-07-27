@@ -52,3 +52,4 @@ const christy = {
     age: 5,
     live: true
 };
+//# sourceMappingURL=objects.js.map
