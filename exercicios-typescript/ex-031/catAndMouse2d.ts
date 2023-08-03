@@ -10,9 +10,9 @@ interface ICoordinates {
 function catMouse(map: string, moves: number): CatMouseReturn {
   const cat = "C"
   const mouse = "m"
-  const allMapItems = map.split("")
+  const mapItems = map.split("")
 
-  if (!allMapItems.includes(cat) || !allMapItems.includes(mouse)) {
+  if (!mapItems.includes(cat) || !mapItems.includes(mouse)) {
     return "boring without two animals"
   }
 
@@ -72,7 +72,7 @@ function catMouse(map: string, moves: number): CatMouseReturn {
       coordinates.cat[1]++
       return 1 + searchRouteToMouse(coordinates)
     }
-    
+
     return 0;
   }
 }
