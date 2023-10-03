@@ -11,7 +11,7 @@
 ### ✨ [Demo](https://food-app-three-lac.vercel.app)
 
 
-## Como modificar
+## Como modificar o projeto
 
 Primeiro é necessário realizar a instalação dos pacotes através do comando
 ```sh
