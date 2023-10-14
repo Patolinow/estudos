@@ -21,4 +21,16 @@ export class HeroesComponent {
   getHeroes():void {
     this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes)
   }
+
+  add(heroName: string):void {
+    const name = heroName.trim()
+    if (!heroName) {return;}
+
+    this.heroService.addHero({name} as Hero).subscribe(hero => {this.heroes.push(hero)})
+  }
+
+  delete(hero: Hero):void {
+    this.heroes = this.heroes.filter(h => h !== hero)
+    this.heroService.deleteHero(hero.id).subscribe()
+  }
 }
