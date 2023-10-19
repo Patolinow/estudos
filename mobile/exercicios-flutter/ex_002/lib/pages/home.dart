@@ -1,4 +1,7 @@
 import 'package:ex_002/pages/dados_cadastrais.dart';
+import 'package:ex_002/pages/pagina1.dart';
+import 'package:ex_002/pages/pagina2.dart';
+import 'package:ex_002/pages/pagina3.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,6 +14,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int numeroGerado = 0;
   int quantidadeCliques = 0;
+  int posicaoIndex = 0;
+  var pageController = PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
@@ -42,17 +47,39 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ))),
-      body: PageView(
+      body: Column(
         children: [
-          Container(
-            color: Colors.blueAccent,
+          Expanded(
+            child: PageView(
+              controller: pageController,
+              onPageChanged: (value) {
+                setState(() {
+                  posicaoIndex = value;
+                });
+              },
+              children: const [
+                Pagina1(),
+                Pagina2(),
+                Pagina3(),
+              ],
+            ),
           ),
-          Container(
-            color: Colors.amberAccent,
-          ),
-          Container(
-            color: Colors.deepOrangeAccent,
-          )
+          BottomNavigationBar(
+              currentIndex: posicaoIndex,
+              onTap: (value) {
+                pageController.animateToPage(value,
+                    duration: const Duration(milliseconds: 1500),
+                    curve: Curves.bounceOut);
+              },
+              items: const [
+                BottomNavigationBarItem(label: "home", icon: Icon(Icons.home)),
+                BottomNavigationBarItem(
+                    label: "profile", icon: Icon(Icons.person)),
+                BottomNavigationBarItem(
+                  label: "config",
+                  icon: Icon(Icons.settings),
+                )
+              ])
         ],
       ),
     );

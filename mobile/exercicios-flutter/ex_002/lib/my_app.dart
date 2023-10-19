@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       // tira o debug banner
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          primarySwatch: Colors.grey, textTheme: GoogleFonts.robotoTextTheme()),
+          primarySwatch: Colors.blue, textTheme: GoogleFonts.robotoTextTheme()),
     );
   }
 }
