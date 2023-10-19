@@ -1,6 +1,5 @@
-import 'package:ex_002/service/gerador_numero_aleatorio.dart';
+import 'package:ex_002/pages/dados_cadastrais.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,46 +15,45 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("My app"),
-      ),
-      body: Container(
-        width: double.infinity,
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        child: SizedBox(
-          height: 205,
-          width: 100,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Text("Ações do usuário"),
-              Text("Foi clicado $quantidadeCliques vezes",
-                  style: GoogleFonts.anticSlab(fontSize: 32)),
-              Text("O numero gerado foi $numeroGerado",
-                  style: GoogleFonts.racingSansOne(fontSize: 24)),
-              const Row(
-                children: [
-                  Expanded(
-                    flex: 2,
-                    child: Text("something"),
-                  ),
-                  Expanded(child: Text("another thing")),
-                  Expanded(child: Text("21"))
-                ],
-              )
-            ],
-          ),
+      appBar: AppBar(title: const Text("Home")),
+      backgroundColor: Colors.white,
+      drawer: SafeArea(
+          child: Drawer(
+              child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            InkWell(
+                child: const Text("Dados cadastrais"),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const DadosCadastraisPage(
+                                texto: "Cadastro",
+                              )));
+                }),
+            const Divider(),
+            const Text("Configurações"),
+            const Divider(),
+            const Text("Termos de uso")
+          ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            numeroGerado = GeradorNumeroAleatorio.randomNumber(1000);
-            quantidadeCliques++;
-          });
-        },
-        child: const Icon(Icons.casino_rounded),
+      ))),
+      body: PageView(
+        children: [
+          Container(
+            color: Colors.blueAccent,
+          ),
+          Container(
+            color: Colors.amberAccent,
+          ),
+          Container(
+            color: Colors.deepOrangeAccent,
+          )
+        ],
       ),
     );
   }
