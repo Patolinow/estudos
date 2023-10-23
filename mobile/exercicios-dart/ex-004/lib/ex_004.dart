@@ -1,0 +1,1 @@
+int find(List il) => il.where((i) => i.isEven).length == 1 ? il.firstWhere((i) => i.isEven) : il.firstWhere((i) => i.isOdd);
