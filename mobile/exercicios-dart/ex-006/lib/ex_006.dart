@@ -1,9 +1,8 @@
 List<int> clock(int pagesNumber, List<int> referenceList) {
   List<int> pagesId = [];
-  List<int> pagesRelevance = List.filled(pagesNumber, 0);
+  List<bool> pagesRelevance = List.filled(pagesNumber, false);
   int cycle = 0;
 
-// Refazer isso e usar 2 listas diferentes ao invés do map
   for (var reference in referenceList) {
     var hasCurrentPage = pagesId.contains(reference);
     cycle = cycle < pagesNumber ? cycle : 0;
@@ -16,15 +15,15 @@ List<int> clock(int pagesNumber, List<int> referenceList) {
 
     if (hasCurrentPage) {
       int indexOfPageId = pagesId.indexOf(reference);
-      pagesRelevance[indexOfPageId]++;
+      pagesRelevance[indexOfPageId] = true;
       continue;
     }
 
     while (!pagesId.contains(reference)) {
-      if (pagesRelevance[cycle] == 0) {
+      if (!pagesRelevance[cycle]) {
         pagesId[cycle] = reference;
       } else {
-        pagesRelevance[cycle]--;
+        pagesRelevance[cycle] = false;
       }
 
       cycle = ++cycle < pagesNumber ? cycle++ : 0;
