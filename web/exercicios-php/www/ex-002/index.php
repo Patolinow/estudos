@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  link
   <title>php</title>
 </head>
 
@@ -21,7 +22,7 @@
     $nome = "alguem";
     $sobrenome = "aí";
     const PAIS = "Brasil";
-    const NOME_COMPLETO = "$nome $sobrenome";
+    const NOME_COMPLETO = "alguem ai";
 
     print "Olá $nome $sobrenome! Você é do " . PAIS;
     ?>
