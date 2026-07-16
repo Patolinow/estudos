@@ -98,9 +98,9 @@ class _LoginPageState extends State<LoginPage> {
                               }
                             },
                             style: ButtonStyle(
-                                backgroundColor: MaterialStatePropertyAll(
+                                backgroundColor: WidgetStatePropertyAll(
                                     Colors.blue.shade400),
-                                shape: MaterialStatePropertyAll(
+                                shape: WidgetStatePropertyAll(
                                     RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(12)))),
