@@ -11,7 +11,7 @@ String getOrder(String input) {
     "coke"
   ];
 
-  menu.forEach((item) {
+  for (var item in menu) {
     RegExp itemRegex = RegExp(item);
     int itemFrequency = itemRegex.allMatches(input).length;
     String order = "${item.replaceFirst(item[0], item[0].toUpperCase())} ";
@@ -20,7 +20,7 @@ String getOrder(String input) {
       itemFrequency--;
       orders = orders + order;
     }
-  });
+  }
 
   return orders.trimRight();
 }
