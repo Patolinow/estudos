@@ -1,0 +1,26 @@
+[
+  {
+    "color": "yellow",
+    "type": "rubber-duck",
+    "size": "small",
+    "name": "Kate"
+  },
+  {
+    "color": "red",
+    "type": "fox",
+    "size": "small",
+    "name": "Isa"
+  },
+  {
+    "color": "brown",
+    "type": "cockatiel",
+    "size": "small",
+    "name": "Stella"
+  },
+  {
+    "color": "gray",
+    "type": "rat",
+    "size": "small",
+    "name": "Ju"
+  }
+]
