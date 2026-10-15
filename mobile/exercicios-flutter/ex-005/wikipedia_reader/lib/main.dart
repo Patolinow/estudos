@@ -1,21 +1,12 @@
-
 import 'package:flutter/material.dart';
 
+import 'app.dart';
+import 'data/repositories/article_repository.dart';
+import 'data/services/wikipedia_service.dart';
 
 void main() {
-  runApp(const MainApp());
-}
+  final wikipediaService = WikipediaService();
+  final articleRepository = ArticleRepository(wikipediaService);
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Wikipedia Flutter')),
-        body: const Center(child: Text('Loading...')),
-      ),
-    );
-  }
+  runApp(MainApp(articleRepository: articleRepository));
 }
